@@ -77,82 +77,93 @@ body.light-theme .hero { background: #e9ecef; }
 .input:checked + .slider:before { transform: translateX(30px); }
 
 /* --- Actions Section --- */
-.actions {
-    padding: 30px 0;
-    background-color: var(--bg-color);
-    border-bottom: 1px solid var(--border-color);
-}
-.actions-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+.actions { padding: 30px 0; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); }
+.actions-container { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
 
 /* --- General Section Styling --- */
 section { padding: 90px 0; transition: background-color 0.4s var(--easing-curve); }
 .section-title { text-align: center; font-size: 2.5rem; color: var(--heading-color); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
+/* --- Glowing Card System (GLOBAL) --- */
+.glow-card {
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 22px;
+    transition: all .3s var(--easing-curve);
+    height: 100%;
+}
+.glow-card:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+    transform: scale(1.02);
+}
+/* All inner cards must shrink on hover */
+.glow-card:hover > * {
+    transform: scale(0.98);
+}
+
+/* --- Advantage Section --- */
 .advantage { background-color: var(--surface-color); }
-.advantage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.advantage-card { background-color: var(--bg-color); text-align: center; padding: 35px; border-radius: 10px; border: 1px solid var(--border-color); }
+.advantage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.advantage-card {
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    transition: all .2s var(--easing-curve);
+    text-align: center;
+    padding: 35px;
+    height: 100%;
+    box-sizing: border-box;
+}
+.card-content { opacity: 1; transition: opacity 0.4s var(--easing-curve); }
+.card-content.fading { opacity: 0; }
 .advantage-card svg { stroke: var(--primary-color); margin-bottom: 15px; }
-.advantage-card h4 { color: var(--heading-color); font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; }
+.advantage-card h4 { color: var(--heading-color); font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; }
 .advantage-card p { font-size: 1rem; line-height: 1.7; color: var(--text-color); }
+
 .visual { text-align: center; }
 .screenshot { max-width: 90%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 2px solid var(--border-color); }
+
+/* --- Roadmap Section --- */
 .roadmap { background-color: var(--surface-color); }
 .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.roadmap-item { background-color: var(--bg-color); padding: 25px; border-radius: 10px; border: 1px solid var(--border-color); }
+.roadmap-item {
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    padding: 35px;
+    height: 100%;
+    box-sizing: border-box;
+    transition: transform .2s var(--easing-curve);
+}
 .roadmap-item h4 { margin-top: 0; color: var(--heading-color); font-size: 1.2rem; }
+.roadmap-item p { margin-bottom: 0; }
+
+
+/* --- About Us Section --- */
 .about-us { background-color: #1a1a1a; }
 body.light-theme .about-us { background: #e9ecef; }
 .profiles-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-.profile-card { background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 30px; text-align: center; max-width: 320px; width: 100%; transition: transform 0.4s var(--easing-curve), box-shadow 0.4s var(--easing-curve); }
-.profile-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.profile-card {
+    background-color: var(--surface-color);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    max-width: 320px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    transition: transform .2s var(--easing-curve);
+}
 .profile-pic { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary-color); object-fit: cover; margin-bottom: 20px; }
 .profile-card h4 { color: var(--heading-color); font-size: 1.4rem; margin-top: 0; margin-bottom: 5px; }
 .profile-role { color: var(--primary-color); font-weight: 600; margin-top: 0; margin-bottom: 15px; }
 .profile-bio { font-size: 0.95rem; color: var(--text-color); opacity: 0.9; }
-
-.profile-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 20px;
-}
-.profile-links svg {
-    width: 28px;
-    height: 28px;
-    fill: #888; /* Default color for icons like LinkedIn */
-    transition: fill 0.2s ease, transform 0.2s ease;
-}
-.profile-links a:hover svg {
-    transform: scale(1.1); /* General scale animation for all */
-}
-
-/* --- THEME-AWARE GITHUB ICON COLOR --- */
-.profile-links a[title="GitHub"] svg {
-    fill: #c9d1d9;
-}
-.profile-links a[title="GitHub"]:hover svg {
-    fill: #ffffff;
-}
-body.light-theme .profile-links a[title="GitHub"] svg {
-    fill: #24292f;
-}
-body.light-theme .profile-links a[title="GitHub"]:hover svg {
-    fill: #000000;
-}
-
-/* --- BRAND COLORS ON HOVER (Unaffected by theme) --- */
-.profile-links a[title="LinkedIn"]:hover svg {
-    fill: #0077B5;
-}
-.profile-links a[title="YouTube"]:hover svg {
-    fill: #FF0000;
-}
+.profile-links { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
+.profile-links svg { width: 28px; height: 28px; fill: #888; transition: fill 0.2s ease, transform 0.2s ease; }
+.profile-links a:hover svg { transform: scale(1.1); }
+.profile-links a[title="GitHub"] svg { fill: #c9d1d9; }
+.profile-links a[title="GitHub"]:hover svg { fill: #ffffff; }
+body.light-theme .profile-links a[title="GitHub"] svg { fill: #24292f; }
+body.light-theme .profile-links a[title="GitHub"]:hover svg { fill: #000000; }
+.profile-links a[title="LinkedIn"]:hover svg { fill: #0077B5; }
+.profile-links a[title="YouTube"]:hover svg { fill: #FF0000; }
 
 footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: #888; }
 .footer-contact { margin-top: 10px; font-size: 0.9rem; }
@@ -160,21 +171,29 @@ footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border
 .footer-contact a:hover { text-decoration: underline; }
 .footer-socials { margin-top: 20px; }
 .footer-socials a { color: #888; transition: color 0.2s ease, transform 0.2s ease; display: inline-block; }
-.footer-socials a:hover {
-    color: var(--heading-color); /* General hover for non-brand icons */
-    transform: scale(1.1);
-}
-
-/* START: NEW DISCORD HOVER STYLE */
-.footer-socials a[title="Join our Discord"]:hover {
-    color: #5865F2; /* Discord's "Blurple" brand color */
-}
-/* END: NEW DISCORD HOVER STYLE */
-
+.footer-socials a:hover { color: var(--heading-color); transform: scale(1.1); }
+.footer-socials a[title="Join our Discord"]:hover { color: #5865F2; }
 body.light-theme .footer-socials a:hover { color: var(--primary-color); }
-body.light-theme .footer-socials a[title="Join our Discord"]:hover {
-    color: #5865F2; /* Keep brand color in light mode */
-}
+body.light-theme .footer-socials a[title="Join our Discord"]:hover { color: #5865F2; }
+
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--easing-curve), transform 0.6s var(--easing-curve); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 768px) { .header-controls { top: 15px; right: 15px; } .hero { padding: 120px 0 80px 0; } .hero-title { font-size: 2.8rem; } .hero-subtitle { font-size: 1.2rem; } section { padding: 60px 0; } .section-title { font-size: 2rem; margin-bottom: 40px; } .advantage-grid, .roadmap-grid { gap: 20px; } .profiles-grid { flex-direction: column; align-items: center; } }
+
+@media (max-width: 992px) {
+    .advantage-grid { 
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) { 
+    .header-controls { top: 15px; right: 15px; } 
+    .hero { padding: 120px 0 80px 0; } 
+    .hero-title { font-size: 2.8rem; } 
+    .hero-subtitle { font-size: 1.2rem; } 
+    section { padding: 60px 0; } 
+    .section-title { font-size: 2rem; margin-bottom: 40px; } 
+    .roadmap-grid, .profiles-grid { flex-direction: column; align-items: center; }
+    .roadmap-grid .glow-card, .profiles-grid .glow-card { width: 100%; max-width: 500px;}
+}
