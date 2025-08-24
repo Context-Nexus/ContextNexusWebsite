@@ -18,6 +18,8 @@
     </div>
 
     <header class="hero">
+        <svg id="hero-logo-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M499.9 14.1C223.8 14.1 0 238.4 0 514.9c0 109.8 35.1 210.6 94.1 292.2l-3.3 15.5c-4.4 20.6 12.3 39.5 33.1 39.5h758c20.9 0 37.6-19 33.1-39.5l-3.3-15.5c59-81.6 94.1-182.4 94.1-292.2C1000 238.4 776.1 14.1 499.9 14.1zm296.8 692.7H203.2c-2.3 0-3.4 2.8-1.9 4.3 34.1 32.5 73.7 59.8 117.7 79.9l7.2-33.8c4.2-19.6 27.5-27.1 42.6-13.9l69.9 61.2c15 13.2 38.4 5.6 42.6-13.9l7.2-33.8c44 20.1 83.6 47.4 117.7 79.9 1.5 1.5.3 4.3-1.9 4.3zM858.9 500c0 9.1-7.4 16.5-16.5 16.5H683.4l-2.7 12.7c-4.2 19.6-27.5 27.1-42.6 13.9l-69.9-61.2c-15-13.2-38.4-5.6-42.6 13.9l-2.7 12.7H157.6c-9.1 0-16.5-7.4-16.5-16.5V360.2c0-9.1 7.4-16.5 16.5-16.5h164.8l2-9.2c4.2-19.6 27.5-27.1 42.6-13.9l70.1 61.2c15 13.2 38.4 5.6 42.6-13.9l2-9.2h164.8c9.1 0 16.5 7.4 16.5 16.5v139.8z"/></svg>
+
         <div class="header-controls">
             <label class="switch">
                 <span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg></span>
@@ -27,17 +29,26 @@
             </label>
         </div>
 
-        <div class="container">
+        <div class="container hero-content">
             <h1 class="hero-title">Context Nexus</h1>
             <p class="hero-subtitle">The Professional Co-Pilot for Unreal Engine.<br>Deep Analysis. Full Control. No Black Boxes.</p>
             <div class="hero-buttons">
-                <a href="https://github.com/nikosleft/ContextNexus" target="_blank" class="cta-button">View on GitHub</a>
-                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary">Join the Community</a>
+                <!-- THE NEW PRIMARY BUTTON -->
+                <a href="#" target="_blank" class="cta-button">Get on Fab Marketplace</a>
             </div>
         </div>
     </header>
 
     <main>
+        <!-- START: NEW ACTIONS SECTION -->
+        <section class="actions">
+            <div class="container actions-container">
+                <a href="https://github.com/nikosleft/ContextNexus" target="_blank" class="cta-button-secondary">View on GitHub</a>
+                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary">Join the Community</a>
+            </div>
+        </section>
+        <!-- END: NEW ACTIONS SECTION -->
+
         <section class="advantage">
             <div class="container">
                 <h2 class="section-title fade-in">Why Professionals Choose Context Nexus</h2>
@@ -61,6 +72,8 @@
             </div>
         </section>
 
+        <!-- ... the rest of the file is identical ... -->
+        
         <section class="visual">
             <div class="container">
                 <h2 class="section-title fade-in">A True Pair Programmer, Inside Your Editor</h2>
@@ -117,7 +130,8 @@
         </section>
 
     </main>
-
+    
+    <!-- ... footer is identical ... -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Context Nexus. All rights reserved.</p>
@@ -126,7 +140,6 @@
             </p>
             <div class="footer-socials">
                 <a href="https://discord.gg/CKJbuD5nhY" target="_blank" title="Join our Discord">
-                    <!-- NEW, SIMPLER, UNBREAKABLE ICON -->
                     <svg role="img" width="32" height="32" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Discord</title><path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.369-.42.833-.573 1.294a18.258 18.258 0 0 0-5.62 0c-.151-.463-.362-.925-.571-1.294a.074.074 0 0 0-.079-.037A19.718 19.718 0 0 0 3.678 4.37a.077.077 0 0 0-.038.079 19.918 19.918 0 0 0-1.255 5.474.074.074 0 0 0 .016.064.074.074 0 0 0 .048.029c.451.136.9.27 1.346.399a.075.075 0 0 0 .08-.015c.338-.245.666-.502.982-.767a.074.074 0 0 0-.017-.114 17.054 17.054 0 0 1-1.328-.686.075.075 0 0 0-.095.015c-.18.136-.358.27-.534.401a.074.074 0 0 0-.025.076c.012.02.027.035.045.048l.003.002a18.012 18.012 0 0 0 6.03 1.339.075.075 0 0 0 .08-.016c.338-.245.666-.502.982-.767a.074.074 0 0 0-.016-.114 17.054 17.054 0 0 1-1.328-.686.075.075 0 0 0-.095.015c-.18.136-.358.27-.534.401a.074.074 0 0 0-.025.076c.013.02.028.035.046.048l.002.002a18.012 18.012 0 0 0 6.03 1.339.075.075 0 0 0 .08-.016c1.398-.933 2.698-2.28 3.598-4.043a.076.076 0 0 0-.025-.099c-.585-.34-1.254-.608-1.99-.79a.075.075 0 0 0-.085.015c-.18.136-.358.27-.534.401a.074.074 0 0 0-.025.076c.013.02.028.035.046.048l.002.002a17.054 17.054 0 0 1-1.328-.686.075.075 0 0 0-.095.015c-.18.136-.358.27-.534.401a.074.074 0 0 0-.025.076c.21.368.42.833.573 1.294a.074.074 0 0 0 .079.037c1.64-.362 3.185-.844 4.593-1.515a.077.077 0 0 0 .038-.079 19.918 19.918 0 0 0-1.255-5.474ZM8.02 15.33c-1.183 0-2.144-.963-2.144-2.147s.96-2.147 2.144-2.147c1.186 0 2.147.96 2.147 2.147s-.96 2.147-2.147 2.147Zm7.954 0c-1.183 0-2.144-.963-2.144-2.147s.96-2.147 2.144-2.147c1.186 0 2.147.96 2.147 2.147s-.96 2.147-2.147 2.147Z"/></svg>
                 </a>
             </div>
