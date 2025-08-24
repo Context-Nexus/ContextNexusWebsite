@@ -24,10 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggle.checked = false;
         }
     };
+    
+    // Default to dark theme if no setting is saved
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         applyTheme(savedTheme);
+    } else {
+        applyTheme('dark'); // Explicitly set dark mode for new visitors
     }
+
     themeToggle.addEventListener('change', () => {
         if (themeToggle.checked) {
             body.classList.add('light-theme');
@@ -52,21 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroLogo = document.getElementById('hero-logo-bg');
     if (heroLogo) {
         window.addEventListener('scroll', () => {
-            // Get the current scroll position from the top of the page
             let scrollPosition = window.scrollY;
-            
-            // Calculate the new Y position for the logo (moves up at 1/4th the scroll speed)
             const translateY = -scrollPosition * 0.25;
-
-            // Calculate the new opacity (fades out completely after 400px of scrolling)
             const opacity = Math.max(0, 1 - (scrollPosition / 400));
             
-            // Apply the new styles. We use requestAnimationFrame for smoother performance.
             window.requestAnimationFrame(() => {
                 heroLogo.style.transform = `translate(-50%, calc(-50% + ${translateY}px))`;
                 heroLogo.style.opacity = (document.body.classList.contains('light-theme') ? 0.03 : 0.05) * opacity;
             });
         });
     }
-
 });
