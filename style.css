@@ -94,7 +94,6 @@ body.light-theme .hero { background: #e9ecef; }
 section { padding: 90px 0; transition: background-color 0.4s var(--easing-curve); }
 .section-title { text-align: center; font-size: 2.5rem; color: var(--heading-color); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-/* ... The rest is the same ... */
 .advantage { background-color: var(--surface-color); }
 .advantage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .advantage-card { background-color: var(--bg-color); text-align: center; padding: 35px; border-radius: 10px; border: 1px solid var(--border-color); }
@@ -116,18 +115,66 @@ body.light-theme .about-us { background: #e9ecef; }
 .profile-card h4 { color: var(--heading-color); font-size: 1.4rem; margin-top: 0; margin-bottom: 5px; }
 .profile-role { color: var(--primary-color); font-weight: 600; margin-top: 0; margin-bottom: 15px; }
 .profile-bio { font-size: 0.95rem; color: var(--text-color); opacity: 0.9; }
-.profile-links { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
-.profile-links svg { width: 28px; height: 28px; fill: #888; transition: fill 0.2s ease, transform 0.2s ease; }
-.profile-links a:hover svg { fill: var(--heading-color); transform: scale(1.1); }
-body.light-theme .profile-links a:hover svg { fill: var(--primary-color); }
+
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+.profile-links svg {
+    width: 28px;
+    height: 28px;
+    fill: #888; /* Default color for icons like LinkedIn */
+    transition: fill 0.2s ease, transform 0.2s ease;
+}
+.profile-links a:hover svg {
+    transform: scale(1.1); /* General scale animation for all */
+}
+
+/* --- THEME-AWARE GITHUB ICON COLOR --- */
+.profile-links a[title="GitHub"] svg {
+    fill: #c9d1d9;
+}
+.profile-links a[title="GitHub"]:hover svg {
+    fill: #ffffff;
+}
+body.light-theme .profile-links a[title="GitHub"] svg {
+    fill: #24292f;
+}
+body.light-theme .profile-links a[title="GitHub"]:hover svg {
+    fill: #000000;
+}
+
+/* --- BRAND COLORS ON HOVER (Unaffected by theme) --- */
+.profile-links a[title="LinkedIn"]:hover svg {
+    fill: #0077B5;
+}
+.profile-links a[title="YouTube"]:hover svg {
+    fill: #FF0000;
+}
+
 footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: #888; }
 .footer-contact { margin-top: 10px; font-size: 0.9rem; }
 .footer-contact a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
 .footer-contact a:hover { text-decoration: underline; }
 .footer-socials { margin-top: 20px; }
-.footer-socials a { color: #888; transition: color 0.2s ease; }
-.footer-socials a:hover { color: var(--heading-color); }
+.footer-socials a { color: #888; transition: color 0.2s ease, transform 0.2s ease; display: inline-block; }
+.footer-socials a:hover {
+    color: var(--heading-color); /* General hover for non-brand icons */
+    transform: scale(1.1);
+}
+
+/* START: NEW DISCORD HOVER STYLE */
+.footer-socials a[title="Join our Discord"]:hover {
+    color: #5865F2; /* Discord's "Blurple" brand color */
+}
+/* END: NEW DISCORD HOVER STYLE */
+
 body.light-theme .footer-socials a:hover { color: var(--primary-color); }
+body.light-theme .footer-socials a[title="Join our Discord"]:hover {
+    color: #5865F2; /* Keep brand color in light mode */
+}
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--easing-curve), transform 0.6s var(--easing-curve); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) { .header-controls { top: 15px; right: 15px; } .hero { padding: 120px 0 80px 0; } .hero-title { font-size: 2.8rem; } .hero-subtitle { font-size: 1.2rem; } section { padding: 60px 0; } .section-title { font-size: 2rem; margin-bottom: 40px; } .advantage-grid, .roadmap-grid { gap: 20px; } .profiles-grid { flex-direction: column; align-items: center; } }
