@@ -1,7 +1,7 @@
 :root {
     --bg-color: #121212;
     --surface-color: #1e1e1e;
-    --primary-color: #0d6efd;
+    --primary-color: #0d6efd; /* Blue for trust and tech */
     --text-color: #e0e0e0;
     --heading-color: #ffffff;
     --font-main: 'Poppins', sans-serif;
@@ -21,94 +21,180 @@ body {
     padding: 0 20px;
 }
 
+/* --- Hero Section --- */
 .hero {
     background: #1a1a1a;
     text-align: center;
     padding: 100px 0;
     border-bottom: 1px solid #333;
 }
-
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     font-weight: 700;
     color: var(--heading-color);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
-
 .hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    opacity: 0.8;
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    opacity: 0.9;
+    line-height: 1.5;
 }
-
-.cta-button {
-    background-color: var(--primary-color);
-    color: white;
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cta-button, .cta-button-secondary {
+    display: inline-block;
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
+.cta-button { background-color: var(--primary-color); color: white; }
+.cta-button-secondary { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 13px 30px; }
+.cta-button:hover, .cta-button-secondary:hover { transform: translateY(-3px); }
+.cta-button-secondary:hover { background-color: var(--primary-color); color: white; }
 
-.cta-button:hover {
-    background-color: #0a58ca;
-    transform: translateY(-3px);
-}
+/* --- General Section Styling --- */
+section { padding: 90px 0; }
+.section-title { text-align: center; font-size: 2.5rem; color: var(--heading-color); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-section {
-    padding: 80px 0;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--heading-color);
-    margin-bottom: 50px;
-}
-
-.features-grid {
+/* --- Advantage Section --- */
+.advantage { background-color: var(--surface-color); }
+.advantage-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
-
-.feature-card {
-    background-color: var(--surface-color);
-    padding: 30px;
+.advantage-card {
+    background-color: var(--bg-color);
+    text-align: center;
+    padding: 35px;
     border-radius: 10px;
     border: 1px solid #333;
-    transition: transform 0.3s ease;
 }
-
-.feature-card:hover {
-    transform: translateY(-8px);
+.advantage-card svg {
+    stroke: var(--primary-color);
+    margin-bottom: 15px;
 }
-
-.feature-card h3 {
+.advantage-card h4 {
     color: var(--heading-color);
+    font-size: 1.4rem;
     margin-top: 0;
+    margin-bottom: 10px;
+}
+.advantage-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-color);
 }
 
-.visual {
-    text-align: center;
-}
+/* --- Visual Section --- */
+.visual { text-align: center; }
+.screenshot { max-width: 90%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 2px solid #333; }
 
-.screenshot {
-    max-width: 90%; /* a little smaller so it fits nicely */
+/* --- Roadmap Section --- */
+.roadmap { background-color: var(--surface-color); }
+.roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.roadmap-item { background-color: var(--bg-color); padding: 25px; border-radius: 10px; border: 1px solid #333; }
+.roadmap-item h4 { margin-top: 0; color: var(--heading-color); font-size: 1.2rem; }
+
+/* --- About Us Section --- */
+.about-us {
+    background-color: #1a1a1a; /* A slightly different dark bg */
+}
+.profiles-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.profile-card {
+    background-color: var(--surface-color);
+    border: 1px solid #333;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 2px solid #333;
-}
-
-footer {
+    padding: 30px;
     text-align: center;
-    padding: 40px 0;
-    border-top: 1px solid #333;
-    color: #888;
+    max-width: 320px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+.profile-card h4 {
+    color: var(--heading-color);
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.profile-role {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.profile-bio {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+.profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+.profile-links svg {
+    width: 28px;
+    height: 28px;
+    fill: #888;
+    transition: fill 0.2s ease, transform 0.2s ease;
+}
+.profile-links a:hover svg {
+    fill: var(--heading-color);
+    transform: scale(1.1);
 }
 
+/* --- Footer --- */
+footer { text-align: center; padding: 40px 0; border-top: 1px solid #333; color: #888; }
+.footer-contact {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+.footer-contact a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+.footer-socials { margin-top: 20px; }
+.footer-socials a { color: #888; transition: color 0.2s ease; }
+.footer-socials a:hover { color: var(--heading-color); }
+
+/* --- JS Animation --- */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* --- Responsive for Mobile Phones --- */
 @media (max-width: 768px) {
-    .hero-title { font-size: 2.5rem; }
+    .hero-title { font-size: 2.8rem; }
     .hero-subtitle { font-size: 1.2rem; }
+    .section-title { font-size: 2rem; }
 }
