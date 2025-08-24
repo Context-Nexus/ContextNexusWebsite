@@ -56,7 +56,12 @@ body.light-theme::-webkit-scrollbar-thumb:hover { background: #bbb; }
 #hero-logo-bg { position: absolute; top: 50%; left: 50%; width: 250px; height: 250px; transform: translate(-50%, -50%); z-index: 1; opacity: 0.05; filter: blur(2px); fill: #fff; transition: opacity 0.4s var(--easing-curve), transform 0.4s var(--easing-curve); }
 body.light-theme #hero-logo-bg { fill: #000; opacity: 0.03; }
 body.light-theme .hero { background: #e9ecef; }
-.header-controls { position: absolute; top: 20px; right: 20px; z-index: 3; }
+.header-controls {
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+    z-index: 3;
+}
 .hero-title { font-size: 3.8rem; font-weight: 700; color: var(--heading-color); margin-bottom: 15px; }
 .hero-subtitle { font-size: 1.4rem; max-width: 700px; margin: 0 auto 40px auto; opacity: 0.9; line-height: 1.5; color: var(--text-color); }
 .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -65,16 +70,125 @@ body.light-theme .hero { background: #e9ecef; }
 .cta-button-secondary { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 13px 30px; }
 .cta-button:hover, .cta-button-secondary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
 .cta-button-secondary:hover { background-color: var(--primary-color); color: white; }
-.switch { font-size: 17px; position: relative; display: inline-block; width: 64px; height: 34px; }
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #73C0FC; transition: .4s var(--easing-curve); border-radius: 30px; }
-.slider:before { position: absolute; content: ""; height: 30px; width: 30px; border-radius: 20px; left: 2px; bottom: 2px; z-index: 2; background-color: #e8e8e8; transition: .4s var(--easing-curve); }
-.sun svg { position: absolute; top: 6px; left: 36px; z-index: 1; width: 24px; height: 24px; animation: rotate 15s linear infinite; }
-.moon svg { fill: #73C0FC; position: absolute; top: 5px; left: 5px; z-index: 1; width: 24px; height: 24px; animation: tilt 5s linear infinite; }
-@keyframes rotate { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
-@keyframes tilt { 0% { transform: rotate(0deg); } 25% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } 100% { transform: rotate(0deg); } }
-.input:checked + .slider { background-color: #183153; }
-.input:checked + .slider:before { transform: translateX(30px); }
+
+
+/* === START: NEW, ROBUST SUN/MOON SWITCH CSS === */
+.toggle-switch {
+  position: relative;
+  width: 75px;
+  display: inline-block;
+  text-align: left;
+  top: 8px;
+}
+
+.checkbox {
+  display: none;
+}
+
+.switch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0 solid #bbb;
+  border-radius: 20px;
+  margin: 0;
+}
+
+.slider {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.slider:before, .slider:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 34px;
+  padding: 0;
+  line-height: 34px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.slider:before {
+  content: "";
+  padding-left: 10px;
+  background-color: #28292C;
+  color: #FFFFFF;
+}
+
+.slider:after {
+  content: "";
+  padding-right: 10px;
+  background-color: #F8F8F8;
+  color: #444;
+  text-align: right;
+}
+
+.checkbox:checked + .switch-label .slider {
+  margin-left: 0;
+}
+
+.switch-label .slider .slider-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.checkbox:checked + .switch-label .slider-thumb {
+  left: 45px;
+  background-color: #F8C300;
+}
+
+/* Sun and Moon Icons */
+.slider-thumb::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: #28292C;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.checkbox:checked + .switch-label .slider-thumb::before {
+  background-color: #F8F8F8;
+  box-shadow: 0 0 10px rgba(248, 195, 0, 0.8);
+}
+
+/* Moon crescent shape */
+.slider-thumb::after {
+  content: ' ';
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  width: 12px;
+  height: 12px;
+  background-color: #FFF;
+  border-radius: 50%;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.checkbox:checked + .switch-label .slider-thumb::after {
+  opacity: 0;
+}
+
+/* === END OF NEW SWITCH CSS === */
+
 
 /* --- Actions Section --- */
 .actions { padding: 30px 0; background-color: var(--bg-color); border-bottom: 1px solid var(--border-color); }
@@ -170,11 +284,21 @@ footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border
 .footer-contact a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
 .footer-contact a:hover { text-decoration: underline; }
 .footer-socials { margin-top: 20px; }
-.footer-socials a { color: #888; transition: color 0.2s ease, transform 0.2s ease; display: inline-block; }
+.footer-socials a {
+    color: #cccccc; /* Increased contrast for dark mode */
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
 .footer-socials a:hover { color: var(--heading-color); transform: scale(1.1); }
 .footer-socials a[title="Join our Discord"]:hover { color: #5865F2; }
+
+/* --- Light theme specific rules for footer icons --- */
+body.light-theme .footer-socials a {
+    color: #333333; /* Set a visible color for light mode */
+}
 body.light-theme .footer-socials a:hover { color: var(--primary-color); }
 body.light-theme .footer-socials a[title="Join our Discord"]:hover { color: #5865F2; }
+
 
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--easing-curve), transform 0.6s var(--easing-curve); }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -188,7 +312,10 @@ body.light-theme .footer-socials a[title="Join our Discord"]:hover { color: #586
 }
 
 @media (max-width: 768px) { 
-    .header-controls { top: 15px; right: 15px; } 
+    .header-controls { 
+        top: 15px; 
+        right: 15px;
+    } 
     .hero { padding: 120px 0 80px 0; } 
     .hero-title { font-size: 2.8rem; } 
     .hero-subtitle { font-size: 1.2rem; } 
