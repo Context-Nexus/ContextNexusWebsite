@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         applyTheme(savedTheme);
     } else {
+        // Default to dark theme
         applyTheme('dark');
     }
 
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NEW FEATURE: CENTRAL CARD SLIDESHOW ---
+    // --- Feature 5: CENTRAL CARD SLIDESHOW ---
     const slideshowCard = document.getElementById('slideshow-card');
     if (slideshowCard) {
         // --- DATA FOR THE SLIDES ---
