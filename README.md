@@ -62,6 +62,14 @@ Our vision is to create a truly collaborative development partner. Our next majo
 
 ---
 
+## Core Components
+
+This plugin is composed of the main Unreal Engine module and several key external components.
+
+-   **[AST Parser (`context-nexus-parser`)](https://github.com/nikosleft/context-nexus-parser)**: The standalone C++ AST parser responsible for all C++ code analysis. This is a private repository containing the helper executable's source code.
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
