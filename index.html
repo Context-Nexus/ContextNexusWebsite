@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <!-- ADDED 800 WEIGHT FOR BOLDER TITLE -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,7 +19,13 @@
     </div>
 
     <header class="hero">
-        <svg id="hero-logo-bg" xmlns="http://www.w.org/2000/svg" viewBox="0 0 1000 1000"><path d="M499.9 14.1C223.8 14.1 0 238.4 0 514.9c0 109.8 35.1 210.6 94.1 292.2l-3.3 15.5c-4.4 20.6 12.3 39.5 33.1 39.5h758c20.9 0 37.6-19 33.1-39.5l-3.3-15.5c59-81.6 94.1-182.4 94.1-292.2C1000 238.4 776.1 14.1 499.9 14.1zm296.8 692.7H203.2c-2.3 0-3.4 2.8-1.9 4.3 34.1 32.5 73.7 59.8 117.7 79.9l7.2-33.8c4.2-19.6 27.5-27.1 42.6-13.9l69.9 61.2c15 13.2 38.4 5.6 42.6-13.9l7.2-33.8c44 20.1 83.6 47.4 117.7 79.9 1.5 1.5.3 4.3-1.9 4.3zM858.9 500c0 9.1-7.4 16.5-16.5 16.5H683.4l-2.7 12.7c-4.2 19.6-27.5 27.1-42.6 13.9l-69.9-61.2c-15-13.2-38.4-5.6-42.6 13.9l-2.7 12.7H157.6c-9.1 0-16.5-7.4-16.5-16.5V360.2c0-9.1 7.4-16.5 16.5-16.5h164.8l2-9.2c4.2-19.6 27.5-27.1 42.6-13.9l70.1 61.2c15 13.2 38.4 5.6 42.6-13.9l2-9.2h164.8c9.1 0 16.5 7.4 16.5 16.5v139.8z"/></svg>
+        <!-- Wavy background is now a direct child of the hero section -->
+        <div class="aurora-bg">
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+        </div>
 
         <div class="header-controls">
             <div class="toggle-switch">
@@ -32,55 +39,53 @@
         </div>
 
         <div class="container hero-content">
-            <h1 class="hero-title">Context Nexus</h1>
-            <p class="hero-subtitle">The AI Co-Pilot That Reads, Understands, and Strengthens Your Unreal Project.</p>
-            <div class="hero-buttons">
-                <a href="#" target="_blank" class="cta-button">Get on Fab Marketplace</a>
+            <!-- New Glass Panel for the content -->
+            <div class="hero-glass-panel">
+                <h1 class="hero-title">
+                    <!-- REMOVED <br> for single-line title -->
+                    <span class="gradient-text">Context Nexus</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The AI Co-Pilot for the <span class="typewriter"></span>
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" target="_blank" class="cta-button">Get on Fab Marketplace</a>
+                </div>
             </div>
         </div>
     </header>
+
+    <nav class="sticky-nav">
+        <div class="container">
+            <ul class="creative-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#roadmap">Mission</a></li>
+                <li><a href="#about-us">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
         <section class="actions">
             <div class="container actions-container">
                 <a href="https://github.com/nikosleft/ContextNexus" target="_blank" class="cta-button-secondary">View on GitHub</a>
-                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary">Join the Community</a>
+                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                        <title>Discord</title>
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8245-.6667 1.329h-.0074c.002.002.0039.004.0058.0059-2.6835.4622-5.2416.4622-7.8132 0h-.0074c-.2203-.5044-.4557-.9537-.6667-1.329a.0741.0741 0 00-.0785-.0371 19.7363 19.7363 0 00-4.8851 1.5152.0699.0699 0 00-.0321.0663C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0814.0785c1.4812.3517 2.9276.5942 4.3307.7622a.0772.0772 0 00.0845-.0371c.3938-.4962.7328-.9898 1.0147-1.4758a.0741.0741 0 00-.042-.1193c-.6218-.2481-1.2162-.511-1.7882-.7908a.0741.0741 0 01-.0112-.1133c.273-.3483.5383-.7018.794-1.0594a.0741.0741 0 01.0924-.0251c.4212.1638.8293.3192 1.2277.4622a.0741.0741 0 00.0883-.0112c.4203-.3517.7837-.7345 1.0945-1.1442a.0741.0741 0 00.0122-.0992c-.2368-.273-.466-.5572-.6863-.8467a.0741.0741 0 01.0112-.1059c.9942-.5942 2.0522-.9898 3.1383-1.168a.0741.0741 0 01.0855.0494c.0814.24.1554.48.222.7202a.0741.0741 0 00.0883.0494c.48.1133.945.2266 1.3943.3483a.0741.0741 0 00.0864-.0122c.364-.3192.692-.6727.982-.1.0594a.0741.0741 0 00.0122-.1059c-.2131-.2895-.4334-.5824-.6537-.869a.0741.0741 0 01.0122-.1059c1.021-.4706 2.1092-.7824 3.2235-.9186a.0741.0741 0 01.0864.0587c.0617.2266.1159.4533.1627.68h.0074a.0741.0741 0 00.0883-.0494c.4568-.191.9-.3821 1.328-.5824a.0741.0741 0 00.0905-.0251c.264.3575.5294.711.794 1.0594a.0741.0741 0 01-.0112.1133c-.572.2798-1.1664.5427-1.7882.7908a.0741.0741 0 00-.042.1193c.2819.486.6209.9796 1.0147 1.4758a.0772.0772 0 00.0845.0371c1.4031-.168 2.8495-.4105 4.3307-.7622a.0824.0824 0 00.0814-.0785c.418-4.478-.4424-8.981-2.2641-13.6215a.0699.0699 0 00-.0321-.0663zM8.02 15.3316c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332 1.002-2.419 2.1569-2.419 1.1628 0 2.157 1.0858 2.157 2.419 0 1.3333-.9942 2.419-2.157 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.992-2.419 2.1569-2.419 1.1826 0 2.157 1.0858 2.157 2.419 0 1.3333-.9743 2.419-2.157 2.419z"/>
+                    </svg>
+                    Join Our Community!
+                </a>
             </div>
         </section>
 
-        <section class="advantage">
+        <section class="advantage" id="features">
             <div class="container">
                 <h2 class="section-title fade-in">The Professional's Edge, For Everyone</h2>
                 <div class="advantage-grid fade-in" id="advantage-grid">
-                    
-                    <div class="glow-card">
-                        <div class="advantage-card">
-                           <div class="card-content">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-                               <h4>The C++ Advantage</h4>
-                               <p>While others lock C++ analysis behind expensive enterprise plans, we provide it as a core feature. Get deep source code and dependency analysis for everyone, not just the Fortune 500.</p>
-                           </div>
-                        </div>
-                    </div>
-
-                    <div class="glow-card">
-                        <div class="advantage-card" id="slideshow-card">
-                            <div class="card-content">
-                                <!-- JS content goes here -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glow-card">
-                         <div class="advantage-card">
-                           <div class="card-content">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 10.3 22 12c-2.4 2.8-5.7 4.5-9.4 4.5-2.2 0-4.3-.6-6.1-1.8"/><path d="m2 12 1.5-1.7c2.4-2.8 5.7-4.5 9.4-4.5 2.2 0 4.3.6 6.1 1.8"/><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/><path d="M12 21a9 9 0 0 1 0-18"/></svg>
-                               <h4>The Control Advantage</h4>
-                               <p>Your Key, Your Rules. Get unlimited, at-cost AI access by bringing your own API key. No credits, no markups, no limits. Use any model the moment it's released. This is ultimate freedom.</p>
-                           </div>
-                        </div>
-                    </div>
-
+                    <div class="glow-card"><div class="advantage-card"><div class="card-content"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg><h4>The C++ Advantage</h4><p>While others lock C++ analysis behind expensive enterprise plans, we provide it as a core feature. Get deep source code and dependency analysis for everyone, not just the Fortune 500.</p></div></div></div>
+                    <div class="glow-card"><div class="advantage-card" id="slideshow-card"><div class="card-content"></div></div></div>
+                    <div class="glow-card"><div class="advantage-card"><div class="card-content"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 10.3 22 12c-2.4 2.8-5.7 4.5-9.4 4.5-2.2 0-4.3-.6-6.1-1.8"/><path d="m2 12 1.5-1.7c2.4-2.8 5.7-4.5 9.4-4.5 2.2 0 4.3.6 6.1 1.8"/><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/><path d="M12 21a9 9 0 0 1 0-18"/></svg><h4>The Control Advantage</h4><p>Your Key, Your Rules. Get unlimited, at-cost AI access by bringing your own API key. No credits, no markups, no limits. Use any model the moment it's released. This is ultimate freedom.</p></div></div></div>
                 </div>
             </div>
         </section>
@@ -92,61 +97,23 @@
             </div>
         </section>
         
-        <section class="roadmap">
+        <section class="roadmap" id="roadmap">
             <div class="container">
                 <h2 class="section-title fade-in">Our Mission: Analysis First</h2>
                 <div class="roadmap-grid">
-                    <div class="glow-card fade-in">
-                        <div class="roadmap-item">
-                            <h4>Sanity-Check Linter</h4>
-                            <p>Our proactive linter finds real issues in your existing project, providing tangible, high-value analysis automatically as you work.</p>
-                        </div>
-                    </div>
-                    <div class="glow-card fade-in">
-                        <div class="roadmap-item">
-                            <h4>Hyper-Fast Workflow</h4>
-                            <p>The "Right-click → Send to Context Nexus" feature makes our unique analysis workflow faster and more focused than any competitor.</p>
-                        </div>
-                    </div>
-                    <div class="glow-card fade-in">
-                        <div class="roadmap-item">
-                            <h4>Total Transparency</h4>
-                            <p>We are enhancing the UX to give you perfect visibility into what the AI sees, so you can be confident in every analysis and suggestion.</p>
-                        </div>
-                    </div>
+                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Sanity-Check Linter</h4><p>Our proactive linter finds real issues in your existing project, providing tangible, high-value analysis automatically as you work.</p></div></div>
+                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Hyper-Fast Workflow</h4><p>The "Right-click → Send to Context Nexus" feature makes our unique analysis workflow faster and more focused than any competitor.</p></div></div>
+                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Total Transparency</h4><p>We are enhancing the UX to give you perfect visibility into what the AI sees, so you can be confident in every analysis and suggestion.</p></div></div>
                 </div>
             </div>
         </section>
 
-        <section class="about-us">
+        <section class="about-us" id="about-us">
             <div class="container">
                 <h2 class="section-title fade-in">Meet the Developers</h2>
                 <div class="profiles-grid">
-                    <div class="glow-card fade-in">
-                        <div class="profile-card">
-                            <img src="nikos-profile.jpg" alt="Nikos Lazaridis profile picture" class="profile-pic">
-                            <h4>Nikos Lazaridis</h4>
-                            <p class="profile-role">Game Development</p>
-                            <p class="profile-bio">Passionate about building immersive experiences and robust gameplay systems inside Unreal Engine.</p>
-                            <div class="profile-links">
-                                <a href="https://github.com/nikosleft" target="_blank" title="GitHub"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-                                <a href="https://www.linkedin.com/in/nikos-lazaridis-425840221/" target="_blank" title="LinkedIn"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-                                <a href="https://www.youtube.com/@LeftByteGames" target="_blank" title="YouTube"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glow-card fade-in">
-                        <div class="profile-card">
-                            <img src="rae-profile.jpg" alt="Klearxos Xlioumphs profile picture" class="profile-pic">
-                            <h4>Klearxos Xlioumphs</h4>
-                            <p class="profile-role">Android Development</p>
-                            <p class="profile-bio">Focused on creating clean, high-performance native Android applications and user interfaces.</p>
-                            <div class="profile-links">
-                                <a href="https://github.com/RaeXp917" target="_blank" title="GitHub"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-                                <a href="https://www.linkedin.com/in/klearxos-xlioumphs/" target="_blank" title="LinkedIn"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="glow-card fade-in"><div class="profile-card"><img src="nikos-profile.jpg" alt="Nikos Lazaridis profile picture" class="profile-pic"><h4>Nikos Lazaridis</h4><p class="profile-role">Game Development</p><p class="profile-bio">Passionate about building immersive experiences and robust gameplay systems inside Unreal Engine.</p><div class="profile-links"><a href="https://github.com/nikosleft" target="_blank" title="GitHub"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="https://www.linkedin.com/in/nikos-lazaridis-425840221/" target="_blank" title="LinkedIn"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a><a href="https://www.youtube.com/@LeftByteGames" target="_blank" title="YouTube"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></div></div></div>
+                    <div class="glow-card fade-in"><div class="profile-card"><img src="rae-profile.jpg" alt="Klearxos Xlioumphs profile picture" class="profile-pic"><h4>Klearxos Xlioumphs</h4><p class="profile-role">Android Development</p><p class="profile-bio">Focused on creating clean, high-performance native Android applications and user interfaces.</p><div class="profile-links"><a href="https://github.com/RaeXp917" target="_blank" title="GitHub"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="https://www.linkedin.com/in/klearxos-xlioumphs/" target="_blank" title="LinkedIn"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a></div></div></div>
                 </div>
             </div>
         </section>
@@ -154,17 +121,7 @@
     </main>
     
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Context Nexus. All rights reserved.</p>
-            <p class="footer-contact">
-                Support: <a href="mailto:support@contextnexus.dev">support@contextnexus.dev</a>
-            </p>
-            <div class="footer-socials">
-                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" title="Join our Discord">
-                    <svg role="img" width="32" height="32" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Discord</title><path d="M20.213 4.484a19.742 19.742 0 00-4.863-1.503.076.076 0 00-.08.037c-.193.333-.38.718-.548 1.12.98.243 1.91.56 2.784.95a.077.077 0 01.036.095c-.45.728-.883 1.43-1.298 2.099a.076.076 0 01-.11.02c-.523-.32-1.04-.62-1.547-.892a.076.076 0 00-.095.03c-.09.18-.17.362-.25.54a13.31 13.31 0 00-3.41 0c-.08-.179-.16-.36-.25-.54a.076.076 0 00-.096-.03c-.507.272-1.024.572-1.547.892a.076.076 0 01-.11-.02c-.415-.668-.848-1.37-1.298-2.099a.077.077 0 01.036-.095c.875-.39 1.805-.708 2.784-.95-.168-.402-.355-.787-.548-1.12a.076.076 0 00-.08-.037 19.74 19.74 0 00-4.863 1.503.076.076 0 00-.04.075C1.047 8.32 0 12.873 0 12.873s.79 4.38 4.69 6.225a.076.076 0 00.088-.01c1.558-.87 2.92-2.036 3.96-3.43a.076.076 0 01.07-.02c.39.06.77.12 1.15.18a.076.076 0 00.08-.04 10.4 10.4 0 00.62-2.126.076.076 0 00-.01-.075 10.15 10.15 0 00-1.01-1.31.076.076 0 01.01-.113c.22-.15.44-.3.65-.45a.076.076 0 01.09,0l.65.45c.03.02.04.05.01.08a9.833 9.833 0 00-1.01,1.31c-.02.02-.01.05,0,.07a10.4 10.4 0 00.62,2.126.076.076 0 00.08.04c.38-.06.76-.12 1.15-.18a.076.076 0 01.07.02c1.04,1.393 2.4,2.56 3.96,3.43a.076.076 0 00.088.01C23.21,17.253 24,12.873 24,12.873s-1.047-4.553-4.227-8.314a.076.076 0 00-.04-.075zM8.02 15.33c-1.183 0-2.144-.963-2.144-2.147s.96-2.147 2.144-2.147c1.186 0 2.147.96 2.147 2.147s-.96 2.147-2.147 2.147zm7.954 0c-1.183 0-2.144-.963-2.144-2.147s.96-2.147 2.144-2.147c1.186 0 2.147.96 2.147 2.147s-.96 2.147-2.147 2.147z"/></svg>
-                </a>
-            </div>
-        </div>
+        <div class="container"><p>&copy; 2025 Context Nexus. All rights reserved.</p><p class="footer-contact">Support: <a href="mailto:support@contextnexus.dev">support@contextnexus.dev</a></p><div class="footer-socials"></div></div>
     </footer>
 
     <script src="script.js" defer></script>
