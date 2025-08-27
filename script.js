@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         applyTheme(savedTheme);
     } else {
-        // Default to dark theme
         applyTheme('dark');
     }
 
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 4: Typewriter Effect ---
     const typewriterElement = document.querySelector('.typewriter');
     if (typewriterElement) {
-        const words = ["Aspiring Developer", "Indie Studio", "Professional Team"];
+        const words = ["Unreal Project.", "Blueprint logic.", "C++ architecture."];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -87,63 +86,140 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- Feature 5: CENTRAL CARD SLIDESHOW ---
-    const slideshowCard = document.getElementById('slideshow-card');
-    if (slideshowCard) {
-        const slideData = [
-            {
-                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
-                title: 'For the Professional Team',
-                text: 'Navigate vast, legacy codebases with ease, enforce code standards, and maintain stability and performance at scale. This is a tool for developers who build to last.'
-            },
-            {
-                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
-                title: 'For the Indie Studio',
-                text: 'For small teams, every hour counts. Context Nexus is a force multiplier, automating boilerplate and diagnosing elusive bugs to free you up for pure creativity and gameplay innovation.'
-            },
-            {
-                icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 4 3 6 3s6-1.34 6-3v-5"/></svg>`,
-                title: 'For the Aspiring Developer',
-                text: 'Just starting your Unreal Engine journey? Context Nexus is your personal mentor, explaining confusing code, untangling Blueprints, and accelerating your learning tenfold from day one.'
-            }
-        ];
-        const cardContent = slideshowCard.querySelector('.card-content');
+    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (PRECISE TIMING) ---
+    const slideshowTargets = document.querySelectorAll('.advantage-card.slideshow-target');
+    
+    const slideData1 = [
+        {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20.5c.7.3 1.5.3 2.2 0"/><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v20"/><path d="m15.5 15.5-3.3-3.3a1.4 1.4 0 0 1 0-2l3.3-3.3"/><path d="M8.5 8.5l3.3 3.3a1.4 1.4 0 0 1 0 2l-3.3 3.3"/></svg>`,
+            title: 'True Blueprint Fluency',
+            text: 'Our professional parser translates complex Blueprint graphs into a clean, semantic DSL. The AI doesn’t just see text—it understands the logic, flow, and structure.',
+            duration: 8500 // Longer duration for more text
+        },
+        {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`,
+            title: 'Full C++ Support, Standard',
+            text: 'We believe deep C++ class analysis is a core requirement. Context Nexus scans your entire project, from Blueprints to source code, giving the AI a complete picture.',
+            duration: 8000
+        }
+    ];
+
+    const slideData2 = [
+         {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
+            title: 'Customizable AI Personas',
+            text: 'Direct the AI’s behavior with custom Personas. Switch between a "Teacher," "Senior Developer," "Debugger," or create your own for perfectly tailored responses.',
+            duration: 9000 // Most text, longest duration
+        },
+        {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
+            title: 'Deep Editor Integration',
+            text: 'Our tools feel native to Unreal. Right-click any asset in the Content Browser to instantly add it to the AI\'s context for a hyper-fast and intuitive workflow.',
+            duration: 8500
+        }
+    ];
+
+    const slideData3 = [
+        {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+            title: 'For the Professional Team',
+            text: 'Navigate vast, legacy codebases with ease, enforce code standards, and maintain stability and performance at scale. This is a tool for developers who build to last.',
+            duration: 8500
+        },
+        {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+            title: 'For the Indie Studio',
+            text: 'For small teams, every hour counts. Context Nexus is a force multiplier, automating boilerplate and diagnosing elusive bugs to free you up for pure creativity and innovation.',
+            duration: 8000
+        },
+        {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 4 3 6 3s6-1.34 6-3v-5"/></svg>`,
+            title: 'For the Aspiring Developer',
+            text: 'Just starting your Unreal journey? Context Nexus is your personal mentor, explaining confusing code and accelerating your learning tenfold from day one.',
+            duration: 7500 // Shortest text, shortest duration
+        },
+    ];
+
+    // Array of all slide data sets
+    const allSlideData = [slideData1, slideData2, slideData3];
+    // Specific start delays for each card in milliseconds, as you requested
+    const startDelays = [2000, 8000, 5000]; // Card 1: 2s, Card 2: 8s, Card 3: 5s
+
+    const slideshowInstances = [];
+
+    if (slideshowTargets.length === allSlideData.length) {
+        slideshowTargets.forEach((cardElement, index) => {
+            const data = allSlideData[index];
+            const cardContent = cardElement.querySelector('.card-content');
+            let currentSlide = 0;
+            let timeoutId = null;
+
+            const updateCard = (slideIndex) => {
+                const slide = data[slideIndex];
+                cardContent.innerHTML = `${slide.icon}<h4>${slide.title}</h4><p>${slide.text}</p>`;
+            };
+
+            const scheduleNextSlide = () => {
+                // Get the specific duration for the *currently visible* slide
+                const currentDuration = data[currentSlide].duration;
+                
+                timeoutId = setTimeout(() => {
+                    // Transition to the next slide
+                    cardContent.classList.add('fading');
+                    setTimeout(() => {
+                        currentSlide = (currentSlide + 1) % data.length;
+                        updateCard(currentSlide);
+                        cardContent.classList.remove('fading');
+                        // After transition, schedule the next one
+                        scheduleNextSlide();
+                    }, 400); // 400ms for the fade animation
+                }, currentDuration);
+            };
+
+            const startSlideshow = () => {
+                clearTimeout(timeoutId);
+                // The very first slide is displayed for the initial start delay
+                const firstDisplayDuration = startDelays[index];
+                timeoutId = setTimeout(() => {
+                    // Transition to the second slide
+                     cardContent.classList.add('fading');
+                    setTimeout(() => {
+                        currentSlide = (currentSlide + 1) % data.length;
+                        updateCard(currentSlide);
+                        cardContent.classList.remove('fading');
+                        // Now, start the normal scheduling based on each slide's content length
+                        scheduleNextSlide();
+                    }, 400);
+                }, firstDisplayDuration);
+            };
+
+            const stopSlideshow = () => {
+                clearTimeout(timeoutId);
+            };
+
+            // Set the initial content for the card
+            updateCard(0);
+            slideshowInstances.push({ start: startSlideshow, stop: stopSlideshow });
+        });
+
+        // Start all slideshows and add global controls
+        slideshowInstances.forEach(instance => instance.start());
         const advantageGrid = document.getElementById('advantage-grid');
-        let currentSlide = 0;
-        let slideInterval;
-        const updateCard = (index) => {
-            const data = slideData[index];
-            cardContent.innerHTML = `${data.icon}<h4>${data.title}</h4><p>${data.text}</p>`;
-        };
-        const transitionSlide = () => {
-            cardContent.classList.add('fading');
-            setTimeout(() => {
-                currentSlide = (currentSlide + 1) % slideData.length;
-                updateCard(currentSlide);
-                cardContent.classList.remove('fading');
-            }, 400); 
-        };
-        const startSlideshow = () => {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(transitionSlide, 5000); 
-        };
-        const stopSlideshow = () => { clearInterval(slideInterval); };
-        updateCard(0);
-        startSlideshow();
-        advantageGrid.addEventListener('mouseenter', stopSlideshow);
-        advantageGrid.addEventListener('mouseleave', startSlideshow);
+        advantageGrid.addEventListener('mouseenter', () => slideshowInstances.forEach(inst => inst.stop()));
+        advantageGrid.addEventListener('mouseleave', () => slideshowInstances.forEach(inst => inst.start()));
     }
 
-    // --- NEW Feature 6: Smooth Scrolling for Sticky Nav ---
+    // --- Feature 6: Smooth Scrolling for Sticky Nav ---
     const navLinks = document.querySelectorAll('.creative-menu a');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            const correctTargetId = targetId === '#roadmap' ? '#mission' : targetId;
+            const targetElement = document.querySelector(correctTargetId);
             if (targetElement) {
                 const navHeight = document.querySelector('.sticky-nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
                 
                 window.scrollTo({
                     top: targetPosition,
