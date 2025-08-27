@@ -1,3 +1,5 @@
+--- START OF FILE style.css ---
+
 :root {
     /* THEME COLORS */
     --bg-color: #121212;
@@ -264,3 +266,47 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4) { background-color: #d6
 @keyframes aurora-3 { 0% { bottom: 0; left: 0; } 40% { bottom: 100%; left: 75%; } 65% { bottom: 40%; left: 50%; } 100% { bottom: 0; left: 0; } }
 @keyframes aurora-4 { 0% { bottom: -50%; right: 0; } 50% { bottom: 0%; right: 40%; } 90% { bottom: 50%; right: 25%; } 100% { bottom: -50%; right: 0; } }
 @keyframes aurora-border { 0% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; } 25% { border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%; } 50% { border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%; } 75% { border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%; } 100% { border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%; } }
+
+/* --- START: Slideshow Dots Styling --- */
+.slideshow-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 12px;
+    margin-top: 20px;
+    border-radius: 20px;
+    
+    /* Glass Effect */
+    background: rgba(45, 45, 45, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: background 0.4s var(--easing-curve);
+}
+
+body.light-theme .slideshow-dots {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--heading-color);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.3s var(--easing-curve);
+    transform: scale(1);
+}
+
+.slideshow-dots .dot:hover {
+    opacity: 0.7;
+}
+
+.slideshow-dots .dot.active {
+    opacity: 1;
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+/* --- END: Slideshow Dots Styling --- */
