@@ -1,5 +1,3 @@
---- START OF FILE script.js ---
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Feature 1: Fade-in Animation on Scroll ---
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (REWRITTEN & FIXED) ---
+    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (PRECISE TIMING) ---
     const slideshowTargets = document.querySelectorAll('.advantage-card.slideshow-target');
     
     const slideData1 = [
@@ -96,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20.5c.7.3 1.5.3 2.2 0"/><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v20"/><path d="m15.5 15.5-3.3-3.3a1.4 1.4 0 0 1 0-2l3.3-3.3"/><path d="M8.5 8.5l3.3 3.3a1.4 1.4 0 0 1 0 2l-3.3 3.3"/></svg>`,
             title: 'True Blueprint Fluency',
             text: 'Our professional parser translates complex Blueprint graphs into a clean, semantic DSL. The AI doesn’t just see text—it understands the logic, flow, and structure.',
-            duration: 8500
+            duration: 8500 // Longer duration for more text
         },
         {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`,
@@ -111,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
             title: 'Customizable AI Personas',
             text: 'Direct the AI’s behavior with custom Personas. Switch between a "Teacher," "Senior Developer," "Debugger," or create your own for perfectly tailored responses.',
-            duration: 9000
+            duration: 9000 // Most text, longest duration
         },
         {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
@@ -138,96 +136,77 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 4 3 6 3s6-1.34 6-3v-5"/></svg>`,
             title: 'For the Aspiring Developer',
             text: 'Just starting your Unreal journey? Context Nexus is your personal mentor, explaining confusing code and accelerating your learning tenfold from day one.',
-            duration: 7500
+            duration: 7500 // Shortest text, shortest duration
         },
     ];
 
+    // Array of all slide data sets
     const allSlideData = [slideData1, slideData2, slideData3];
-    const startDelays = [2000, 8000, 5000];
+    // Specific start delays for each card in milliseconds, as you requested
+    const startDelays = [2000, 8000, 5000]; // Card 1: 2s, Card 2: 8s, Card 3: 5s
+
+    const slideshowInstances = [];
 
     if (slideshowTargets.length === allSlideData.length) {
         slideshowTargets.forEach((cardElement, index) => {
             const data = allSlideData[index];
             const cardContent = cardElement.querySelector('.card-content');
-            const glowCard = cardElement.closest('.glow-card');
-            
             let currentSlide = 0;
             let timeoutId = null;
-            let isPaused = false;
-            
-            const dotsContainer = document.createElement('div');
-            dotsContainer.className = 'slideshow-dots';
-            const dots = [];
 
-            // This function ONLY updates the HTML content and active dot
-            const updateUI = () => {
-                const slide = data[currentSlide];
+            const updateCard = (slideIndex) => {
+                const slide = data[slideIndex];
                 cardContent.innerHTML = `${slide.icon}<h4>${slide.title}</h4><p>${slide.text}</p>`;
-                dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentSlide));
             };
 
-            // This function handles the visual transition to a new slide
-            const transitionToSlide = (newSlideIndex) => {
-                cardContent.classList.add('fading');
-                setTimeout(() => {
-                    currentSlide = newSlideIndex;
-                    updateUI();
-                    cardContent.classList.remove('fading');
-                }, 400); // Must match CSS transition time
-            };
-            
-            // This is the main timer loop function, which is now correctly recursive
-            const scheduleNext = () => {
-                clearTimeout(timeoutId);
-                if (isPaused) return;
-
+            const scheduleNextSlide = () => {
+                // Get the specific duration for the *currently visible* slide
                 const currentDuration = data[currentSlide].duration;
+                
                 timeoutId = setTimeout(() => {
-                    const nextSlideIndex = (currentSlide + 1) % data.length;
-                    transitionToSlide(nextSlideIndex);
-                    scheduleNext(); // Recursively call to create a loop
+                    // Transition to the next slide
+                    cardContent.classList.add('fading');
+                    setTimeout(() => {
+                        currentSlide = (currentSlide + 1) % data.length;
+                        updateCard(currentSlide);
+                        cardContent.classList.remove('fading');
+                        // After transition, schedule the next one
+                        scheduleNextSlide();
+                    }, 400); // 400ms for the fade animation
                 }, currentDuration);
             };
 
-            const stop = () => {
-                isPaused = true;
+            const startSlideshow = () => {
+                clearTimeout(timeoutId);
+                // The very first slide is displayed for the initial start delay
+                const firstDisplayDuration = startDelays[index];
+                timeoutId = setTimeout(() => {
+                    // Transition to the second slide
+                     cardContent.classList.add('fading');
+                    setTimeout(() => {
+                        currentSlide = (currentSlide + 1) % data.length;
+                        updateCard(currentSlide);
+                        cardContent.classList.remove('fading');
+                        // Now, start the normal scheduling based on each slide's content length
+                        scheduleNextSlide();
+                    }, 400);
+                }, firstDisplayDuration);
+            };
+
+            const stopSlideshow = () => {
                 clearTimeout(timeoutId);
             };
-            
-            const start = () => {
-                 isPaused = false;
-                 scheduleNext();
-            };
 
-            // Create and setup dots
-            data.forEach((_, slideIndex) => {
-                const dot = document.createElement('span');
-                dot.className = 'dot';
-                dot.addEventListener('click', () => {
-                    if (slideIndex === currentSlide) return; // Do nothing if clicking current dot
-                    stop(); // Pause slideshow
-                    transitionToSlide(slideIndex);
-                    start(); // Immediately schedule the next transition from the new slide
-                });
-                dotsContainer.appendChild(dot);
-                dots.push(dot);
-            });
-            cardElement.appendChild(dotsContainer);
-            
-            // Initial setup
-            updateUI(); // Set the very first slide content and active dot
-            
-            // Start the initial timed delay
-            timeoutId = setTimeout(() => {
-                transitionToSlide((currentSlide + 1) % data.length);
-                scheduleNext(); // Start the main recurring loop after the first delay
-            }, startDelays[index]);
-
-
-            // Add hover listeners
-            glowCard.addEventListener('mouseenter', stop);
-            glowCard.addEventListener('mouseleave', start);
+            // Set the initial content for the card
+            updateCard(0);
+            slideshowInstances.push({ start: startSlideshow, stop: stopSlideshow });
         });
+
+        // Start all slideshows and add global controls
+        slideshowInstances.forEach(instance => instance.start());
+        const advantageGrid = document.getElementById('advantage-grid');
+        advantageGrid.addEventListener('mouseenter', () => slideshowInstances.forEach(inst => inst.stop()));
+        advantageGrid.addEventListener('mouseleave', () => slideshowInstances.forEach(inst => inst.start()));
     }
 
     // --- Feature 6: Smooth Scrolling for Sticky Nav ---
@@ -236,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            // This small fix handles cases where nav links don't match section IDs
-            const targetElement = document.querySelector(targetId) || document.querySelector(`#${targetId.substring(1)}`);
-             if (targetElement) {
+            const correctTargetId = targetId === '#roadmap' ? '#mission' : targetId;
+            const targetElement = document.querySelector(correctTargetId);
+            if (targetElement) {
                 const navHeight = document.querySelector('.sticky-nav').offsetHeight;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
                 
