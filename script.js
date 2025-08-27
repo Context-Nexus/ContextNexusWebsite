@@ -1,3 +1,5 @@
+--- START OF FILE script.js ---
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Feature 1: Fade-in Animation on Scroll ---
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (PRECISE TIMING) ---
+    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (WITH HOVER-PAUSE & DOTS) ---
     const slideshowTargets = document.querySelectorAll('.advantage-card.slideshow-target');
     
     const slideData1 = [
@@ -140,73 +142,95 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ];
 
-    // Array of all slide data sets
     const allSlideData = [slideData1, slideData2, slideData3];
-    // Specific start delays for each card in milliseconds, as you requested
-    const startDelays = [2000, 8000, 5000]; // Card 1: 2s, Card 2: 8s, Card 3: 5s
-
-    const slideshowInstances = [];
+    const startDelays = [2000, 8000, 5000];
 
     if (slideshowTargets.length === allSlideData.length) {
         slideshowTargets.forEach((cardElement, index) => {
             const data = allSlideData[index];
             const cardContent = cardElement.querySelector('.card-content');
+            const glowCard = cardElement.closest('.glow-card'); // Get parent for hover events
             let currentSlide = 0;
             let timeoutId = null;
+            let isPaused = false;
 
-            const updateCard = (slideIndex) => {
+            // --- Create Dots ---
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'slideshow-dots';
+            const dots = [];
+
+            data.forEach((_, slideIndex) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.dataset.slideIndex = slideIndex;
+                dot.addEventListener('click', () => {
+                    clearTimeout(timeoutId); // Stop current timer
+                    goToSlide(slideIndex);
+                    if (!isPaused) {
+                         scheduleNextSlide(); // Schedule next transition if not paused
+                    }
+                });
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            });
+            cardElement.appendChild(dotsContainer);
+            // --- End Create Dots ---
+
+            const updateCardUI = (slideIndex) => {
                 const slide = data[slideIndex];
                 cardContent.innerHTML = `${slide.icon}<h4>${slide.title}</h4><p>${slide.text}</p>`;
+                // Update active dot
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === slideIndex);
+                });
             };
 
+            const goToSlide = (slideIndex) => {
+                cardContent.classList.add('fading');
+                setTimeout(() => {
+                    currentSlide = slideIndex;
+                    updateCardUI(currentSlide);
+                    cardContent.classList.remove('fading');
+                }, 400); // 400ms for the fade animation
+            };
+            
             const scheduleNextSlide = () => {
-                // Get the specific duration for the *currently visible* slide
+                clearTimeout(timeoutId); // Ensure no duplicate timers
                 const currentDuration = data[currentSlide].duration;
-                
                 timeoutId = setTimeout(() => {
-                    // Transition to the next slide
-                    cardContent.classList.add('fading');
-                    setTimeout(() => {
-                        currentSlide = (currentSlide + 1) % data.length;
-                        updateCard(currentSlide);
-                        cardContent.classList.remove('fading');
-                        // After transition, schedule the next one
-                        scheduleNextSlide();
-                    }, 400); // 400ms for the fade animation
+                    goToSlide((currentSlide + 1) % data.length);
+                    scheduleNextSlide(); // Loop
                 }, currentDuration);
             };
 
             const startSlideshow = () => {
+                isPaused = false;
                 clearTimeout(timeoutId);
-                // The very first slide is displayed for the initial start delay
                 const firstDisplayDuration = startDelays[index];
                 timeoutId = setTimeout(() => {
-                    // Transition to the second slide
-                     cardContent.classList.add('fading');
-                    setTimeout(() => {
-                        currentSlide = (currentSlide + 1) % data.length;
-                        updateCard(currentSlide);
-                        cardContent.classList.remove('fading');
-                        // Now, start the normal scheduling based on each slide's content length
-                        scheduleNextSlide();
-                    }, 400);
+                    goToSlide((currentSlide + 1) % data.length);
+                    scheduleNextSlide();
                 }, firstDisplayDuration);
             };
 
             const stopSlideshow = () => {
+                isPaused = true;
                 clearTimeout(timeoutId);
             };
 
-            // Set the initial content for the card
-            updateCard(0);
-            slideshowInstances.push({ start: startSlideshow, stop: stopSlideshow });
-        });
+            // Set initial content and dot
+            updateCardUI(0);
+            startSlideshow();
 
-        // Start all slideshows and add global controls
-        slideshowInstances.forEach(instance => instance.start());
-        const advantageGrid = document.getElementById('advantage-grid');
-        advantageGrid.addEventListener('mouseenter', () => slideshowInstances.forEach(inst => inst.stop()));
-        advantageGrid.addEventListener('mouseleave', () => slideshowInstances.forEach(inst => inst.start()));
+            // Add hover listeners to the specific card
+            glowCard.addEventListener('mouseenter', stopSlideshow);
+            glowCard.addEventListener('mouseleave', () => {
+                if (isPaused) {
+                    isPaused = false;
+                    scheduleNextSlide();
+                }
+            });
+        });
     }
 
     // --- Feature 6: Smooth Scrolling for Sticky Nav ---
