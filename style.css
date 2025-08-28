@@ -125,12 +125,18 @@ section { padding: 90px 0; transition: background-color 0.4s var(--easing-curve)
 /* --- Advantage Section --- */
 .advantage { background-color: var(--surface-color); }
 .advantage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.advantage-card { background-color: var(--bg-color); border-radius: 20px; transition: all .2s var(--easing-curve); text-align: center; padding: 35px; height: 100%; box-sizing: border-box; }
+.advantage-card { background-color: var(--bg-color); border-radius: 20px; transition: all .2s var(--easing-curve); text-align: center; padding: 35px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
 .card-content { opacity: 1; transition: opacity 0.4s var(--easing-curve); }
 .card-content.fading { opacity: 0; }
 .advantage-card svg { stroke: var(--primary-color); margin-bottom: 15px; }
 .advantage-card h4 { color: var(--heading-color); font-size: 1.4rem; margin-top: 0; margin-bottom: 10px; line-height: 1.3; }
 .advantage-card p { font-size: 1rem; line-height: 1.7; color: var(--text-color); }
+
+/* --- Slideshow Dots --- */
+.slideshow-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; padding-top: 10px; }
+.dot { width: 10px; height: 10px; background-color: #444; border-radius: 50%; cursor: pointer; transition: background-color 0.3s var(--easing-curve); }
+.dot.active { background-color: var(--primary-color); }
+.dot:hover { background-color: #777; }
 
 .visual { text-align: center; }
 .screenshot { max-width: 90%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 2px solid var(--border-color); }
