@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
     const elementsToFadeIn = document.querySelectorAll('.fade-in');
     elementsToFadeIn.forEach((el) => observer.observe(el));
 
@@ -86,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (PRECISE TIMING) ---
+    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (WITH DOTS AND INDIVIDUAL PAUSE) ---
     const slideshowTargets = document.querySelectorAll('.advantage-card.slideshow-target');
     
     const slideData1 = [
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20.5c.7.3 1.5.3 2.2 0"/><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v20"/><path d="m15.5 15.5-3.3-3.3a1.4 1.4 0 0 1 0-2l3.3-3.3"/><path d="M8.5 8.5l3.3 3.3a1.4 1.4 0 0 1 0 2l-3.3 3.3"/></svg>`,
             title: 'True Blueprint Fluency',
             text: 'Our professional parser translates complex Blueprint graphs into a clean, semantic DSL. The AI doesn’t just see text—it understands the logic, flow, and structure.',
-            duration: 8500 // Longer duration for more text
+            duration: 8500
         },
         {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>`,
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
             title: 'Customizable AI Personas',
             text: 'Direct the AI’s behavior with custom Personas. Switch between a "Teacher," "Senior Developer," "Debugger," or create your own for perfectly tailored responses.',
-            duration: 9000 // Most text, longest duration
+            duration: 9000
         },
         {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
@@ -136,77 +138,106 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 4 3 6 3s6-1.34 6-3v-5"/></svg>`,
             title: 'For the Aspiring Developer',
             text: 'Just starting your Unreal journey? Context Nexus is your personal mentor, explaining confusing code and accelerating your learning tenfold from day one.',
-            duration: 7500 // Shortest text, shortest duration
+            duration: 7500
         },
     ];
 
-    // Array of all slide data sets
     const allSlideData = [slideData1, slideData2, slideData3];
-    // Specific start delays for each card in milliseconds, as you requested
-    const startDelays = [2000, 8000, 5000]; // Card 1: 2s, Card 2: 8s, Card 3: 5s
-
-    const slideshowInstances = [];
+    const startDelays = [2000, 8000, 5000];
 
     if (slideshowTargets.length === allSlideData.length) {
         slideshowTargets.forEach((cardElement, index) => {
             const data = allSlideData[index];
             const cardContent = cardElement.querySelector('.card-content');
+            const dotsContainer = cardElement.querySelector('.slideshow-dots');
+            const glowCard = cardElement.closest('.glow-card');
+
             let currentSlide = 0;
             let timeoutId = null;
+            let startTime = 0;
+            let remainingTime = 0;
+            let isPaused = false;
+            let isInitialDelay = true;
 
             const updateCard = (slideIndex) => {
                 const slide = data[slideIndex];
                 cardContent.innerHTML = `${slide.icon}<h4>${slide.title}</h4><p>${slide.text}</p>`;
             };
 
-            const scheduleNextSlide = () => {
-                // Get the specific duration for the *currently visible* slide
-                const currentDuration = data[currentSlide].duration;
+            const updateDots = (activeIndex) => {
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, idx) => {
+                    if (idx === activeIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            };
+            
+            const transitionToSlide = (newIndex) => {
+                if (newIndex === currentSlide && !isInitialDelay) return;
                 
-                timeoutId = setTimeout(() => {
-                    // Transition to the next slide
-                    cardContent.classList.add('fading');
-                    setTimeout(() => {
-                        currentSlide = (currentSlide + 1) % data.length;
-                        updateCard(currentSlide);
-                        cardContent.classList.remove('fading');
-                        // After transition, schedule the next one
-                        scheduleNextSlide();
-                    }, 400); // 400ms for the fade animation
-                }, currentDuration);
-            };
-
-            const startSlideshow = () => {
                 clearTimeout(timeoutId);
-                // The very first slide is displayed for the initial start delay
-                const firstDisplayDuration = startDelays[index];
+                
+                currentSlide = newIndex;
+                isInitialDelay = false;
+
+                cardContent.classList.add('fading');
+                setTimeout(() => {
+                    updateCard(currentSlide);
+                    updateDots(currentSlide);
+                    cardContent.classList.remove('fading');
+                    
+                    if (!isPaused) {
+                        scheduleNext(data[currentSlide].duration);
+                    }
+                }, 400);
+            };
+
+            const scheduleNext = (duration) => {
+                if (isPaused) return;
+                remainingTime = duration;
+                startTime = Date.now();
                 timeoutId = setTimeout(() => {
-                    // Transition to the second slide
-                     cardContent.classList.add('fading');
-                    setTimeout(() => {
-                        currentSlide = (currentSlide + 1) % data.length;
-                        updateCard(currentSlide);
-                        cardContent.classList.remove('fading');
-                        // Now, start the normal scheduling based on each slide's content length
-                        scheduleNextSlide();
-                    }, 400);
-                }, firstDisplayDuration);
+                    const nextSlideIndex = (currentSlide + 1) % data.length;
+                    transitionToSlide(nextSlideIndex);
+                }, remainingTime);
             };
 
-            const stopSlideshow = () => {
+            const pause = () => {
+                if (isPaused) return;
+                isPaused = true;
                 clearTimeout(timeoutId);
+                remainingTime -= (Date.now() - startTime);
             };
 
-            // Set the initial content for the card
+            const resume = () => {
+                if (!isPaused) return;
+                isPaused = false;
+                scheduleNext(remainingTime);
+            };
+
+            // --- INITIALIZATION ---
+            // Generate dots
+            data.forEach((_, dotIndex) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => transitionToSlide(dotIndex));
+                dotsContainer.appendChild(dot);
+            });
+            
+            // Set initial content
             updateCard(0);
-            slideshowInstances.push({ start: startSlideshow, stop: stopSlideshow });
-        });
+            updateDots(0);
+            scheduleNext(startDelays[index]);
 
-        // Start all slideshows and add global controls
-        slideshowInstances.forEach(instance => instance.start());
-        const advantageGrid = document.getElementById('advantage-grid');
-        advantageGrid.addEventListener('mouseenter', () => slideshowInstances.forEach(inst => inst.stop()));
-        advantageGrid.addEventListener('mouseleave', () => slideshowInstances.forEach(inst => inst.start()));
+            // Add hover listeners
+            if (glowCard) {
+                glowCard.addEventListener('mouseenter', pause);
+                glowCard.addEventListener('mouseleave', resume);
+            }
+        });
     }
 
     // --- Feature 6: Smooth Scrolling for Sticky Nav ---
