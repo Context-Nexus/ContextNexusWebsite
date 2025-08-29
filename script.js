@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     const elementsToFadeIn = document.querySelectorAll('.fade-in');
     elementsToFadeIn.forEach((el) => observer.observe(el));
 
@@ -19,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyTheme = (theme) => {
         if (theme === 'light') {
             body.classList.add('light-theme');
-            themeToggle.checked = true;
+            if(themeToggle) themeToggle.checked = true;
         } else {
             body.classList.remove('light-theme');
-            themeToggle.checked = false;
+            if(themeToggle) themeToggle.checked = false;
         }
     };
     
@@ -33,15 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme('dark');
     }
 
-    themeToggle.addEventListener('change', () => {
-        if (themeToggle.checked) {
-            body.classList.add('light-theme');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.classList.remove('light-theme');
-            localStorage.setItem('theme', 'dark');
-        }
-    });
+    if(themeToggle) {
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
 
     // --- Feature 3: Preloader ---
     const preloader = document.getElementById('preloader');
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS (WITH DOTS AND INDIVIDUAL PAUSE) ---
+    // --- Feature 5: ADVANTAGE CARD SLIDESHOWS ---
     const slideshowTargets = document.querySelectorAll('.advantage-card.slideshow-target');
     
     const slideData1 = [
@@ -142,120 +143,118 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     ];
 
-    const allSlideData = [slideData1, slideData2, slideData3];
-    const startDelays = [2000, 8000, 5000];
+    if (slideshowTargets.length > 0) {
+        const allSlideData = [slideData1, slideData2, slideData3];
+        const startDelays = [2000, 8000, 5000];
 
-    if (slideshowTargets.length === allSlideData.length) {
         slideshowTargets.forEach((cardElement, index) => {
-            const data = allSlideData[index];
-            const cardContent = cardElement.querySelector('.card-content');
-            const dotsContainer = cardElement.querySelector('.slideshow-dots');
-            const glowCard = cardElement.closest('.glow-card');
+            if (index < allSlideData.length) {
+                const data = allSlideData[index];
+                const cardContent = cardElement.querySelector('.card-content');
+                const dotsContainer = cardElement.querySelector('.slideshow-dots');
+                const glowCard = cardElement.closest('.glow-card');
 
-            let currentSlide = 0;
-            let timeoutId = null;
-            let startTime = 0;
-            let remainingTime = 0;
-            let isPaused = false;
-            let isInitialDelay = true;
+                let currentSlide = 0;
+                let timeoutId = null;
+                let startTime = 0;
+                let remainingTime = 0;
+                let isPaused = false;
+                let isInitialDelay = true;
 
-            const updateCard = (slideIndex) => {
-                const slide = data[slideIndex];
-                cardContent.innerHTML = `${slide.icon}<h4>${slide.title}</h4><p>${slide.text}</p>`;
-            };
+                const updateCard = (slideIndex) => {
+                    const slide = data[slideIndex];
+                    cardContent.innerHTML = `${slide.icon}<h4>${slide.title}</h4><p>${slide.text}</p>`;
+                };
 
-            const updateDots = (activeIndex) => {
-                const dots = dotsContainer.querySelectorAll('.dot');
-                dots.forEach((dot, idx) => {
-                    if (idx === activeIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            };
-            
-            const transitionToSlide = (newIndex) => {
-                if (newIndex === currentSlide && !isInitialDelay) return;
+                const updateDots = (activeIndex) => {
+                    const dots = dotsContainer.querySelectorAll('.dot');
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('active', idx === activeIndex);
+                    });
+                };
                 
-                clearTimeout(timeoutId);
-                
-                currentSlide = newIndex;
-                isInitialDelay = false;
-
-                cardContent.classList.add('fading');
-                setTimeout(() => {
-                    updateCard(currentSlide);
-                    updateDots(currentSlide);
-                    cardContent.classList.remove('fading');
+                const transitionToSlide = (newIndex) => {
+                    if (newIndex === currentSlide && !isInitialDelay) return;
                     
-                    if (!isPaused) {
-                        scheduleNext(data[currentSlide].duration);
-                    }
-                }, 400);
-            };
+                    clearTimeout(timeoutId);
+                    
+                    currentSlide = newIndex;
+                    isInitialDelay = false;
 
-            const scheduleNext = (duration) => {
-                if (isPaused) return;
-                remainingTime = duration;
-                startTime = Date.now();
-                timeoutId = setTimeout(() => {
-                    const nextSlideIndex = (currentSlide + 1) % data.length;
-                    transitionToSlide(nextSlideIndex);
-                }, remainingTime);
-            };
+                    cardContent.classList.add('fading');
+                    setTimeout(() => {
+                        updateCard(currentSlide);
+                        updateDots(currentSlide);
+                        cardContent.classList.remove('fading');
+                        
+                        if (!isPaused) {
+                            scheduleNext(data[currentSlide].duration);
+                        }
+                    }, 400);
+                };
 
-            const pause = () => {
-                if (isPaused) return;
-                isPaused = true;
-                clearTimeout(timeoutId);
-                remainingTime -= (Date.now() - startTime);
-            };
+                const scheduleNext = (duration) => {
+                    if (isPaused) return;
+                    remainingTime = duration;
+                    startTime = Date.now();
+                    timeoutId = setTimeout(() => {
+                        const nextSlideIndex = (currentSlide + 1) % data.length;
+                        transitionToSlide(nextSlideIndex);
+                    }, remainingTime);
+                };
 
-            const resume = () => {
-                if (!isPaused) return;
-                isPaused = false;
-                scheduleNext(remainingTime);
-            };
+                const pause = () => {
+                    if (isPaused) return;
+                    isPaused = true;
+                    clearTimeout(timeoutId);
+                    remainingTime -= (Date.now() - startTime);
+                };
 
-            // --- INITIALIZATION ---
-            // Generate dots
-            data.forEach((_, dotIndex) => {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                dot.addEventListener('click', () => transitionToSlide(dotIndex));
-                dotsContainer.appendChild(dot);
-            });
-            
-            // Set initial content
-            updateCard(0);
-            updateDots(0);
-            scheduleNext(startDelays[index]);
+                const resume = () => {
+                    if (!isPaused) return;
+                    isPaused = false;
+                    scheduleNext(remainingTime);
+                };
 
-            // Add hover listeners
-            if (glowCard) {
-                glowCard.addEventListener('mouseenter', pause);
-                glowCard.addEventListener('mouseleave', resume);
+                data.forEach((_, dotIndex) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    dot.addEventListener('click', () => transitionToSlide(dotIndex));
+                    dotsContainer.appendChild(dot);
+                });
+                
+                updateCard(0);
+                updateDots(0);
+                scheduleNext(startDelays[index]);
+
+                if (glowCard) {
+                    glowCard.addEventListener('mouseenter', pause);
+                    glowCard.addEventListener('mouseleave', resume);
+                }
             }
         });
     }
 
-    // --- Feature 6: Smooth Scrolling for Sticky Nav ---
+    // --- Feature 6: CORRECTED Smooth Scrolling for Sticky Nav ---
     const navLinks = document.querySelectorAll('.creative-menu a');
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const correctTargetId = targetId === '#roadmap' ? '#mission' : targetId;
-            const targetElement = document.querySelector(correctTargetId);
-            if (targetElement) {
-                const navHeight = document.querySelector('.sticky-nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+            const href = link.getAttribute('href');
+
+            // Check if the link is for a section on the CURRENT page (starts with '#')
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    const navHeight = document.querySelector('.sticky-nav').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
