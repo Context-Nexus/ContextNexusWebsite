@@ -216,6 +216,14 @@ footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border
 .typewriter::after { content: '|'; animation: blink 1s step-end infinite; color: var(--primary-color); margin-left: 4px; }
 @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
 
+/* --- UPDATED BUTTON WITH ICON STYLE --- */
+.cta-button-secondary.with-icon { display: inline-flex; align-items: center; gap: 10px; }
+.cta-button-secondary.with-icon svg,
+.cta-button-secondary.with-icon img { /* This now targets both SVG and IMG tags */
+    width: 24px;
+    height: 24px;
+}
+
 /* --- Navigation --- */
 .sticky-nav { position: sticky; top: 0; z-index: 1000; background-color: var(--surface-color); border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); padding: 5px 0; transition: background-color 0.4s var(--easing-curve); }
 .creative-menu { display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; }
@@ -241,7 +249,6 @@ footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border
     animation: animate-gradient 8s linear infinite;
 }
 
-/* This is the new, corrected class for use inside paragraphs */
 .gradient-text-inline {
     font-weight: 700;
     background: linear-gradient(90deg, #3700ff, #00c2ff, #00ff75);
