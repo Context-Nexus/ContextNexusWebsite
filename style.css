@@ -84,7 +84,27 @@ body.light-theme .hero-glass-panel {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.hero-title { margin: 0 0 15px 0; }
+/* === START: NEW STYLES FOR LOGO ON LEFT (HORIZONTALLY CENTERED) === */
+.hero-title-container {
+    display: flex;
+    justify-content: center; /* Horizontally centers the logo and text AS A GROUP */
+    align-items: flex-end;   /* Aligns items by their bottom edge, NOT vertically centered */
+    gap: 25px;               /* Space between logo and text */
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.hero-logo {
+    height: 10rem; /* Significantly taller than the text */
+    width: auto;
+}
+
+.hero-title { 
+    margin: 0; 
+}
+/* === END: NEW STYLES === */
+
+
 .hero-subtitle { font-size: 1.4rem; max-width: 700px; margin: 0 auto 40px auto; opacity: 0.9; line-height: 1.5; color: var(--text-color); min-height: 42px; }
 .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .cta-button, .cta-button-secondary { display: inline-block; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.4s var(--easing-curve); }
@@ -190,6 +210,17 @@ footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border
     .section-title { font-size: 2rem; margin-bottom: 40px; } 
     .roadmap-grid, .profiles-grid { flex-direction: column; align-items: center; }
     .roadmap-grid .glow-card, .profiles-grid .glow-card { width: 100%; max-width: 500px;}
+    
+    /* === START: RESPONSIVE STYLES FOR LOGO === */
+    .hero-logo {
+        height: 7rem; /* Adjust logo size for mobile */
+    }
+
+    .hero-title-container {
+        gap: 20px; /* Reduce the gap on smaller screens */
+        align-items: flex-end; /* Maintain bottom alignment */
+    }
+    /* === END: RESPONSIVE STYLES === */
 }
 
 /* === START: NEW/FIXED STYLES === */
