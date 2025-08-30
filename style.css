@@ -200,6 +200,32 @@ body.light-theme .profile-links a[title="GitHub"]:hover svg { fill: #000000; }
 }
 .story-content p:last-child { margin-bottom: 0; }
 .story-content strong { color: var(--primary-color); font-weight: 600; }
+.story-content h4 {
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+.story-content .styled-list {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+.story-content .styled-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.story-content .styled-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
 
 /* --- Footer --- */
 footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: #888; }
