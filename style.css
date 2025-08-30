@@ -123,11 +123,18 @@ body.light-theme .hero-glass-panel { background: rgba(255,255,255,.5); border: 1
 
 /* --- Buttons --- */
 .hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-.cta-button, .cta-button-secondary { display: inline-block; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.4s var(--easing-curve); }
-.cta-button { background-color: var(--primary-color); color: white; }
-.cta-button-secondary { background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 13px 30px; }
+.cta-button, .cta-button-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.4s var(--easing-curve); border: 2px solid transparent; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 1rem; }
+.cta-button { background-color: var(--primary-color); color: white; border-color: var(--primary-color); }
+.cta-button-secondary { background-color: transparent; border-color: var(--primary-color); color: var(--primary-color); padding: 13px 30px; }
 .cta-button:hover, .cta-button-secondary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
 .cta-button-secondary:hover { background-color: var(--primary-color); color: white; }
+
+/* --- ICON BUTTON FIX --- */
+.cta-button-secondary.with-icon img {
+    height: 24px; /* Controls icon size */
+    width: auto;
+    margin-right: 10px;
+}
 
 /* --- General Section Styling --- */
 section { padding: 90px 0; transition: background-color 0.4s var(--easing-curve); }
@@ -304,4 +311,130 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   .hero-title-container{gap:20px;align-items:flex-end;}
   .story-content{padding:30px 25px;}
   .our-story{padding-bottom:60px;}
+}
+
+/* --- NEW: Pricing Modal --- */
+#pricing-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--easing-curve);
+}
+#pricing-modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.modal-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(30,30,30,.7);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    color: var(--text-color);
+    transform: scale(0.95);
+    transition: transform 0.4s var(--easing-curve);
+}
+#pricing-modal.visible .modal-content {
+    transform: scale(1);
+}
+body.light-theme .modal-content {
+    background: rgba(255,255,255,.7);
+    border-color: rgba(0,0,0,.1);
+}
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.modal-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+.modal-back {
+    position: absolute;
+    top: 22px;
+    left: 25px;
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    border-radius: 50px;
+    padding: 5px 15px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+.modal-back:hover {
+    opacity: 1;
+    background: var(--text-color);
+    color: var(--surface-color);
+}
+.modal-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--heading-color);
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.plan-card {
+    background-color: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s var(--easing-curve), border-color 0.3s var(--easing-curve);
+}
+.plan-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+.plan-card h4 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    color: var(--heading-color);
+}
+.plan-card .price-tag {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 15px 0;
+}
+.plan-card p {
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+.hidden {
+    display: none !important;
 }
