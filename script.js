@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // --- Feature 4: Typewriter Effect ---
+    // --- Feature 4: Typewriter Effect (REVERTED TO ORIGINAL) ---
     const typewriterElement = document.querySelector('.typewriter');
     if (typewriterElement) {
         const words = ["Unreal Project.", "Blueprint logic.", "C++ architecture."];
@@ -243,17 +243,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = link.getAttribute('href');
 
             // Check if the link is for a section on the CURRENT page (starts with '#')
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-                if (targetElement) {
-                    const navHeight = document.querySelector('.sticky-nav').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+            if (href.startsWith('#') || href.includes('#')) {
+                const parts = href.split('#');
+                const targetId = parts[1];
+                
+                // If on a different page, just follow the link
+                if (window.location.pathname.includes(parts[0]) || parts[0] === '') {
+                     e.preventDefault();
+                     const targetElement = document.getElementById(targetId);
+                     if (targetElement) {
+                         const navHeight = document.querySelector('.sticky-nav').offsetHeight;
+                         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
+                         
+                         window.scrollTo({
+                             top: targetPosition,
+                             behavior: 'smooth'
+                         });
+                     }
                 }
             }
         });
