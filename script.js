@@ -264,4 +264,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Feature 7: Scroll Progress Sidebar ---
+    const setScrollProgress = () => {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || window.pageYOffset || 0;
+      const max = (doc.scrollHeight - doc.clientHeight) || 1;
+      const progress = Math.min(Math.max(scrollTop / max, 0), 1);
+      document.documentElement.style.setProperty('--scroll-progress', progress.toString());
+    };
+
+    // Set once and on scroll/resize
+    setScrollProgress();
+    window.addEventListener('scroll', setScrollProgress, { passive: true });
+    window.addEventListener('resize', setScrollProgress);
 });
