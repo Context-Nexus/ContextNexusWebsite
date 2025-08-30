@@ -29,17 +29,10 @@
         </div>
 
         <!-- Header controls -->
-<div class="header-controls">
-  <!-- Keep this ID so script.js still finds it -->
-  <input type="checkbox" id="theme-toggle" class="toggle-input" />
-  <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
-</div>
-
-                    <span class="slider">
-                        <span class="slider-thumb"></span>
-                    </span>
-                </label>
-            </div>
+        <div class="header-controls">
+          <!-- Keep this ID so script.js still finds it -->
+          <input type="checkbox" id="theme-toggle" class="toggle-input" />
+          <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
         </div>
 
         <div class="container hero-content">
@@ -54,7 +47,8 @@
                     The AI Co-Pilot That Deeply Understands Your Entire <span class="typewriter"></span>
                 </p>
                 <div class="hero-buttons">
-                    <a href="#" target="_blank" class="cta-button">Get it on Fab Marketplace</a>
+                    <!-- "See Our Plans" button moved here -->
+                    <button id="see-plans-btn" class="cta-button">See Our Plans</button>
                 </div>
             </div>
         </div>
@@ -74,7 +68,8 @@
     <main>
         <section class="actions">
             <div class="container actions-container">
-                <a href="https://github.com/nikosleft/ContextNexus" target="_blank" class="cta-button-secondary">View on GitHub</a>
+                <!-- "7 Days Free Trial" button moved here -->
+                <a href="#" target="_blank" class="cta-button-secondary">7 Days Free Trial</a>
                 
                 <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon">
                     <img src="discord_logo.png" alt="Discord Icon">
@@ -194,6 +189,65 @@
     <footer>
         <div class="container"><p>&copy; 2025 Context Nexus. All rights reserved.</p><p class="footer-contact">Support: <a href="mailto:support@contextnexus.dev">support@contextnexus.dev</a></p><div class="footer-socials"></div></div>
     </footer>
+
+    <!-- START: Pricing Modal -->
+    <div id="pricing-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close pricing modal">&times;</button>
+            
+            <!-- Step 1: Tier Selection -->
+            <div id="tier-selection">
+                <h2 class="modal-title">Choose Your Tier</h2>
+                <div class="plans-grid">
+                    <div class="plan-card" data-tier="standard">
+                        <h4>Context Nexus</h4>
+                        <p class="price-tag">Free</p>
+                        <p>For individuals and starters exploring the tool.</p>
+                    </div>
+                    <div class="plan-card" data-tier="pro">
+                        <h4>Context Nexus Pro</h4>
+                        <p class="price-tag">Starting at $15</p>
+                        <p>For professionals and small teams needing advanced features.</p>
+                    </div>
+                    <div class="plan-card" data-tier="enterprise">
+                        <h4>Context Nexus Enterprise</h4>
+                        <p class="price-tag">Contact Us</p>
+                        <p>For large studios requiring dedicated support and custom solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Duration Selection -->
+            <div id="duration-selection" class="hidden">
+                <button class="modal-back" aria-label="Go back to tier selection">&larr; Back</button>
+                <h2 class="modal-title">Choose Your Subscription</h2>
+                <div class="plans-grid">
+                     <div class="plan-card" data-duration="1">
+                        <h4>1 Month</h4>
+                        <p class="price-tag">coming soon</p>
+                        <p>coming soon</p>
+                    </div>
+                     <div class="plan-card" data-duration="3">
+                        <h4>3 Months</h4>
+                        <p class="price-tag">coming soon</p>
+                        <p>coming soon</p>
+                    </div>
+                     <div class="plan-card" data-duration="6">
+                        <h4>6 Months</h4>
+                        <p class="price-tag">coming soon</p>
+                        <p>coming soon</p>
+                    </div>
+                     <div class="plan-card" data-duration="12">
+                        <h4>1 Year</h4>
+                        <p class="price-tag">coming soon</p>
+                        <p>Scoming soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
 
     <script src="script.js" defer></script>
 
