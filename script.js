@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Feature 7: Scroll Progress Sidebar ---
+    // --- Feature 7: Scroll Progress Bar ---
     const setScrollProgress = () => {
       const doc = document.documentElement;
       const scrollTop = doc.scrollTop || window.pageYOffset || 0;
@@ -278,4 +278,62 @@ document.addEventListener('DOMContentLoaded', () => {
     setScrollProgress();
     window.addEventListener('scroll', setScrollProgress, { passive: true });
     window.addEventListener('resize', setScrollProgress);
+
+    // --- Feature 8: Pricing Modal ---
+    const plansButton = document.getElementById('see-plans-btn');
+    const pricingModal = document.getElementById('pricing-modal');
+    if (plansButton && pricingModal) {
+        const modalOverlay = pricingModal.querySelector('.modal-overlay');
+        const modalCloseBtn = pricingModal.querySelector('.modal-close');
+        const modalBackBtn = pricingModal.querySelector('.modal-back');
+
+        const tierSelectionView = document.getElementById('tier-selection');
+        const durationSelectionView = document.getElementById('duration-selection');
+        
+        const tierCards = tierSelectionView.querySelectorAll('.plan-card');
+
+        const openModal = () => {
+            // Reset to first step
+            tierSelectionView.classList.remove('hidden');
+            durationSelectionView.classList.add('hidden');
+            pricingModal.classList.add('visible');
+        };
+
+        const closeModal = () => {
+            pricingModal.classList.remove('visible');
+        };
+
+        plansButton.addEventListener('click', openModal);
+        modalOverlay.addEventListener('click', closeModal);
+        modalCloseBtn.addEventListener('click', closeModal);
+        
+        modalBackBtn.addEventListener('click', () => {
+            durationSelectionView.classList.add('hidden');
+            tierSelectionView.classList.remove('hidden');
+        });
+
+        tierCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const tier = card.dataset.tier;
+                // For the free and enterprise tiers, you might want to link somewhere else
+                // or just close the modal. For now, we only show step 2 for the "Pro" tier.
+                if (tier === 'pro') {
+                    tierSelectionView.classList.add('hidden');
+                    durationSelectionView.classList.remove('hidden');
+                } else {
+                    // You can add a link here, e.g., for Enterprise:
+                    // window.location.href = 'mailto:sales@contextnexus.dev';
+                    alert(`You selected the ${tier} plan!`);
+                    closeModal();
+                }
+            });
+        });
+
+        // Optional: Close modal with Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pricingModal.classList.contains('visible')) {
+                closeModal();
+            }
+        });
+    }
 });
