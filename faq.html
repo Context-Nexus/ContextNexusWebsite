@@ -1,186 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ – Context Nexus</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>FAQ – Context Nexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <div id="preloader"><div class="loader"></div></div>
 
-    <div id="preloader">
-        <div class="loader"></div>
+  <header class="hero">
+    <div class="aurora-bg">
+      <div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div>
     </div>
 
-    <header class="hero">
-        <div class="aurora-bg">
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-        </div>
+    <div class="header-controls">
+      <input type="checkbox" id="theme-toggle" class="toggle-input" />
+      <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+    </div>
 
-        <div class="header-controls">
-          <input type="checkbox" id="theme-toggle" class="toggle-input" />
-          <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+    <div class="container hero-content">
+      <div class="hero-glass-panel">
+        <div class="hero-title-container">
+          <a href="index.html" style="text-decoration:none;display:contents;">
+            <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
+            <h1 class="hero-title"><span class="gradient-text">Context Nexus</span></h1>
+          </a>
         </div>
+        <p class="hero-subtitle">Your questions, answered.</p>
+      </div>
+    </div>
+  </header>
 
-        <div class="container hero-content">
-            <div class="hero-glass-panel">
-                 <div class="hero-title-container">
-                    <a href="index.html" style="text-decoration: none; display: contents;">
-                        <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
-                        <h1 class="hero-title">
-                            <span class="gradient-text">Context Nexus</span>
-                        </h1>
-                    </a>
-                </div>
-                <p class="hero-subtitle">
-                   Your questions, answered.
-                </p>
+  <nav class="sticky-nav">
+    <div class="container">
+      <ul class="creative-menu">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="how.html">How It Works</a></li>
+        <li><a href="index.html#supported-ai">Supported AIs</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+
+        <div class="faq-container fade-in">
+
+          <!-- Core Product Usage -->
+          <h3 class="faq-category-title">Core Product Usage</h3>
+
+          <details class="faq-item" open>
+            <summary>Do you provide the AI?</summary>
+            <div class="faq-answer">
+              <p>No. Context Nexus is a <strong>developer tool</strong>. You connect your own AI account (OpenAI, Google, Anthropic, or a custom endpoint).</p>
             </div>
-        </div>
-    </header>
-    
-    <nav class="sticky-nav">
-        <div class="container">
-            <ul class="creative-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="how.html">How It Works</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
+          </details>
 
-    <main>
-        <section class="faq-section" id="faq">
-            <div class="container">
-                <h2 class="section-title fade-in">Frequently Asked Questions</h2>
-                <div class="faq-container fade-in">
-
-                    <!-- Core Product Usage -->
-                    <h3 class="faq-category-title">Core Product Usage</h3>
-                    <details class="faq-item">
-                        <summary>Which AI providers are supported?</summary>
-                        <div class="faq-answer">
-                            <p>We officially support OpenAI (ChatGPT / GPT models), Google Gemini, and Anthropic Claude. Additionally, our "Custom Endpoint" option allows you to connect to any OpenAI-compatible API.</p>
-                            <p class="disclaimer" style="margin-top: 15px; font-size: 0.8rem;"><em>ChatGPT, Gemini, and Claude are trademarks of their respective owners. Context Nexus is not affiliated with or endorsed by OpenAI, Google, or Anthropic.</em></p>
-                        </div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I use local or self-hosted AI models?</summary>
-                        <div class="faq-answer"><p>Yes. Our "Custom Endpoint" feature is designed for this purpose. It allows you to connect to any API that is compatible with the OpenAI format, which is ideal for using open-source models running locally (e.g., with Ollama or LM Studio) or connecting to private, self-hosted inference servers.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Which Unreal Engine versions are supported?</summary>
-                        <div class="faq-answer"><p>Context Nexus is tested and fully supported on Unreal Engine versions 5.1 through 5.4.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Which operating systems are supported?</summary>
-                        <div class="faq-answer"><p>Currently, the plugin is officially supported on Windows (x64). Support for other operating systems is being evaluated for future releases.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Do I need an internet connection?</summary>
-                        <div class="faq-answer"><p>Yes. An active internet connection is required to send requests from the editor to your chosen AI provider's API.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Does Context Nexus work with both Blueprints and C++?</summary>
-                        <div class="faq-answer"><p>Yes, absolutely. This is the core strength of our Dual-Source Analysis Engine, which understands the relationships between your C++ code and Blueprint graphs to provide complete context.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I use it in a team project?</summary>
-                        <div class="faq-answer"><p>Yes. The tool works perfectly in team environments, but each developer using the plugin will need their own license and must connect their own AI provider API key.</p></div>
-                    </details>
-
-                    <!-- Pricing & Licensing -->
-                    <h3 class="faq-category-title">Pricing & Licensing</h3>
-                    <details class="faq-item">
-                        <summary>Is there a free trial?</summary>
-                        <div class="faq-answer"><p>Yes, we offer a 7-day free trial with full access to all features. After the trial period, you will need to upgrade to a paid plan to continue using the tool.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>How does licensing work?</summary>
-                        <div class="faq-answer"><p>Licensing is handled via a key-based activation system on a per-seat basis. One license seat is required for each user.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Do I need a subscription to the AI provider too?</summary>
-                        <div class="faq-answer"><p>Yes. You are responsible for your own AI provider account (e.g., OpenAI, Google, or Anthropic) and any associated costs based on your usage. We provide the tool; you provide the AI access.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>What happens after the trial ends?</summary>
-                        <div class="faq-answer"><p>Once your 7-day trial is over, the plugin's features will be disabled. You will need to purchase a Pro or Enterprise license to reactivate it.</p></div>
-                    </details>
-
-                    <!-- Privacy & Security -->
-                    <h3 class="faq-category-title">Privacy & Security</h3>
-                    <details class="faq-item">
-                        <summary>Do you log my code or prompts?</summary>
-                        <div class="faq-answer"><p>No. We do not see, log, or store your code, prompts, or AI responses. The "Targeted Context" you select is sent directly from your machine to the AI provider's API and is subject to their privacy policy.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Do you store my AI key?</summary>
-                        <div class="faq-answer"><p>No. Your AI API key is stored securely on your local machine within the editor's settings and is never sent to our servers.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Are you affiliated with OpenAI, Google, or Anthropic?</summary>
-                        <div class="faq-answer"><p>No. Context Nexus is an independent tool. We are not affiliated with, sponsored by, or endorsed by any AI provider. We simply provide a powerful integration that utilizes their public APIs.</p></div>
-                    </details>
-
-                    <!-- Features & Workflow -->
-                    <h3 class="faq-category-title">Features & Workflow</h3>
-                    <details class="faq-item">
-                        <summary>What’s a "Deep Scan"?</summary>
-                        <div class="faq-answer"><p>A Deep Scan is the initial analysis step where Context Nexus builds a comprehensive map of your entire project, including all C++ files, Blueprints, and their dependencies. This global understanding is what makes its answers so accurate.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>What is "Targeted Context"?</summary>
-                        <div class="faq-answer"><p>Targeted Context is the specific subset of your project (files, functions, variables) that you select to send to the AI for a particular question. This keeps your requests focused, reduces token costs, and improves the accuracy of the AI's response.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Can I ask about cross-Blueprint and C++ relationships?</summary>
-                        <div class="faq-answer"><p>Yes. This is a primary feature. You can ask complex questions like, "Which Blueprints will be affected if I change this C++ function?" and get a precise, actionable answer.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Does it warn me about Blueprint performance issues?</summary>
-                        <div class="faq-answer"><p>Yes, the integrated Static Analysis Linter panel provides early warnings and suggestions for potential performance bottlenecks or common issues found in your Blueprints.</p></div>
-                    </details>
-
-                    <!-- Roadmap -->
-                    <h3 class="faq-category-title">Roadmap</h3>
-                    <details class="faq-item">
-                        <summary>What’s next for Context Nexus?</summary>
-                        <div class="faq-answer"><p>Our immediate roadmap includes implementing a Clang AST sidecar for compiler-grade C++ parsing, enhancing our dependency analysis engine, and adding support for more AI providers.</p></div>
-                    </details>
-                    <details class="faq-item">
-                        <summary>Will you support local/offline AI models?</summary>
-                        <div class="faq-answer"><p>We are actively exploring support for local and offline AI models. While it is not on our immediate roadmap, it is a high-priority feature we are researching for future updates.</p></div>
-                    </details>
-
-                </div>
+          <details class="faq-item">
+            <summary>Which AI providers are supported?</summary>
+            <div class="faq-answer">
+              <p>OpenAI (ChatGPT / GPT models), Google Gemini, Anthropic Claude, plus a <strong>Custom Endpoint</strong> option for OpenAI-compatible APIs.</p>
+              <p class="disclaimer" style="margin-top:12px;font-size:.85rem;">
+                <em>ChatGPT, Gemini, and Claude are trademarks of their respective owners. Context Nexus is not affiliated with or endorsed by OpenAI, Google, or Anthropic.</em>
+              </p>
             </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p class="footer-disclaimer">Context Nexus provides developer tooling. You connect your own AI account. We don’t store your AI keys.</p>
-            <p>&copy; 2025 Context Nexus. All rights reserved.</p>
-            <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
-            <div class="footer-socials"></div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I use local or self-hosted AI models?</summary>
+            <div class="faq-answer">
+              <p>Yes. Use <strong>Custom Endpoint</strong> to connect to OpenAI-compatible servers (e.g., Ollama, LM Studio, or your own inference endpoint).</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Which Unreal Engine versions are supported?</summary>
+            <div class="faq-answer">
+              <p>UE 5.1 – 5.4 (tested). We’ll expand support as new versions release.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Which operating systems are supported?</summary>
+            <div class="faq-answer">
+              <p>Windows x64. Additional platforms are being evaluated.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do I need an internet connection?</summary>
+            <div class="faq-answer">
+              <p>Yes. Requests are sent from your editor to the AI provider you choose. For local/self-hosted endpoints, your machine must reach that server.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does Context Nexus work with both Blueprints and C++?</summary>
+            <div class="faq-answer">
+              <p>Yes. Our <strong>Dual-Source Analysis</strong> understands C++ and Blueprints together, including their relationships.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I use it in a team project?</summary>
+            <div class="faq-answer">
+              <p>Yes. Each developer uses their own license and connects their own AI key.</p>
+            </div>
+          </details>
+
+          <!-- Pricing & Licensing -->
+          <h3 class="faq-category-title">Pricing & Licensing</h3>
+
+          <details class="faq-item">
+            <summary>Is there a free trial?</summary>
+            <div class="faq-answer">
+              <p>Yes — <strong>7-day free trial</strong>. After that, upgrade to Pro or Enterprise to continue.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does licensing work?</summary>
+            <div class="faq-answer">
+              <p>Key-based activation, per seat (one user per key). You can move a seat by deactivating and re-activating.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do I need a subscription to the AI provider too?</summary>
+            <div class="faq-answer">
+              <p>Yes. You pay your AI provider directly (usage-based). Context Nexus is the tool; the AI is your account.</p>
+            </div>
+          </details>
+
+          <!-- Privacy & Security -->
+          <h3 class="faq-category-title">Privacy & Security</h3>
+
+          <details class="faq-item">
+            <summary>Do you store my AI key?</summary>
+            <div class="faq-answer">
+              <p>No. Your key stays on your machine in editor settings. We don’t store or transmit it to our servers.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you log my code or prompts?</summary>
+            <div class="faq-answer">
+              <p>No. Only the <strong>Targeted Context</strong> you explicitly select is sent to your chosen provider to answer your question.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Are you affiliated with OpenAI, Google, or Anthropic?</summary>
+            <div class="faq-answer">
+              <p>No. We integrate with their public APIs. No partnership or endorsement is implied.</p>
+            </div>
+          </details>
+
+          <!-- Features & Workflow -->
+          <h3 class="faq-category-title">Features & Workflow</h3>
+
+          <details class="faq-item">
+            <summary>What’s a “Deep Scan”?</summary>
+            <div class="faq-answer">
+              <p><strong>Global Analysis</strong> that maps your project (C++ + Blueprints) into a knowledge graph.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is “Targeted Context”?</summary>
+            <div class="faq-answer">
+              <p>The minimal, <strong>hand-selected</strong> slice (files / functions / variables) we send to the AI for your question — boosting accuracy and reducing token cost.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does it trace Blueprint events like <code>BeginPlay</code> or <code>ReceiveTick</code>?</summary>
+            <div class="faq-answer">
+              <p>Yes. Our Ubergraph resolution follows event stubs to the actual executing logic.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is there a linter?</summary>
+            <div class="faq-answer">
+              <p>Yes. The <strong>Static Analysis Linter</strong> surfaces potential issues and high-cost nodes directly in the UI.</p>
+            </div>
+          </details>
+
+          <!-- Roadmap -->
+          <h3 class="faq-category-title">Roadmap</h3>
+
+          <details class="faq-item">
+            <summary>What’s next for Context Nexus?</summary>
+            <div class="faq-answer">
+              <p>A <strong>Clang AST sidecar</strong> for compiler-grade parsing, deeper dependency analysis, and expanded provider support.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Will you support fully offline AI?</summary>
+            <div class="faq-answer">
+              <p>We’re exploring local/offline modes via compatible endpoints. Not guaranteed yet, but it’s on our radar.</p>
+            </div>
+          </details>
+
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="script.js" defer></script>
+  <footer>
+    <div class="container">
+      <p class="footer-disclaimer">Context Nexus provides developer tooling. You connect your own AI account. We don’t store your AI keys.</p>
+      <p>&copy; 2025 Context Nexus. All rights reserved.</p>
+      <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
+      <div class="footer-socials"></div>
+    </div>
+  </footer>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
