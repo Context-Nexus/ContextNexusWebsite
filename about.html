@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context Nexus - The AI Co-Pilot That Understands Your Unreal Project</title>
+    <title>About Us - Context Nexus</title>
     
     <link rel="stylesheet" href="style.css">
     
@@ -28,106 +28,74 @@
           <div class="aurora__item"></div>
         </div>
 
-        <!-- Header controls -->
         <div class="header-controls">
-          <!-- Keep this ID so script.js still finds it -->
           <input type="checkbox" id="theme-toggle" class="toggle-input" />
           <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
         </div>
 
         <div class="container hero-content">
             <div class="hero-glass-panel">
-                <div class="hero-title-container">
-                    <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
-                    <h1 class="hero-title">
-                        <span class="gradient-text">Context Nexus</span>
-                    </h1>
+                 <div class="hero-title-container">
+                    <a href="index.html" style="text-decoration: none; display: contents;">
+                        <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Context Nexus</span>
+                        </h1>
+                    </a>
                 </div>
                 <p class="hero-subtitle">
-                    The AI Co-Pilot That Deeply Understands Your Entire <span class="typewriter"></span>
+                   The people behind the code.
                 </p>
-                <div class="hero-buttons">
-                    <!-- "See Our Plans" button moved here -->
-                    <button id="see-plans-btn" class="cta-button">See Our Plans</button>
-                </div>
             </div>
         </div>
     </header>
-
-    <nav class="sticky-nav">
-        <div class="container">
-            <ul class="creative-menu">
-                <li><a href="#features">Features</a></li>
-                <li><a href="how.html">How It Works</a></li>
-                <li><a href="#supported-ai">Supported AIs</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
-
+    
     <main>
-        <!-- The actions section has been removed from here -->
-
-        <section class="advantage" id="features">
+        <section class="our-story" id="story">
             <div class="container">
-                <h2 class="section-title fade-in">The Professional's Edge, Built for Everyone</h2>
-                <div class="advantage-grid fade-in" id="advantage-grid">
-                    <!-- Slideshow Target 1 -->
-                    <div class="glow-card">
-                        <div class="advantage-card slideshow-target">
-                            <div class="card-content"></div>
-                            <div class="slideshow-dots"></div>
-                        </div>
-                    </div>
-                    <!-- Slideshow Target 2 -->
-                    <div class="glow-card">
-                        <div class="advantage-card slideshow-target">
-                            <div class="card-content"></div>
-                            <div class="slideshow-dots"></div>
-                        </div>
-                    </div>
-                    <!-- Slideshow Target 3 -->
-                    <div class="glow-card">
-                        <div class="advantage-card slideshow-target">
-                            <div class="card-content"></div>
-                            <div class="slideshow-dots"></div>
-                        </div>
-                    </div>
+                <h2 class="section-title fade-in">Our Story Behind The Idea</h2>
+                <div class="story-content fade-in">
+                    <p>Context Nexus was born from a simple, frustrating truth: modern AI copilots, for all their power, lacked true understanding of large, complex Unreal Engine projects. They could write boilerplate, but they couldn't answer the hard architectural questions.</p>
+                    
+                    <h4>The Problem</h4>
+                    <p>We spent countless hours manually tracing dependencies between C++ and Blueprints, trying to answer questions like, <strong>"If I change this core function, what breaks?"</strong> or <strong>"Where is this property actually being modified?"</strong> Standard text-based search was slow, and existing AI tools just guessed.</p>
+                    
+                    <h4>The Mission</h4>
+                    <p>Our mission became clear: to build an AI co-pilot that possessed a <strong>compiler-grade understanding</strong> of an entire Unreal project. Not just a text-matcher, but a true analysis engine that could build a complete knowledge graph of every class, function, property, and their intricate relationships.</p>
+                    
+                     <ul class="styled-list">
+                        <li><strong>Deep Analysis First:</strong> We focused on creating a robust parser that understands both C++ and Blueprints natively.</li>
+                        <li><strong>Precision Over Noise:</strong> We designed the "Targeted Context" system to ensure the AI gets only the relevant data, saving time and token costs.</li>
+                        <li><strong>Empowerment, Not Replacement:</strong> Our goal is to augment the developer's skills, automating tedious analysis to free them up for creative problem-solving.</li>
+                    </ul>
+
+                    <p>Context Nexus is the tool we always wished we had. It's a co-pilot that respects the complexity of Unreal Engine development and provides the deep, contextual awareness needed to build better, more stable projects, faster.</p>
                 </div>
             </div>
         </section>
-        
-        <section class="visual">
-            <div class="container">
-                <h2 class="section-title fade-in">A True Pair Programmer, Inside Your Editor</h2>
-                <img src="https://raw.githubusercontent.com/nikosleft/ContextNexus/main/Screenshot.png" alt="Context Nexus plugin screenshot" class="screenshot fade-in">
-            </div>
-        </section>
-        
-        <!-- Supported AI Providers Section -->
-        <section id="supported-ai" class="supported-ai-section">
-            <div class="container">
-                <h2 class="section-title fade-in">Supported AI Providers</h2>
-                <div class="ai-providers-grid fade-in">
-                    <div class="ai-provider-badge">OpenAI (GPT models)</div>
-                    <div class="ai-provider-badge">Google Gemini</div>
-                    <div class="ai-provider-badge">Anthropic Claude</div>
-                    <div class="ai-provider-badge">Custom Endpoint</div>
-                </div>
-                <p class="disclaimer fade-in">
-                    <em>*Context Nexus provides developer tools. AI models (ChatGPT/GPT, Gemini, Claude) are used via your own accounts. We don’t store your AI keys. Trademarks belong to their respective owners; no affiliation or endorsement implied.</em>
-                </p>
-            </div>
-        </section>
 
-        <section class="roadmap" id="mission">
-             <div class="container">
-                <h2 class="section-title fade-in">Our Mission: Trust Through Superior Analysis</h2>
-                <div class="roadmap-grid">
-                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Go Beyond Surface-Level</h4><p>AI tools are only as good as the context they're given. Our mission is to build the world's most advanced project analysis engine, so the AI has professional-grade insight from the start.</p></div></div>
-                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Create an Intuitive Workflow</h4><p>Powerful tools should feel effortless. Features like the "Right-Click → Add to Context" integration are designed to fit your natural workflow, making deep analysis faster than ever.</p></div></div>
-                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Empower, Not Replace</h4><p>Context Nexus is a co-pilot designed to augment your skills. It handles the tedious work of context gathering and bug hunting, freeing you to solve the hard creative and technical challenges.</p></div></div>
+        <section class="about-us" id="team">
+            <div class="container">
+                <h2 class="section-title fade-in">Meet the Co-Founders</h2>
+                <div class="profiles-grid fade-in">
+                    <!-- Profile Card 1 -->
+                    <div class="glow-card">
+                        <div class="profile-card">
+                            <img src="https://via.placeholder.com/120" alt="Team Member 1" class="profile-pic">
+                            <h4>Jane Doe</h4>
+                            <p class="profile-role">Lead Developer & Architect</p>
+                            <p class="profile-bio">The visionary behind the analysis engine, Jane lives and breathes C++ and is passionate about creating tools that empower developers.</p>
+                        </div>
+                    </div>
+                    <!-- Profile Card 2 -->
+                    <div class="glow-card">
+                        <div class="profile-card">
+                            <img src="https://via.placeholder.com/120" alt="Team Member 2" class="profile-pic">
+                            <h4>John Smith</h4>
+                            <p class="profile-role">Blueprint & UX Specialist</p>
+                            <p class="profile-bio">John ensures the plugin feels native to Unreal Engine, focusing on intuitive workflows and powerful Blueprint integration.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -135,12 +103,11 @@
     
     <footer>
         <div class="container">
-            <p class="footer-disclaimer">Context Nexus is an independent tool and not affiliated with any AI provider. Users must bring their own API keys.</p>
+            <p class="footer-disclaimer">Context Nexus provides developer tooling. You connect your own AI account. We don’t store your AI keys.</p>
             <p>&copy; 2025 Context Nexus. All rights reserved.</p>
             <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
             <div class="footer-socials">
-                <!-- Discord button moved here -->
-                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon" style="margin: 0 auto;">
+                 <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon" style="margin: 0 auto;">
                     <img src="discord_logo.png" alt="Discord Icon">
                     Join Our Community!
                 </a>
@@ -148,64 +115,20 @@
         </div>
     </footer>
 
-    <!-- START: Pricing Modal -->
-    <div id="pricing-modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close pricing modal">&times;</button>
-            
-            <!-- Step 1: Tier Selection -->
-            <div id="tier-selection">
-                <h2 class="modal-title">Choose Your Tier</h2>
-                <div class="plans-grid">
-                    <div class="plan-card" data-tier="indie">
-                        <h4>Indie</h4>
-                        <p class="price-tag">coming soon...</p>
-                        <p>For individuals and starters exploring the tool.</p>
-                    </div>
-                    <div class="plan-card" data-tier="pro">
-                        <h4>Pro</h4>
-                        <p class="price-tag">coming soon...</p>
-                        <p>For professionals and small teams needing advanced features.</p>
-                    </div>
-                    <div class="plan-card" data-tier="studioenterprise">
-                        <h4>StudioEnterprise</h4>
-                        <p class="price-tag">Contact Us</p>
-                        <p>For large studios requiring dedicated support and custom solutions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Duration Selection -->
-            <div id="duration-selection" class="hidden">
-                <button class="modal-back" aria-label="Go back to tier selection">&larr; Back</button>
-                <h2 class="modal-title">Choose Your Subscription</h2>
-                <div class="plans-grid">
-                     <div class="plan-card" data-duration="1">
-                        <h4>1 Month</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>coming soon</p>
-                    </div>
-                     <div class="plan-card" data-duration="3">
-                        <h4>3 Months</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>coming soon</p>
-                    </div>
-                     <div class="plan-card" data-duration="6">
-                        <h4>6 Months</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>coming soon</p>
-                    </div>
-                     <div class="plan-card" data-duration="12">
-                        <h4>1 Year</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>Scoming soon</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
- 
+    <!-- Right-side Quick Nav -->
+    <nav class="quick-nav" aria-label="Quick navigation">
+      <ul id="qn-links" class="qn-links" role="menu">
+        <li><a role="menuitem" href="index.html" class="qn-item" aria-label="Home">🏠<span class="qn-label">Home</span></a></li>
+        <li><a role="menuitem" href="index.html#features" class="qn-item" aria-label="Features">⚡<span class="qn-label">Features</span></a></li>
+        <li><a role="menuitem" href="how.html" class="qn-item" aria-label="How It Works">📘<span class="qn-label">How It Works</span></a></li>
+        <li><a role="menuitem" href="about.html" class="qn-item" aria-label="About Us">🧑‍💻<span class="qn-label">About Us</span></a></li>
+        <li><a role="menuitem" href="index.html#supported-ai" class="qn-item" aria-label="Supported AIs">🤖<span class="qn-label">Supported AIs</span></a></li>
+        <li><a role="menuitem" href="index.html#mission" class="qn-item" aria-label="Mission">🎯<span class="qn-label">Mission</span></a></li>
+        <li><a role="menuitem" href="faq.html" class="qn-item" aria-label="FAQ">❓<span class="qn-label">FAQ</span></a></li>
+        <li><button role="menuitem" type="button" class="qn-item qn-trigger-plans" aria-label="Plans">💳<span class="qn-label">Plans</span></button></li>
+        <li><a role="menuitem" href="https://discord.gg/CKJbuD5nhY" target="_blank" rel="noopener" class="qn-item" aria-label="Discord">💬<span class="qn-label">Discord</span></a></li>
+      </ul>
+    </nav>
 
     <script src="script.js" defer></script>
 
