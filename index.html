@@ -1,213 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context Nexus - The AI Co-Pilot That Understands Your Unreal Project</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Context Nexus - The AI Co-Pilot That Understands Your Unreal Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <div id="preloader"><div class="loader"></div></div>
 
-    <div id="preloader">
-        <div class="loader"></div>
+  <header class="hero">
+    <div class="aurora-bg">
+      <div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div>
     </div>
 
-    <header class="hero">
-        <div class="aurora-bg">
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-        </div>
-
-        <!-- Header controls -->
-        <div class="header-controls">
-          <!-- Keep this ID so script.js still finds it -->
-          <input type="checkbox" id="theme-toggle" class="toggle-input" />
-          <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
-        </div>
-
-        <div class="container hero-content">
-            <div class="hero-glass-panel">
-                <div class="hero-title-container">
-                    <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
-                    <h1 class="hero-title">
-                        <span class="gradient-text">Context Nexus</span>
-                    </h1>
-                </div>
-                <p class="hero-subtitle">
-                    The AI Co-Pilot That Deeply Understands Your Entire <span class="typewriter"></span>
-                </p>
-                <div class="hero-buttons">
-                    <!-- "See Our Plans" button moved here -->
-                    <button id="see-plans-btn" class="cta-button">See Our Plans</button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav class="sticky-nav">
-        <div class="container">
-            <ul class="creative-menu">
-                <li><a href="#features">Features</a></li>
-                <li><a href="how.html">How It Works</a></li>
-                <li><a href="#supported-ai">Supported AIs</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main>
-        <!-- The actions section has been removed from here -->
-
-        <section class="advantage" id="features">
-            <div class="container">
-                <h2 class="section-title fade-in">The Professional's Edge, Built for Everyone</h2>
-                <div class="advantage-grid fade-in" id="advantage-grid">
-                    <!-- Slideshow Target 1 -->
-                    <div class="glow-card">
-                        <div class="advantage-card slideshow-target">
-                            <div class="card-content"></div>
-                            <div class="slideshow-dots"></div>
-                        </div>
-                    </div>
-                    <!-- Slideshow Target 2 -->
-                    <div class="glow-card">
-                        <div class="advantage-card slideshow-target">
-                            <div class="card-content"></div>
-                            <div class="slideshow-dots"></div>
-                        </div>
-                    </div>
-                    <!-- Slideshow Target 3 -->
-                    <div class="glow-card">
-                        <div class="advantage-card slideshow-target">
-                            <div class="card-content"></div>
-                            <div class="slideshow-dots"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="visual">
-            <div class="container">
-                <h2 class="section-title fade-in">A True Pair Programmer, Inside Your Editor</h2>
-                <img src="https://raw.githubusercontent.com/nikosleft/ContextNexus/main/Screenshot.png" alt="Context Nexus plugin screenshot" class="screenshot fade-in">
-            </div>
-        </section>
-        
-        <!-- Supported AI Providers Section -->
-        <section id="supported-ai" class="supported-ai-section">
-            <div class="container">
-                <h2 class="section-title fade-in">Supported AI Providers</h2>
-                <div class="ai-providers-grid fade-in">
-                    <div class="ai-provider-badge">OpenAI (GPT models)</div>
-                    <div class="ai-provider-badge">Google Gemini</div>
-                    <div class="ai-provider-badge">Anthropic Claude</div>
-                    <div class="ai-provider-badge">Custom Endpoint</div>
-                </div>
-                <p class="disclaimer fade-in">
-                    <em>*Context Nexus provides developer tools. AI models (ChatGPT/GPT, Gemini, Claude) are used via your own accounts. We don’t store your AI keys. Trademarks belong to their respective owners; no affiliation or endorsement implied.</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="roadmap" id="mission">
-             <div class="container">
-                <h2 class="section-title fade-in">Our Mission: Trust Through Superior Analysis</h2>
-                <div class="roadmap-grid">
-                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Go Beyond Surface-Level</h4><p>AI tools are only as good as the context they're given. Our mission is to build the world's most advanced project analysis engine, so the AI has professional-grade insight from the start.</p></div></div>
-                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Create an Intuitive Workflow</h4><p>Powerful tools should feel effortless. Features like the "Right-Click → Add to Context" integration are designed to fit your natural workflow, making deep analysis faster than ever.</p></div></div>
-                    <div class="glow-card fade-in"><div class="roadmap-item"><h4>Empower, Not Replace</h4><p>Context Nexus is a co-pilot designed to augment your skills. It handles the tedious work of context gathering and bug hunting, freeing you to solve the hard creative and technical challenges.</p></div></div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p class="footer-disclaimer">Context Nexus is an independent tool and not affiliated with any AI provider. Users must bring their own API keys.</p>
-            <p>&copy; 2025 Context Nexus. All rights reserved.</p>
-            <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
-            <div class="footer-socials">
-                <!-- Discord button moved here -->
-                <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon" style="margin: 0 auto;">
-                    <img src="discord_logo.png" alt="Discord Icon">
-                    Join Our Community!
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- START: Pricing Modal -->
-    <div id="pricing-modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close pricing modal">&times;</button>
-            
-            <!-- Step 1: Tier Selection -->
-            <div id="tier-selection">
-                <h2 class="modal-title">Choose Your Tier</h2>
-                <div class="plans-grid">
-                    <div class="plan-card" data-tier="standard">
-                        <h4>Context Nexus</h4>
-                        <p class="price-tag">Free</p>
-                        <p>For individuals and starters exploring the tool.</p>
-                    </div>
-                    <div class="plan-card" data-tier="pro">
-                        <h4>Context Nexus Pro</h4>
-                        <p class="price-tag">Starting at $15</p>
-                        <p>For professionals and small teams needing advanced features.</p>
-                    </div>
-                    <div class="plan-card" data-tier="enterprise">
-                        <h4>Context Nexus Enterprise</h4>
-                        <p class="price-tag">Contact Us</p>
-                        <p>For large studios requiring dedicated support and custom solutions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Duration Selection -->
-            <div id="duration-selection" class="hidden">
-                <button class="modal-back" aria-label="Go back to tier selection">&larr; Back</button>
-                <h2 class="modal-title">Choose Your Subscription</h2>
-                <div class="plans-grid">
-                     <div class="plan-card" data-duration="1">
-                        <h4>1 Month</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>coming soon</p>
-                    </div>
-                     <div class="plan-card" data-duration="3">
-                        <h4>3 Months</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>coming soon</p>
-                    </div>
-                     <div class="plan-card" data-duration="6">
-                        <h4>6 Months</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>coming soon</p>
-                    </div>
-                     <div class="plan-card" data-duration="12">
-                        <h4>1 Year</h4>
-                        <p class="price-tag">coming soon</p>
-                        <p>Scoming soon</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="header-controls">
+      <input type="checkbox" id="theme-toggle" class="toggle-input" />
+      <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
     </div>
- 
 
-    <script src="script.js" defer></script>
+    <div class="container hero-content">
+      <div class="hero-glass-panel">
+        <div class="hero-title-container">
+          <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
+          <h1 class="hero-title"><span class="gradient-text">Context Nexus</span></h1>
+        </div>
+        <p class="hero-subtitle">
+          The AI Co-Pilot That Deeply Understands Your Entire <span class="typewriter"></span>
+        </p>
+        <div class="hero-buttons">
+          <button id="see-plans-btn" class="cta-button">See Our Plans</button>
+        </div>
+      </div>
+    </div>
+  </header>
 
+  <nav class="sticky-nav">
+    <div class="container">
+      <ul class="creative-menu">
+        <li><a href="#features">Features</a></li>
+        <li><a href="how.html">How It Works</a></li>
+        <li><a href="#supported-ai">Supported AIs</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="advantage" id="features">
+      <div class="container">
+        <h2 class="section-title fade-in">The Professional's Edge, Built for Everyone</h2>
+        <div class="advantage-grid fade-in" id="advantage-grid">
+          <div class="glow-card">
+            <div class="advantage-card slideshow-target">
+              <div class="card-content"></div>
+              <div class="slideshow-dots"></div>
+            </div>
+          </div>
+          <div class="glow-card">
+            <div class="advantage-card slideshow-target">
+              <div class="card-content"></div>
+              <div class="slideshow-dots"></div>
+            </div>
+          </div>
+          <div class="glow-card">
+            <div class="advantage-card slideshow-target">
+              <div class="card-content"></div>
+              <div class="slideshow-dots"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visual">
+      <div class="container">
+        <h2 class="section-title fade-in">A True Pair Programmer, Inside Your Editor</h2>
+        <img src="https://raw.githubusercontent.com/nikosleft/ContextNexus/main/Screenshot.png" alt="Context Nexus plugin screenshot" class="screenshot fade-in">
+      </div>
+    </section>
+
+    <!-- Supported AI Providers -->
+    <section id="supported-ai" class="supported-ai-section">
+      <div class="container">
+        <h2 class="section-title fade-in">Supported AI Providers</h2>
+        <div class="ai-providers-grid fade-in">
+          <div class="ai-provider-badge">OpenAI (GPT models)</div>
+          <div class="ai-provider-badge">Google Gemini</div>
+          <div class="ai-provider-badge">Anthropic Claude</div>
+          <div class="ai-provider-badge">Custom Endpoint</div>
+        </div>
+        <p class="disclaimer fade-in">
+          <em>Context Nexus provides the tooling. You connect your own AI account. We don’t store your AI keys. “ChatGPT”, “Gemini”, and “Claude” are trademarks of their respective owners and no affiliation or endorsement is implied.</em>
+        </p>
+      </div>
+    </section>
+
+    <section class="roadmap" id="mission">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Mission: Trust Through Superior Analysis</h2>
+        <div class="roadmap-grid">
+          <div class="glow-card fade-in">
+            <div class="roadmap-item">
+              <h4>Go Beyond Surface-Level</h4>
+              <p>AI tools are only as good as the context they receive. We build a complete understanding of your project so answers are accurate from the start.</p>
+            </div>
+          </div>
+          <div class="glow-card fade-in">
+            <div class="roadmap-item">
+              <h4>Create an Intuitive Workflow</h4>
+              <p>Right-click “Add to Context,” Project Explorer selection, and in-editor chat keep you in flow.</p>
+            </div>
+          </div>
+          <div class="glow-card fade-in">
+            <div class="roadmap-item">
+              <h4>Empower, Not Replace</h4>
+              <p>Context Nexus augments your skills: it handles context gathering and diagnostics so you can ship faster.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-disclaimer">Context Nexus is an independent tool. Users bring their own AI keys; we don’t store them.</p>
+      <p>&copy; 2025 Context Nexus. All rights reserved.</p>
+      <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
+      <div class="footer-socials">
+        <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon" style="margin:0 auto;">
+          <img src="discord_logo.png" alt="Discord Icon">Join Our Community!
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Pricing Modal -->
+  <div id="pricing-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close pricing modal">&times;</button>
+
+      <!-- Step 1 -->
+      <div id="tier-selection">
+        <h2 class="modal-title">Choose Your Tier</h2>
+        <div class="plans-grid">
+          <div class="plan-card" data-tier="indie">
+            <h4>Indie</h4>
+            <p class="price-tag">coming soon...</p>
+            <p>For individuals and starters exploring the tool.</p>
+          </div>
+          <div class="plan-card" data-tier="pro">
+            <h4>Pro</h4>
+            <p class="price-tag">coming soon...</p>
+            <p>For professionals and small teams needing advanced features.</p>
+          </div>
+          <div class="plan-card" data-tier="studioenterprise">
+            <h4>StudioEnterprise</h4>
+            <p class="price-tag">Contact Us</p>
+            <p>For large studios requiring dedicated support and custom solutions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="duration-selection" class="hidden">
+        <button class="modal-back" aria-label="Go back to tier selection">&larr; Back</button>
+        <h2 class="modal-title">Choose Your Subscription</h2>
+        <div class="plans-grid">
+          <div class="plan-card" data-duration="1">
+            <h4>1 Month</h4>
+            <p class="price-tag">coming soon</p>
+            <p>coming soon</p>
+          </div>
+          <div class="plan-card" data-duration="3">
+            <h4>3 Months</h4>
+            <p class="price-tag">coming soon</p>
+            <p>coming soon</p>
+          </div>
+          <div class="plan-card" data-duration="6">
+            <h4>6 Months</h4>
+            <p class="price-tag">coming soon</p>
+            <p>coming soon</p>
+          </div>
+          <div class="plan-card" data-duration="12">
+            <h4>1 Year</h4>
+            <p class="price-tag">coming soon</p>
+            <p>coming soon</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
