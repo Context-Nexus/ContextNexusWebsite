@@ -131,9 +131,9 @@ body.light-theme .hero-glass-panel { background: rgba(255,255,255,.5); border: 1
 
 /* --- ICON BUTTON FIX --- */
 .cta-button-secondary.with-icon img {
-    height: 24px; /* Controls icon size */
+    height: 28px; /* Increased from 24px */
     width: auto;
-    margin-right: 10px;
+    margin-right: 12px; /* Increased from 10px */
 }
 
 /* --- General Section Styling --- */
@@ -437,4 +437,208 @@ body.light-theme .modal-content {
 }
 .hidden {
     display: none !important;
+}
+
+/* --- Supported AI Providers Section --- */
+.supported-ai-section {
+    padding: 90px 0;
+    background-color: var(--bg-color); 
+    text-align: center;
+}
+
+.ai-providers-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.ai-provider-badge {
+    padding: 12px 24px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50px; /* Pill shape */
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: all 0.3s var(--easing-curve);
+}
+
+.ai-provider-badge:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.disclaimer {
+    font-size: 0.85rem;
+    color: #888;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- NEW: Footer Disclaimer & BYOK List Styling --- */
+.footer-disclaimer {
+    font-size: 0.8rem;
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto 15px auto; /* Add some space below it */
+    line-height: 1.5;
+}
+
+.story-content .styled-list li strong {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* --- FAQ Page Section --- */
+.faq-section {
+    background-color: var(--bg-color);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s var(--easing-curve);
+}
+
+.faq-item:hover {
+    border-color: var(--primary-color);
+}
+
+.faq-item summary {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 20px 25px;
+    cursor: pointer;
+    list-style: none; /* Removes default marker */
+    position: relative;
+    color: var(--heading-color);
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none; /* Hides default marker for Chrome/Safari */
+}
+
+/* Custom marker */
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s var(--easing-curve);
+}
+
+.faq-item[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 25px 25px 25px;
+    line-height: 1.7;
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+    margin: 0 25px;
+}
+
+.faq-answer p:first-child {
+    margin-top: 20px;
+}
+
+.faq-answer p {
+    margin-bottom: 0;
+}
+
+/* --- NEW: FAQ Category Title --- */
+.faq-category-title {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin-top: 60px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.faq-container h3:first-of-type {
+    margin-top: 0;
+}
+
+/* --- NEW: Technical Docs Page --- */
+.technical-docs-section {
+    background-color: var(--bg-color);
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.docs-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--surface-color);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.docs-content h2 {
+    font-size: 2rem;
+    color: var(--heading-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.docs-content h3 {
+    font-size: 1.6rem;
+    color: var(--heading-color);
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.docs-content h4 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.docs-content p, .docs-content li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.docs-content ul, .docs-content ol {
+    padding-left: 30px;
+}
+
+.docs-content code {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95em;
+}
+
+.docs-content .tldr {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.docs-separator {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 60px 0;
 }
