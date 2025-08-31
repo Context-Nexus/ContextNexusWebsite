@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -58,9 +58,10 @@
         <div class="container">
             <ul class="creative-menu">
                 <li><a href="#features">Features</a></li>
-                <li><a href="#what-is-cn">What is Context Nexus?</a></li>
-                <li><a href="#mission">Mission</a></li>
+                <li><a href="how.html">How It Works</a></li>
+                <li><a href="#supported-ai">Supported AIs</a></li>
                 <li><a href="about.html">About Us</a></li>
+                <li><a href="faq.html">FAQ</a></li>
             </ul>
         </div>
     </nav>
@@ -104,67 +105,19 @@
             </div>
         </section>
         
-        <!-- What is Context Nexus Section -->
-        <section class="our-story" id="what-is-cn" style="padding-top: 90px; background-color: var(--surface-color);">
+        <!-- Supported AI Providers Section -->
+        <section id="supported-ai" class="supported-ai-section">
             <div class="container">
-                <h2 class="section-title fade-in">What is Context Nexus?</h2>
-                <div class="story-content fade-in">
-                    <p>
-                        Context Nexus is a professional AI co-pilot that lives inside the Unreal Editor. It fixes the biggest pain in AI-assisted development—repeating context—by performing a deep static analysis of your entire project (C++ + Blueprints). You can then ask architectural questions and get precise, context-aware answers without leaving the editor.
-                    </p>
-                    
-                    <h4>The problem we solve</h4>
-                    <p>
-                        AI only answers as well as the context you give it. Re-explaining a large UE project wastes time and tokens—and still misses cross-links between C++ and Blueprints.
-                    </p>
-
-                    <h4>How it works (Global Analysis → Targeted Context)</h4>
-                    <p>
-                        <strong>Global Analysis (Deep Scan):</strong> We analyze every Blueprint and C++ file to build a comprehensive, internal model of your project.
-                        <br>
-                        <strong>Targeted Context (Selective Send):</strong> You tick only the relevant files, functions, and variables for your current task. Only that minimal payload goes to the AI—cheaper and more accurate.
-                    </p>
-
-                    <h4>Why developers choose Context Nexus</h4>
-                    <ul class="styled-list">
-                        <li>Understands C++ + Blueprints together (Dual-Source Analysis Engine).</li>
-                        <li>Architectural clarity: Ask “If I change this C++ function, which Blueprints break?” and get a grounded answer.</li>
-                        <li>Token-efficient: Minimal context sent each time = lower cost, faster replies.</li>
-                        <li>Native UE workflow: Slate-based UI, Project Explorer with checkboxes, right-click “Add to Context,” integrated chat.</li>
-                    </ul>
-
-                    <h4>Key capabilities</h4>
-                    <ul class="styled-list">
-                        <li>Deep dependency analysis across C++/BP.</li>
-                        <li>Ubergraph resolution (traces event stubs like BeginPlay/ReceiveTick to actual running logic).</li>
-                        <li>Static Analysis Linter panel for early warnings.</li>
-                        <li>Project Explorer with icon-driven filtering and quick selection.</li>
-                    </ul>
-                    
-                    <h4>Quick workflow</h4>
-                    <p>
-                        Run Deep Scan once. Select relevant items in Project Explorer. Ask your question in the in-editor chat. Get a precise, context-aware answer (and iterate as needed).
-                    </p>
-
-                    <h4>What’s next</h4>
-                    <p>
-                        We’re building a Clang AST sidecar for compiler-grade parsing and crash isolation—pushing accuracy even further.
-                    </p>
-                    
-                    <h4>Who it’s for</h4>
-                    <p>
-                        Unreal Engine teams and solo devs who want accurate, explainable help on medium-to-large projects without leaving the editor.
-                    </p>
-                    
-                    <h4>Try it</h4>
-                    <p>
-                        Install the plugin, run a Deep Scan, and ask your first architecture question. You’ll feel the difference on day one.
-                    </p>
-                    <!-- "7 Days Free Trial" button moved here -->
-                    <div style="text-align: center; margin-top: 30px;">
-                        <a href="#" target="_blank" class="cta-button-secondary">7 Days Free Trial</a>
-                    </div>
+                <h2 class="section-title fade-in">Supported AI Providers</h2>
+                <div class="ai-providers-grid fade-in">
+                    <div class="ai-provider-badge">OpenAI (GPT models)</div>
+                    <div class="ai-provider-badge">Google Gemini</div>
+                    <div class="ai-provider-badge">Anthropic Claude</div>
+                    <div class="ai-provider-badge">Custom Endpoint</div>
                 </div>
+                <p class="disclaimer fade-in">
+                    <em>*Context Nexus provides developer tools. AI models (ChatGPT/GPT, Gemini, Claude) are used via your own accounts. We don’t store your AI keys. Trademarks belong to their respective owners; no affiliation or endorsement implied.</em>
+                </p>
             </div>
         </section>
 
@@ -182,8 +135,9 @@
     
     <footer>
         <div class="container">
+            <p class="footer-disclaimer">Context Nexus is an independent tool and not affiliated with any AI provider. Users must bring their own API keys.</p>
             <p>&copy; 2025 Context Nexus. All rights reserved.</p>
-            <p class="footer-contact">Support: <a href="mailto:support@contextnexus.dev">support@contextnexus.dev</a></p>
+            <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
             <div class="footer-socials">
                 <!-- Discord button moved here -->
                 <a href="https://discord.gg/CKJbuD5nhY" target="_blank" class="cta-button-secondary with-icon" style="margin: 0 auto;">
