@@ -1,138 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How It Works - Context Nexus</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>How It Works - Context Nexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <div id="preloader"><div class="loader"></div></div>
 
-    <div id="preloader">
-        <div class="loader"></div>
+  <header class="hero">
+    <div class="aurora-bg">
+      <div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div>
     </div>
 
-    <header class="hero">
-        <div class="aurora-bg">
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
+    <div class="header-controls">
+      <input type="checkbox" id="theme-toggle" class="toggle-input" />
+      <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-glass-panel">
+        <div class="hero-title-container">
+          <a href="index.html" style="text-decoration:none;display:contents;">
+            <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
+            <h1 class="hero-title"><span class="gradient-text">Context Nexus</span></h1>
+          </a>
         </div>
+        <p class="hero-subtitle">A technical deep dive into our analysis engine.</p>
+      </div>
+    </div>
+  </header>
 
-        <div class="header-controls">
-          <input type="checkbox" id="theme-toggle" class="toggle-input" />
-          <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+  <nav class="sticky-nav">
+    <div class="container">
+      <ul class="creative-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="how.html">How It Works</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="technical-docs-section">
+      <div class="container">
+        <div class="docs-content fade-in">
+          <h2>How Context Nexus Works</h2>
+          <p>Context Nexus is an in-editor AI co-pilot for Unreal Engine. It builds a structured model of your project—across <strong>C++</strong> and <strong>Blueprints</strong>—so the AI can answer architectural questions accurately and efficiently.</p>
+
+          <h3>1) Global Analysis (Deep Scan)</h3>
+          <p>We parse your C++ target (headers + sources) and all Blueprint assets to produce a <strong>project knowledge graph</strong>: types, functions, variables, call sites, event flows, and cross-references between C++ and Blueprints.</p>
+
+          <h4>C++: Clang AST (Planned/Rolling Out)</h4>
+          <p>We generate <code>compile_commands.json</code> and run a sidecar helper with Clang AST for compiler-grade parsing. We extract classes, functions (with bodies), UFUNCTION/UPROPERTY, parameters, templates, inheritance, UE macros, RPC qualifiers, and symbol references.</p>
+
+          <h4>Blueprint: Blueprint Bridge (Shipping)</h4>
+          <p>We traverse Blueprint graphs (nodes, pins, edges) programmatically. <strong>Ubergraph resolution</strong> follows event stubs (<code>BeginPlay</code>, <code>ReceiveTick</code>, RPC events) to real execution paths and emits a compact IR that preserves logic and dependencies.</p>
+
+          <h3>2) Targeted Context (Selective Send)</h3>
+          <p>You choose the precise files, functions, variables, or graphs relevant to your question. We build a minimal <strong>Targeted Context</strong> from the graph and send only that to your chosen AI provider—lower token cost, higher precision.</p>
+
+          <h3>3) Answering Architectural Questions</h3>
+          <p>Examples:</p>
+          <ul>
+            <li>“If I change <code>AMyActor::Tick</code>, which Blueprints break?”</li>
+            <li>“Show everything that writes to <code>PlayerHealth</code>.”</li>
+            <li>“Which BP calls end up invoking <code>StartMatch()</code> on the GameMode?”</li>
+          </ul>
+          <p>Under the hood, we traverse the merged C++/BP graph (calls, read/write, event, override, delegate bind, and more) to assemble the most relevant slice.</p>
+
+          <hr class="docs-separator">
+
+          <h2 id="ast-vs-regex">Why AST Beats Regex for AI Copilots in Unreal</h2>
+          <p class="tldr"><strong>TL;DR:</strong> Regex matches text; an AST understands code. With Unreal’s macro-heavy, template-rich C++, AST makes answers cheaper and more accurate.</p>
+
+          <h3>1) Unreal C++ Isn’t Regular</h3>
+          <p>Macros (<code>UCLASS</code>, <code>UFUNCTION</code>), templates (<code>TArray</code>, <code>TMap</code>), and RPC qualifiers trip up text scanning. AST parses what the compiler accepts.</p>
+
+          <h3>2) Ground-Truth Symbols</h3>
+          <p>AST yields exact declarations/definitions and real cross-TU references—no guesswork.</p>
+
+          <h3>3) Token Budgets Love Precision</h3>
+          <p>AST → precise dependencies → minimal context payload → lower cost, better answers.</p>
+
+          <h3>4) Safety & Isolation</h3>
+          <p>The AST runs in a sidecar process. Parse errors can’t crash the editor and produce actionable diagnostics.</p>
+
+          <h3>5) Better Cross-Language Answers</h3>
+          <p>AST (C++) + Blueprint Bridge (BP) = unified, typed graph for architecture-level questions.</p>
+
+          <h4>Implementation Sketch</h4>
+          <ol>
+            <li>Generate <code>compile_commands.json</code> from UBT.</li>
+            <li>Launch the sidecar with Clang libs.</li>
+            <li>Parse TUs → emit JSON (symbols, relations, references).</li>
+            <li>Merge with Blueprint Bridge output → unified graph.</li>
+            <li>Build Targeted Context for the user’s query → send to the AI.</li>
+          </ol>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="container hero-content">
-            <div class="hero-glass-panel">
-                 <div class="hero-title-container">
-                    <a href="index.html" style="text-decoration: none; display: contents;">
-                        <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
-                        <h1 class="hero-title">
-                            <span class="gradient-text">Context Nexus</span>
-                        </h1>
-                    </a>
-                </div>
-                <p class="hero-subtitle">
-                   A Technical Deep Dive into Our Analysis Engine.
-                </p>
-            </div>
-        </div>
-    </header>
-    
-    <nav class="sticky-nav">
-        <div class="container">
-            <ul class="creative-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="how.html">How It Works</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
+  <footer>
+    <div class="container">
+      <p class="footer-disclaimer">Context Nexus provides developer tooling. You connect your own AI account. We don’t store your AI keys.</p>
+      <p>&copy; 2025 Context Nexus. All rights reserved.</p>
+      <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
+      <div class="footer-socials"></div>
+    </div>
+  </footer>
 
-    <main>
-        <section class="technical-docs-section">
-            <div class="container">
-                <div class="docs-content fade-in">
-                    <h2>How Context Nexus Works</h2>
-                    <p>Context Nexus is an in-editor AI co-pilot for Unreal Engine. It builds a structured model of your project—across C++ and Blueprints—so the AI can answer architectural questions accurately and cheaply.</p>
-
-                    <h3>1) Global Analysis (Deep Scan)</h3>
-                    <p>We parse the entire C++ target (headers + sources) and all Blueprint assets to produce a project knowledge graph. This graph contains types, functions, variables, call sites, event flows, and cross-references between C++ and Blueprints.</p>
-                    
-                    <h4>C++: Clang AST (Planned/Rolling Out)</h4>
-                    <p>We generate a <code>compile_commands.json</code> for the target and run a sidecar helper that uses Clang’s AST to parse your code with compiler-grade accuracy. This extracts class/struct definitions, UFUNCTION/UPROPERTY, function bodies, parameters, templates, inheritance, UE macros, RPC qualifiers, and symbol references.</p>
-
-                    <h4>Blueprint: Blueprint Bridge (Shipping)</h4>
-                    <p>Our system programmatically traverses Blueprint graphs (nodes, pins, edges). It resolves the Ubergraph to follow event stubs (BeginPlay, ReceiveTick, RPC events) to their real execution path and emits a compact, token-efficient intermediate representation (IR) that preserves logic and dependencies.</p>
-
-                    <h3>2) Targeted Context (Selective Send)</h3>
-                    <p>You choose the exact files, functions, variables, or graphs relevant to your question. Context Nexus builds a minimal context payload from the knowledge graph and sends only that to the AI, resulting in lower token costs and higher answer precision.</p>
-
-                    <h3>3) Answering Architectural Questions</h3>
-                    <p>This deep understanding allows you to ask complex queries like:</p>
-                    <ul>
-                        <li>“If I change <code>AMyActor::Tick</code>, which Blueprints break?”</li>
-                        <li>“Show everything that writes to <code>PlayerHealth</code>.”</li>
-                        <li>“Which BP calls end up invoking <code>StartMatch()</code> on the GameMode?”</li>
-                    </ul>
-                    <p>Under the hood, we perform a dependency traversal over the merged C++/BP graph, analyzing edge types like calls, read/writes, events, overrides, and delegate binds.</p>
-                    
-                    <hr class="docs-separator">
-
-                    <h2 id="ast-vs-regex">Why AST Beats Regex for AI Copilots in Unreal</h2>
-                    <p class="tldr"><strong>TL;DR:</strong> Regex can match text; an Abstract Syntax Tree (AST) understands code. For Unreal’s macro-heavy, template-rich C++, the difference is night and day.</p>
-
-                    <h3>1) Unreal C++ Isn’t Regular</h3>
-                    <p>Unreal C++ makes heavy use of macros (<code>UCLASS</code>, <code>UFUNCTION</code>), templates (<code>TArray</code>, <code>TMap</code>), and complex qualifiers. Regex breaks on the first edge case; an AST is built to parse every case the compiler accepts.</p>
-
-                    <h3>2) AST Gives Ground Truth</h3>
-                    <p>An AST provides exact symbol tables, real cross-translation-unit reference mapping (not best-guess string matches), and accurate types after macro expansion.</p>
-
-                    <h3>3) Token Budgets Love Precision</h3>
-                    <p>An AST creates a precise dependency graph, which leads to a minimal context payload. Regex produces noisy, duplicated matches, resulting in bloated prompts, higher costs, and worse answers.</p>
-
-                    <h3>4) Safety & Isolation</h3>
-                    <p>Our AST parser runs in a sidecar process. A crash in parsing a malformed file can’t take down the editor. It also provides clear, actionable diagnostics for issues like bad includes or missing defines.</p>
-
-                    <h3>5) Better Cross-Language Answers</h3>
-                    <p>The AST’s truth for C++ combined with the Blueprint Bridge’s truth for Blueprints yields a unified, typed graph. That’s what enables questions like “Which Blueprints will break if I change this C++ function?”</p>
-
-                    <h4>Implementation Sketch (High-Level)</h4>
-                    <ol>
-                        <li>Generate <code>compile_commands.json</code> from UBT for your target.</li>
-                        <li>Launch our sidecar helper with Clang libraries.</li>
-                        <li>Parse Translation Units and emit JSON with symbols, relations, and references.</li>
-                        <li>Merge with Blueprint Bridge output to create the unified graph.</li>
-                        <li>Build Targeted Context for the user’s query and send it to the AI.</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p class="footer-disclaimer">Context Nexus provides developer tooling. You connect your own AI account. We don’t store your AI keys.</p>
-            <p>&copy; 2025 Context Nexus. All rights reserved.</p>
-            <p class="footer-contact">Support: <a href="mailto:contextnexus@gmail.com">contextnexus@gmail.com</a></p>
-            <div class="footer-socials"></div>
-        </div>
-    </footer>
-
-    <script src="script.js" defer></script>
-
+  <script src="script.js" defer></script>
 </body>
 </html>
