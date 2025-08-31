@@ -235,33 +235,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Feature 6: CORRECTED Smooth Scrolling for Anchor Links ---
-    // This now applies to the quick-nav as well
-    document.addEventListener('click', function(e) {
-        // Find the closest link that was clicked
-        const link = e.target.closest('a[href*="#"]');
+    // --- Feature 6: Smooth Scrolling for Sticky Nav ---
+    const navLinks = document.querySelectorAll('.creative-menu a');
 
-        if (link) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
             const href = link.getAttribute('href');
-            const parts = href.split('#');
-            const targetId = parts[1];
 
-            // Check if the link is for a section on the CURRENT page
-            if (targetId && (window.location.pathname.includes(parts[0]) || parts[0] === '')) {
-                e.preventDefault();
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 20; // 20px offset
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+            // Check if the link is for a section on the CURRENT page (starts with '#')
+            if (href.startsWith('#') || href.includes('#')) {
+                const parts = href.split('#');
+                const targetId = parts[1];
+                
+                // If on a different page, just follow the link
+                if (window.location.pathname.includes(parts[0]) || parts[0] === '') {
+                     e.preventDefault();
+                     const targetElement = document.getElementById(targetId);
+                     if (targetElement) {
+                         const navHeight = document.querySelector('.sticky-nav').offsetHeight;
+                         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
+                         
+                         window.scrollTo({
+                             top: targetPosition,
+                             behavior: 'smooth'
+                         });
+                     }
                 }
             }
-        }
+        });
     });
-
 
     // --- Feature 7: Scroll Progress Bar ---
     const setScrollProgress = () => {
@@ -334,12 +336,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // Quick Nav: trigger pricing modal if "Plans" button clicked
-    document.querySelectorAll('.qn-trigger-plans').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const plansButton = document.getElementById('see-plans-btn');
-        if (plansButton) plansButton.click();
-      });
-    });
 });
