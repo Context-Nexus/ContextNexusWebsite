@@ -175,7 +175,7 @@ body.light-theme .about-us { background: #e9ecef; }
     position: relative;
     border-radius: 22px;
     z-index: 1;
-    padding: 1px;
+    padding: 2px; /* Increased padding makes the border thicker */
     box-shadow: 0 0 16px rgba(47, 109, 255, 0.1);
     background: transparent;
     transition: transform 0.3s var(--easing-curve), box-shadow 0.3s var(--easing-curve);
