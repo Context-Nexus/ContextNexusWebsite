@@ -36,76 +36,87 @@
   <div class="scroll-progress-bar" aria-hidden="true"></div>
   <div id="preloader"><div class="loader"></div></div>
 
-  <header class="hero">
-    <div class="aurora-bg">
-      <div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div><div class="aurora__item"></div>
-    </div>
-
-    <div class="container hero-content">
-      <div class="hero-glass-panel">
-        <div class="hero-title-container">
-          <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="hero-logo">
-          <h1 class="hero-title"><span class="gradient-text">Context Nexus</span></h1>
-        </div>
-        <div class="ue-badges">
-          <span class="ue-chip">Built for Unreal Engine 5</span>
-          <span class="ue-chip">C++ + Blueprints</span>
-          <span class="ue-chip">In-Editor Workflow</span>
-        </div>
-        <p class="hero-kicker">Runs inside the Unreal Editor and links <strong>Blueprint</strong> and <strong>C++</strong> knowledge for architecture-level answers.</p>
-        <p class="hero-subtitle">
-          AI co-pilot for <strong>Unreal Engine 5</strong> — understands your entire <span class="typewriter" aria-busy="true"></span>
-        </p>
-        <div class="hero-buttons">
-          <button id="see-plans-btn" class="cta-button">See Our Plans</button>
-          <a id="trial-btn" class="cta-button-secondary trial-button is-coming-soon" href="#" aria-disabled="true" title="Coming soon">
-            Start 7-day Free Trial
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
   <nav class="sticky-nav">
-    <div class="container">
-      <div class="nav-container">
-        <a href="index.html" class="logo-link">
-          <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="nav-logo">
-        </a>
-        <ul class="nav-links">
-          <li><a href="#why">Why</a></li>
-          <li><a href="how.html">How It Works</a></li>
-          <li><a href="index.html#supported-ai">Unreal + AI</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li class="nav-button">
-            <a id="trial-nav" href="#" class="cta-button-secondary trial-button is-coming-soon" aria-disabled="true" title="Coming soon">Free Trial</a>
-          </li>
-        </ul>
-        <div class="menu-toggle">
-          <input type="checkbox" id="theme-toggle" class="toggle-input" />
-          <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
-        </div>
-      </div>
+    <div class="nav-left">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus" class="nav-logo">
+      </a>
+    </div>
+  
+    <ul class="nav-links nav-center">
+        <li><a href="#why">Why</a></li>
+        <li><a href="how.html">How It Works</a></li>
+        <li><a href="#supported">Supported AIs</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+    </ul>
+  
+    <div class="nav-right">
+        <label class="toggleSwitch" aria-label="Toggle theme">
+            <input type="checkbox" id="theme-toggle" class="toggle-input">
+        </label>
     </div>
   </nav>
 
-  <main>
+  <header class="hero" id="hero">
+    <div class="aurora-bg">
+      <div class="aurora__item"></div><div class="aurora__item"></div>
+      <div class="aurora__item"></div><div class="aurora__item"></div>
+    </div>
 
+    <div class="hero-content container">
+        <section class="glass hero-card">
+            <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
+            <h1 class="brand-title">Context Nexus</h1>
+        
+            <div class="hero-chips">
+              <span class="chip">Built for Unreal Engine 5</span>
+              <span class="chip">C++ + Blueprints</span>
+              <span class="chip">In-Editor Workflow</span>
+            </div>
+        
+            <p class="hero-sub">
+              Runs inside the Unreal Editor and links <strong>Blueprint</strong> and <strong>C++</strong> knowledge for architecture-level answers.
+            </p>
+        
+            <div class="hero-cta">
+              <a id="see-plans-btn" class="btn primary" href="#pricing">See Our Plans</a>
+              <a href="#" class="btn outline trial-button is-coming-soon">
+                Start 7-day Free Trial <span class="soon-badge">soon</span>
+              </a>
+            </div>
+        
+            <div class="hero-mini-cards">
+              <article class="mini-card">
+                <h4>Built for Unreal Engine 5</h4>
+                <p>Runs in-editor with UE-native UI. Ask questions without leaving the editor or re-explaining your project.</p>
+              </article>
+              <article class="mini-card">
+                <h4>C++ + Blueprints</h4>
+                <p>Understands both sides and their links. Get grounded answers about how changes ripple through your game.</p>
+              </article>
+              <article class="mini-card">
+                <h4>In-Editor Workflow</h4>
+                <p>Right-click “Add to Context”, tick checkboxes in Project Explorer, and chat in-editor. No more alt-tabbing.</p>
+              </article>
+            </div>
+        </section>
+    </div>
+  </header>
+
+  <main>
     <section class="why-cn" id="why">
       <div class="container">
         <h2 class="section-title fade-in">Why Use Context Nexus?</h2>
     
-        <div class="glow-card fade-in why-glow-card">
+        <div class="why-glow-card fade-in">
           <div class="advantage-card slideshow-target" id="why-carousel">
             <div class="card-content"></div>
     
-            <!-- Controls -->
-            <div class="why-controls">
-              <button class="why-arrow prev" aria-label="Previous">‹</button>
-              <div class="slideshow-dots"></div>
-              <button class="why-arrow next" aria-label="Next">›</button>
-            </div>
+            <button class="why-arrow prev" aria-label="Previous">‹</button>
+            <div class="slideshow-dots"></div>
+            <button class="why-arrow next" aria-label="Next">›</button>
           </div>
         </div>
       </div>
@@ -118,75 +129,67 @@
       </div>
     </section>
 
-    <!-- Supported AI Providers -->
-    <section id="supported-ai" class="supported-ai-section">
-      <div class="container">
-        <h2 class="section-title fade-in">Supported AI Providers</h2>
-        <div class="ai-providers-grid fade-in">
-          <div class="ai-provider-badge">OpenAI (GPT models)</div>
-          <div class="ai-provider-badge">Google Gemini</div>
-          <div class="ai-provider-badge">Anthropic Claude</div>
-          <div class="ai-provider-badge">Custom Endpoint</div>
+    <section id="supported" class="supported-wrap">
+        <h2 class="section-title">Supported AI Providers</h2>
+        <div class="supported-chips">
+          <span class="chip">OpenAI (GPT models)</span>
+          <span class="chip">Google Gemini</span>
+          <span class="chip">Anthropic Claude</span>
+          <span class="chip">Custom Endpoint</span>
         </div>
-        <p class="disclaimer fade-in">
-          <em>Context Nexus provides the tooling. You connect your own AI account. We don’t store your AI keys. “ChatGPT”, “Gemini”, and “Claude” are trademarks of their respective owners and no affiliation or endorsement is implied.</em>
+        <p class="supported-note">
+          Context Nexus provides the tooling. You connect your own AI account. We don’t store your AI keys.
+          “ChatGPT”, “Gemini”, and “Claude” are trademarks of their respective owners and no affiliation or endorsement is implied.
         </p>
-      </div>
     </section>
 
     <section class="roadmap" id="mission">
       <div class="container">
         <h2 class="section-title fade-in">Our Mission: Trust Through Superior Analysis</h2>
-        <div class="roadmap-grid">
-          <div class="glow-card fade-in">
-            <div class="roadmap-item">
-              <h4>Go Beyond Surface-Level</h4>
-              <p>AI tools are only as good as the context they receive. We build a complete understanding of your project so answers are accurate from the start.</p>
-            </div>
-          </div>
-          <div class="glow-card fade-in">
-            <div class="roadmap-item">
-              <h4>Create an Intuitive Workflow</h4>
-              <p>Right-click “Add to Context,” Project Explorer selection, and in-editor chat keep you in flow.</p>
-            </div>
-          </div>
-          <div class="glow-card fade-in">
-            <div class="roadmap-item">
-              <h4>Empower, Not Replace</h4>
-              <p>Context Nexus augments your skills: it handles context gathering and diagnostics so you can ship faster.</p>
-            </div>
-          </div>
+        <div class="mission-cards">
+          <article class="mission-card fade-in">
+            <h4>Go Beyond Surface-Level</h4>
+            <p>AI tools are only as good as the context they receive. We build a complete understanding of your project so answers are accurate from the start.</p>
+          </article>
+          <article class="mission-card fade-in">
+            <h4>Create an Intuitive Workflow</h4>
+            <p>Right-click “Add to Context,” Project Explorer selection, and in-editor chat keep you in flow.</p>
+          </article>
+          <article class="mission-card fade-in">
+            <h4>Empower, Not Replace</h4>
+            <p>Context Nexus augments your skills: it handles context gathering and diagnostics so you can ship faster.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <h2 class="section-title fade-in">Interested in Early Studio Access? Reach Out.</h2>
-    
-        <form id="contact-form" class="contact-form fade-in" novalidate>
-          <div class="row">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" required placeholder="Your name" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" required placeholder="you@studio.com" />
-            </label>
-          </div>
-          <label class="full">
-            <span>Message</span>
-            <textarea name="message" rows="5" required placeholder="Tell us a bit about your team and needs…"></textarea>
-          </label>
-    
-          <button type="submit" class="cta-button">Send Message</button>
-          <p id="contact-status" class="contact-status" aria-live="polite"></p>
-          <p class="disclaimer" style="margin-top:10px; font-size: 0.8rem;">
-            By contacting us you agree to our <a href="privacy.html" style="color: var(--primary-color);">Privacy Policy</a>.
-          </p>
-        </form>
-      </div>
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Interested in Early Studio Access?<br/>Reach Out.</h2>
+            <div class="contact-glass">
+              <form id="contact-form" class="contact-grid" novalidate>
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" type="text" name="name" placeholder="Your name" required>
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" type="email" name="email" placeholder="you@studio.com" required>
+                </div>
+                <div class="full">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="6" placeholder="Tell us a bit about your team and needs..." required></textarea>
+                </div>
+                <div class="full" style="display:flex; gap:16px; align-items:center; flex-wrap: wrap;">
+                  <button class="btn primary" type="submit">Send Message</button>
+                  <span id="contact-status" class="muted" aria-live="polite"></span>
+                </div>
+              </form>
+              <p class="muted" style="text-align:center; margin-top:16px;">
+                By contacting us you agree to our <a href="privacy.html">Privacy Policy</a>.
+              </p>
+            </div>
+        </div>
     </section>
 
   </main>
@@ -198,75 +201,23 @@
   
     <div class="footer-links">
       <a href="privacy.html">Privacy Policy</a>
-      <span class="divider">•</span>
       <a href="terms.html">Terms of Service</a>
-      <span class="divider">•</span>
       <a href="#contact">Contact</a>
+    </div>
+
+    <div class="social-row">
+      <a href="https://x.com/context_nexus" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+      </a>
+      <a href="https://discord.gg/XEdDNzd7UG" target="_blank" rel="noopener" aria-label="Discord">
+        <svg fill="currentColor" viewBox="0 0 28 28"><path d="M22.12,4.22a.55.55,0,0,0-.37-.13H5.51a.55.55,0,0,0-.37.13.53.53,0,0,0-.17.47v16.2a.53.53,0,0,0,.17.47.55.55,0,0,0,.37.13h13.8a.58.58,0,0,0,.58-.58V18.84a.59.59,0,0,0-.19-.44l-2.4-2.2a.56.56,0,0,0-.4-.14h-4a.56.56,0,0,1,0-1.12h4a.53.53,0,0,0,.49-.26l.12-.26,2.21-4.87a.53.53,0,0,0-.1-.64Zm-1.2,15.2H6.34V5.44h14.58Zm-5.8-6.49h-4a.56.56,0,0,1,0-1.12h4a.56.56,0,0,1,0,1.12Zm-2.24-3.36a1.68,1.68,0,1,0-1.68-1.68A1.68,1.68,0,0,0,12.88,9.57Zm3.36,0a1.68,1.68,0,1,0-1.68-1.68A1.68,1.68,0,0,0,16.24,9.57Z"></path></svg>
+      </a>
     </div>
   
     <div class="footer-contact">
       © 2025 Context Nexus. All rights reserved.
     </div>
   </footer>
-
-  <!-- Pricing Modal -->
-  <div id="pricing-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <button class="modal-close" aria-label="Close pricing modal">&times;</button>
-
-      <!-- Step 1 -->
-      <div id="tier-selection">
-        <h2 class="modal-title">Choose Your Tier</h2>
-        <div class="plans-grid">
-          <div class="plan-card" data-tier="indie">
-            <h4>Indie</h4>
-            <p class="price-tag">coming soon...</p>
-            <p>For individuals and starters exploring the tool.</p>
-          </div>
-          <div class="plan-card" data-tier="pro">
-            <h4>Pro</h4>
-            <p class="price-tag">coming soon...</p>
-            <p>For professionals and small teams needing advanced features.</p>
-          </div>
-          <div class="plan-card" data-tier="studioenterprise">
-            <h4>StudioEnterprise</h4>
-            <p class="price-tag">Contact Us</p>
-            <p>For large studios requiring dedicated support and custom solutions.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div id="duration-selection" class="hidden">
-        <button class="modal-back" aria-label="Go back to tier selection">&larr; Back</button>
-        <h2 class="modal-title">Choose Your Subscription</h2>
-        <div class="plans-grid">
-          <div class="plan-card" data-duration="1">
-            <h4>1 Month</h4>
-            <p class="price-tag">coming soon</p>
-            <p>coming soon</p>
-          </div>
-          <div class="plan-card" data-duration="3">
-            <h4>3 Months</h4>
-            <p class="price-tag">coming soon</p>
-            <p>coming soon</p>
-          </div>
-          <div class="plan-card" data-duration="6">
-            <h4>6 Months</h4>
-            <p class="price-tag">coming soon</p>
-            <p>coming soon</p>
-          </div>
-          <div class="plan-card" data-duration="12">
-            <h4>1 Year</h4>
-            <p class="price-tag">coming soon</p>
-            <p>coming soon</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
   <script src="script.js" defer></script>
 </body>
