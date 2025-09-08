@@ -788,7 +788,7 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 .nav-links a:hover { opacity: 1; }
 .nav-links a.active {
   opacity: 1;
-  border-bottom: 2px solid var(--primary-color);
+  border: none;
 }
 
 /* make logo consistent size in the bar */
@@ -910,6 +910,3 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   height: 130px;
   width: auto;
 }
-
-
-
