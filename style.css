@@ -700,21 +700,24 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
-/* UE watermark in hero */
+/* === EDITED: UE watermark in hero === */
 .hero-card { position: relative; }
 
 .ue-badge {
   position: absolute;
-  top: 14px;
+  top: 16px;
   right: 16px;
-  color: rgba(255,255,255,0.14);
   pointer-events: none;
   z-index: 0;
   filter: drop-shadow(0 2px 10px rgba(0,0,0,.25));
+  /* Default (Dark Mode) color: A subtle white */
+  color: rgba(255, 255, 255, 0.25); 
+  transition: color 0.4s var(--easing-curve); /* Add a smooth transition */
 }
 
+/* Light Mode color: A subtle dark color */
 .light-theme .ue-badge {
-  color: rgba(15,17,22,0.18);
+  color: rgba(15, 17, 22, 0.15);
 }
 
 @media (max-width: 900px) {
@@ -790,11 +793,6 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 
 /* make logo consistent size in the bar */
 .nav-logo { height: 28px; width: auto; display:block; }
-
-
-/* UE watermark color by theme */
-.ue-badge { color: rgba(255,255,255,0.85); opacity:.22; }
-.light-theme .ue-badge { color: rgba(15,17,22,0.85); }
 
 /* ===== Mobile nav ===== */
 
