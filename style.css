@@ -623,3 +623,52 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 @media (max-width: 992px) { .plans-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) { .duration-options { grid-template-columns: 1fr; } 
 }
+/* === Fix: pricing modal card buttons clipping === */
+.modal-content .glow-card { 
+  overflow: visible;                 /* let the button breathe past the inner padding */
+}
+
+.modal-content .plan-card {
+  min-height: 520px;                 /* taller cards so content + button fit */
+  padding-bottom: 40px;              /* space above the rounded bottom edge */
+}
+
+.modal-content .plan-card .btn {
+  margin-top: auto;                  /* anchor the button to the bottom of the card */
+  min-height: 44px;                  /* readable tap target */
+  line-height: 1.25;                 /* avoids text clipping */
+}
+
+/* === Newsletter (subscribe.html) === */
+.subscribe-form {
+  display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; margin-top:1rem;
+}
+
+.subscribe-input {
+  flex:1 1 320px;
+  padding:.9rem 1rem;
+  border:1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-color, #e8e9ef);
+  border-radius: 12px;
+}
+.light-theme .subscribe-input {
+  border-color: rgba(17,24,39,.12);
+  background:#fff;
+  color:#0f1116;
+}
+.subscribe-input::placeholder { opacity:.6; }
+
+.subscribe-btn {
+  padding:.9rem 1.15rem;
+  border-radius:12px;
+}
+
+.subscribe-note {
+  display:block; margin-top:.75rem; opacity:.7; font-size:.9rem;
+}
+
+.sr-only {
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
