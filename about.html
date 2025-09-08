@@ -29,26 +29,48 @@
     <div id="preloader"><div class="loader"></div></div>
 
     <nav class="sticky-nav">
-      <div class="nav-left">
-        <a href="index.html" class="logo-link" aria-label="Home">
-          <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
-          </a>
-      </div>
-      <ul class="nav-links nav-center">
-  <li><a href="index.html#why">Why</a></li>
-  <li><a href="how.html">How It Works</a></li>
-  <li><a href="index.html#supported">Supported AIs</a></li>
-  <li><a href="about.html" class="active">About Us</a></li>
-  <li><a href="faq.html">FAQ</a></li>
-  <li><a href="changelog.html">Changelog</a></li>
-  <li><a href="subscribe.html">Subscribe</a></li>
-    </ul>
-      <div class="nav-right">
-          <!-- Corrected Theme Toggle Structure -->
-          <input type="checkbox" id="theme-toggle" class="toggle-input">
-          <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
-      </div>
+  <div class="nav-left">
+    <a href="index.html" class="logo-link" aria-label="Home">
+      <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
+    </a>
+  </div>
+
+  <ul class="nav-links nav-center">
+    <li><a href="index.html#why">Why</a></li>
+    <li><a href="how.html">How It Works</a></li>
+    <li><a href="index.html#supported">Supported AIs</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="changelog.html">Changelog</a></li>
+    <li><a href="subscribe.html">Subscribe</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <input type="checkbox" id="theme-toggle" class="toggle-input">
+    <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+
+    <!-- Hamburger -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg class="nav-toggle-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="index.html#why">Why</a>
+      <a href="how.html">How It Works</a>
+      <a href="index.html#supported">Supported AIs</a>
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="subscribe.html">Subscribe</a>
     </nav>
+  </div>
+</nav>
+
 
     <header class="hero">
         <div class="aurora-bg">
@@ -171,6 +193,5 @@
     <script src="script.js" defer></script>
 
 </body>
-
 
 </html>
