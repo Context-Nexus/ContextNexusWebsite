@@ -263,10 +263,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const tierSelectionView = document.getElementById('tier-selection');
         const durationSelectionView = document.getElementById('duration-selection');
         
+        const durationTitle = document.getElementById('duration-title');
         const tierCards = tierSelectionView.querySelectorAll('.plan-card');
+        const durationOptions = durationSelectionView.querySelectorAll('.duration-option');
 
-        const openModal = () => {
-            // Reset to first step
+        let selectedTier = '';
+
+        const openModal = (e) => {
+            e.preventDefault(); 
             tierSelectionView.classList.remove('hidden');
             durationSelectionView.classList.add('hidden');
             pricingModal.classList.add('visible');
@@ -288,17 +292,28 @@ document.addEventListener('DOMContentLoaded', () => {
         tierCards.forEach(card => {
             card.addEventListener('click', () => {
                 const tier = card.dataset.tier;
-                if (tier === 'pro') {
+                
+                if (tier === 'indie' || tier === 'studio') {
+                    selectedTier = tier;
+                    const capitalizedTier = tier.charAt(0).toUpperCase() + tier.slice(1);
+                    durationTitle.textContent = `Select Subscription for ${capitalizedTier}`;
+                    
                     tierSelectionView.classList.add('hidden');
                     durationSelectionView.classList.remove('hidden');
-                } else {
-                    alert(`You selected the ${tier} plan!`);
+                } else if (tier === 'enterprise') {
                     closeModal();
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
+        
+        durationOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                durationOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
 
-        // Optional: Close modal with Escape key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && pricingModal.classList.contains('visible')) {
                 closeModal();
@@ -331,7 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const clickHandler = (e) => {
         const btn = e.currentTarget;
-        // If still marked “coming soon”, stop navigation and show info
         if (btn.classList.contains('is-coming-soon') || btn.getAttribute('aria-disabled') === 'true' || btn.getAttribute('href') === '#') {
           e.preventDefault();
           alert('The 7-day free trial will be available on the Fab Marketplace soon. Stay tuned!');

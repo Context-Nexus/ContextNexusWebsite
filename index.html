@@ -15,7 +15,7 @@
   
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <script type="application/ld+json">
@@ -75,7 +75,7 @@
             </p>
         
             <div class="hero-cta">
-              <a id="see-plans-btn" class="btn primary" href="#pricing">See Our Plans</a>
+              <a id="see-plans-btn" class="btn primary" href="#">See Our Plans</a>
               <a href="#" class="btn outline trial-button is-coming-soon">
                 Start 7-day Free Trial <span class="soon-badge">soon</span>
               </a>
@@ -193,6 +193,96 @@
     </section>
 
   </main>
+
+  <!-- PRICING MODAL START -->
+  <div id="pricing-modal" class="modal-container">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      
+      <!-- Step 1: Tier Selection -->
+      <div id="tier-selection">
+        <h2 class="modal-title">Choose Your Plan</h2>
+        <div class="plans-grid">
+          <!-- Plan 1: Indie -->
+          <div class="glow-card">
+            <div class="plan-card" data-tier="indie">
+              <h3>Indie</h3>
+              <p class="price-soon">Coming Soon</p>
+              <ul>
+                <li>C++ & Blueprint Analysis</li>
+                <li>For solo developers</li>
+                <li>Community Support</li>
+              </ul>
+              <button class="btn primary">Select Plan</button>
+            </div>
+          </div>
+
+          <!-- Plan 2: Studio -->
+          <div class="glow-card">
+            <div class="plan-card popular" data-tier="studio">
+              <h3>Studio</h3>
+              <p class="price-soon">Coming Soon</p>
+              <ul>
+                <li>All Indie Features</li>
+                <li>For teams up to 10</li>
+                <li>Priority Support</li>
+              </ul>
+              <button class="btn primary">Select Plan</button>
+            </div>
+          </div>
+
+          <!-- Plan 3: Enterprise -->
+          <div class="glow-card">
+            <div class="plan-card" data-tier="enterprise">
+              <h3>Enterprise</h3>
+              <p class="price-soon">Custom</p>
+              <ul>
+                <li>All Studio Features</li>
+                <li>Unlimited Seats</li>
+                <li>Dedicated Support</li>
+              </ul>
+              <button class="btn primary">Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Step 2: Duration Selection -->
+      <div id="duration-selection" class="hidden">
+        <button class="modal-back" aria-label="Go Back">‹ Back</button>
+        <h2 id="duration-title" class="modal-title">Select Subscription</h2>
+        <div class="duration-options">
+          <div class="glow-card">
+            <div class="duration-option selected" data-duration="1">
+              <strong>1 Month</strong>
+              <span>Pay monthly</span>
+            </div>
+          </div>
+          <div class="glow-card">
+            <div class="duration-option" data-duration="3">
+              <strong>3 Months</strong>
+              <span>Pay quarterly</span>
+            </div>
+          </div>
+          <div class="glow-card">
+            <div class="duration-option" data-duration="6">
+              <strong>6 Months</strong>
+              <span>Pay semi-annually</span>
+            </div>
+          </div>
+          <div class="glow-card">
+            <div class="duration-option" data-duration="12">
+              <strong>1 Year</strong>
+              <span>Pay annually & save</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn primary cta-final">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+  <!-- PRICING MODAL END -->
 
   <footer>
     <p class="footer-disclaimer">
