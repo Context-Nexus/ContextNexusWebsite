@@ -3,99 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service – Context Nexus</title>
+  <title>Privacy Policy – Context Nexus</title>
   <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Terms of Service for Context Nexus, including subscriptions, licensing, refunds, and acceptable use."/>
+  <meta name="description" content="Privacy Policy for Context Nexus."/>
 </head>
 <body>
-  <div class="container" style="padding:60px 20px; max-width:900px; margin:0 auto;">
-    <h1>Terms of Service</h1>
-    <p><strong>Effective date:</strong> {effective_date}</p>
-    <p>Welcome to Context Nexus (“we”, “our”, “us”). These Terms of Service (“Terms”) govern your access to and use of
-       our website at <a href="https://www.contextnexus.dev/">contextnexus.dev</a> (the “Site”) and our software plugin(s) and related
-       services (collectively, the “Services”). By accessing or using the Services, you agree to be bound by these Terms.</p>
 
-    <h2>1) Who we are</h2>
-    <p>Context Nexus provides developer tools and a discussion channel. We sell subscriptions and licenses to our plugin(s)
-       via third-party payment processor and merchant-of-record Lemon Squeezy. We also provide a newsletter via Buttondown.
-       See our Privacy Policy for details.</p>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <div id="preloader"><div class="loader"></div></div>
 
-    <h2>2) Eligibility</h2>
-    <p>You must be at least 16 years old to use the Services. If you use the Services on behalf of an organization, you
-       represent that you have authority to bind that organization to these Terms.</p>
-
-    <h2>3) Accounts</h2>
-    <p>Some features may require an account with third-party platforms (e.g., Lemon Squeezy for checkout, GitHub/Discord for discussion).
-       You are responsible for maintaining the confidentiality of your credentials and for all activity under your account(s).</p>
-
-    <h2>4) Purchases, subscriptions, and trials</h2>
-    <ul>
-      <li><strong>Merchant-of-Record:</strong> Payments are processed by Lemon Squeezy, which acts as the Merchant of Record.
-          Your purchase is subject to Lemon Squeezy’s terms, tax handling, and invoicing.</li>
-      <li><strong>Plans and pricing:</strong> Pricing and features will be shown on the Site and/or the Lemon Squeezy checkout page. We may update
-          pricing in the future; changes will apply on renewal or as otherwise stated at checkout.</li>
-      <li><strong>Free trials:</strong> We may offer free trials via our Site or via third-party marketplaces (e.g., a plugin marketplace).
-          Trial duration and limits will be displayed at the point of signup.</li>
-      <li><strong>Renewals and cancellations:</strong> Subscriptions renew automatically until cancelled. You can manage or cancel
-          your subscription using the link provided in your order email or your Lemon Squeezy customer portal.</li>
-      <li><strong>Refunds:</strong> Refund eligibility may be governed by Lemon Squeezy’s refund policies and any policy we publish on the Site.
-          Where permitted, refund requests should be initiated through your order receipt or by contacting us.</li>
+  <nav class="sticky-nav">
+    <div class="nav-left">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus" class="nav-logo">
+      </a>
+    </div>
+    <ul class="nav-links nav-center">
+        <li><a href="index.html#why">Why</a></li>
+        <li><a href="how.html">How It Works</a></li>
+        <li><a href="index.html#supported">Supported AIs</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="subscribe.html">Subscribe</a></li>
     </ul>
+    <div class="nav-right">
+        <!-- Theme Toggle -->
+        <input type="checkbox" id="theme-toggle" class="toggle-input">
+        <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+        <!-- Hamburger Button -->
+        <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+    </div>
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <nav aria-label="Mobile">
+        <a href="index.html#why">Why</a>
+        <a href="how.html">How It Works</a>
+        <a href="index.html#supported">Supported AIs</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="subscribe.html">Subscribe</a>
+      </nav>
+    </div>
+  </nav>
 
-    <h2>5) Licensing and activation (plugins)</h2>
-    <p>Paid features of our plugin(s) may require license activation and periodic validation. You agree not to bypass,
-       modify, or interfere with activation, license checks, usage limits, or related security mechanisms. We may suspend
-       or limit access to paid features if a license is expired, cancelled, refunded, or otherwise invalid.</p>
+  <main>
+    <div class="container" style="padding:60px 20px; max-width:900px; margin:0 auto;">
+      <h1>Privacy Policy</h1>
+      <p><strong>Effective date:</strong> September 08, 2025</p>
+      <p>This Privacy Policy describes how Context Nexus (“we”, “our”, “us”) collects, uses, and shares information in connection with your use of our website, services, and plugins (collectively, the “Services”).</p>
 
-    <h2>6) Acceptable use</h2>
-    <ul>
-      <li>No unlawful, harmful, or infringing use of the Services.</li>
-      <li>No reverse engineering, decompiling, or circumventing of technical protections, except where permitted by law.</li>
-      <li>No unauthorized scraping, load testing, or interference with Site operations.</li>
-      <li>Respect community spaces (e.g., our discussion channel); do not post spam, hate speech, or abusive content.</li>
-    </ul>
+      <h2>1) Information We Collect</h2>
+      <ul>
+        <li><strong>Account Information:</strong> When you purchase a license or subscribe, our payment processor (Lemon Squeezy) collects your name, email, and payment details. We receive access to your name, email, and license information.</li>
+        <li><strong>Newsletter:</strong> If you subscribe to our newsletter, our email provider (Buttondown) collects your email address.</li>
+        <li><strong>Usage Data:</strong> We may collect anonymous data about your interaction with our website (e.g., pages visited) to improve our Services.</li>
+        <li><strong>Plugin Data:</strong> The plugin sends periodic, anonymous pings for license validation. We do not collect or store your source code, AI API keys, prompts, or AI-generated responses.</li>
+      </ul>
 
-    <h2>7) Intellectual property</h2>
-    <p>The Services, including all text, graphics, logos, and software, are owned by us or our licensors and are protected
-       by intellectual-property laws. Subject to these Terms and your payment of applicable fees, we grant you a limited,
-       non-exclusive, non-transferable license to use the plugin(s) for your personal or internal business purposes.</p>
+      <h2>2) How We Use Information</h2>
+      <ul>
+        <li>To provide, maintain, and improve our Services.</li>
+        <li>To process transactions and manage licenses.</li>
+        <li>To communicate with you, including sending service-related emails and newsletters (if you opt-in).</li>
+        <li>To prevent fraud and ensure security.</li>
+      </ul>
 
-    <h2>8) Third-party services</h2>
-    <p>We rely on third-party services for certain features:
-      Lemon Squeezy (payments, licensing), Buttondown (email newsletter), and optional discussion platforms (e.g., GitHub
-      Discussions via Giscus, Discord). Your use of those services may be subject to their respective terms and privacy policies.</p>
+      <h2>3) Third-Party Services</h2>
+      <p>We use third-party services to operate our business:</p>
+      <ul>
+        <li><strong>Lemon Squeezy:</strong> Our Merchant of Record for payments and licensing. See their <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</li>
+        <li><strong>Buttondown:</strong> For our email newsletter. See their <a href="https://buttondown.email/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</li>
+      </ul>
+      <p>Your AI API key and prompts are sent directly from the plugin on your machine to the AI provider you configure (e.g., OpenAI, Google, Anthropic). We never see or store this data. Your use of those AI services is subject to their respective privacy policies.</p>
 
-    <h2>9) Warranty disclaimer</h2>
-    <p>To the maximum extent permitted by law, the Services are provided “as is” and “as available,” without warranties of
-       any kind, whether express, implied, or statutory, including implied warranties of merchantability, fitness for a
-       particular purpose, and non-infringement.</p>
+      <h2>4) Data Security</h2>
+      <p>We implement reasonable security measures to protect your information. However, no electronic transmission or storage is 100% secure.</p>
 
-    <h2>10) Limitation of liability</h2>
-    <p>To the maximum extent permitted by law, we will not be liable for any indirect, incidental, special, consequential,
-       or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of
-       data, use, goodwill, or other intangible losses, resulting from (a) your use of or inability to use the Services;
-       (b) any conduct or content of third parties; (c) unauthorized access, use, or alteration of your transmissions or content.</p>
+      <h2>5) Your Rights</h2>
+      <p>You may have certain rights regarding your personal information, subject to local law. To exercise these rights, please contact us.</p>
 
-    <h2>11) Indemnity</h2>
-    <p>You agree to indemnify and hold harmless Context Nexus and its affiliates, officers, agents, and employees from and
-       against any claims, liabilities, damages, losses, and expenses arising out of or in any way connected with your use
-       of the Services or violation of these Terms.</p>
+      <h2>6) Changes to this Policy</h2>
+      <p>We may update this Privacy Policy. We will notify you of any changes by posting the new policy on this page.</p>
 
-    <h2>12) Changes to the Services and Terms</h2>
-    <p>We may modify or discontinue parts of the Services at any time. We may also update these Terms from time to time.
-       If we make material changes, we will post the updated Terms on the Site with a new effective date. Your continued
-       use of the Services after the changes become effective constitutes acceptance.</p>
+      <h2>7) Contact Us</h2>
+      <p>If you have questions, contact us at <a href="mailto:support@contextnexus.dev">support@contextnexus.dev</a>.</p>
+    </div>
+  </main>
 
-    <h2>13) Governing law</h2>
-    <p>These Terms are governed by the laws applicable in your country of residence unless otherwise required by mandatory law.
-       Any disputes will be subject to the competent courts of that jurisdiction.</p>
+  <footer>
+    <p class="footer-disclaimer">
+      Context Nexus provides developer tooling. You connect your own AI account. We never store your API keys.
+    </p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="social-row">
+      <a href="https://x.com/context_nexus" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+      </a>
+      <a href="https://discord.gg/XEdDNzd7UG" target="_blank" rel="noopener" aria-label="Discord">
+        <svg fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      </a>
+    </div>
+    <div class="footer-contact">
+      © 2025 Context Nexus. All rights reserved.
+    </div>
+  </footer>
 
-    <h2>14) Contact</h2>
-    <p>If you have questions about these Terms, contact us at <a href="mailto:support@contextnexus.dev">support@contextnexus.dev</a>.</p>
-
-    <hr style="margin-top:40px;" />
-    <p style="font-size:.9rem;color:#6b7280;">This document is provided for informational purposes and does not constitute legal advice.
-       Consider consulting legal counsel for your specific circumstances.</p>
-  </div>
+  <script src="script.js" defer></script>
 </body>
 </html>

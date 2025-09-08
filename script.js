@@ -357,4 +357,34 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     })();
 
+    // --- Mobile nav toggle ---
+    (() => {
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+
+      const open = () => {
+        menu.hidden = false;
+        requestAnimationFrame(() => menu.classList.add('open'));
+        btn.setAttribute('aria-expanded', 'true');
+      };
+      const close = () => {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        // hide after transition
+        setTimeout(() => { if (!menu.classList.contains('open')) menu.hidden = true; }, 180);
+      };
+      const toggle = () => (menu.classList.contains('open') ? close() : open());
+
+      btn.addEventListener('click', toggle);
+
+      // Close on ESC or link click
+      menu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') close();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('open')) close();
+      });
+    })();
+
 });

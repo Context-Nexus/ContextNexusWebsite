@@ -10,7 +10,7 @@
   <meta property="og:image" content="https://raw.githubusercontent.com/nikosleft/ContextNexus/main/Screenshot.png">
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -26,16 +26,35 @@
     </div>
     <ul class="nav-links nav-center">
         <li><a href="index.html#why">Why</a></li>
-        <li><a href="how.html">How It Works</a></li>
+        <li><a href="how.html" class="active">How It Works</a></li>
         <li><a href="index.html#supported">Supported AIs</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="subscribe.html">Subscribe</a></li>
     </ul>
     <div class="nav-right">
-        <!-- Corrected Theme Toggle Structure -->
+        <!-- Theme Toggle -->
         <input type="checkbox" id="theme-toggle" class="toggle-input">
         <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+        <!-- Hamburger Button -->
+        <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+    </div>
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <nav aria-label="Mobile">
+        <a href="index.html#why">Why</a>
+        <a href="how.html">How It Works</a>
+        <a href="index.html#supported">Supported AIs</a>
+        <a href="about.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="subscribe.html">Subscribe</a>
+      </nav>
     </div>
   </nav>
 
