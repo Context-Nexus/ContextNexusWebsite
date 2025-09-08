@@ -756,3 +756,42 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 .plan-card .btn {
   margin-top: auto;
 }
+
+/* === Light-mode nav polish === */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; gap: 12px;
+  padding: 10px 20px;
+  background: rgba(18,18,18,.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.light-theme .sticky-nav {
+  background: rgba(255,255,255,.75);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.nav-left { display:flex; align-items:center; }
+.nav-center { display:flex; gap: 16px; justify-content:center; }
+.nav-right { display:flex; justify-content:flex-end; align-items:center; gap: 10px; }
+
+.nav-links a {
+  color: var(--text-color);
+  opacity: .9;
+  text-decoration: none;
+  font-weight: 600;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-links a.active {
+  opacity: 1;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* make logo consistent size in the bar */
+.nav-logo { height: 28px; width: auto; display:block; }
+
+
+/* UE watermark color by theme */
+.ue-badge { color: rgba(255,255,255,0.85); opacity:.22; }
+.light-theme .ue-badge { color: rgba(15,17,22,0.85); }
