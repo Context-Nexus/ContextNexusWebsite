@@ -425,6 +425,9 @@ a[aria-label="Discord"]:hover { color: #5865F2; background: rgba(88,101,242,.08)
     background-color: var(--surface-color); color: var(--text-color); font-family: 'Poppins', sans-serif;
     box-sizing: border-box; font-size: 1rem;
 }
+.contact-grid textarea {
+    resize: vertical;
+}
 .light-theme .contact-grid input, .light-theme .contact-grid textarea { background-color: var(--bg-color); }
 .muted { opacity: 0.7; font-size: 0.9rem; }
 .muted a { color: var(--text-color); }
