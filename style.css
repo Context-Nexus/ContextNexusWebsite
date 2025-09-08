@@ -798,13 +798,41 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 
 /* Button defaults (hidden on desktop) */
 .nav-toggle {
-  display: none; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 10px;
-  background: transparent; border: 1px solid rgba(255,255,255,.1);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .1);
   color: var(--text-color);
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
-.nav-toggle:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
-.light-theme .nav-toggle { border-color: rgba(0,0,0,.12); }
+
+.nav-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-toggle:focus-visible { 
+  outline: 2px solid #93c5fd; 
+  outline-offset: 2px; 
+}
+
+.light-theme .nav-toggle { 
+  border-color: rgba(0,0,0,.12); 
+}
+
+.light-theme .nav-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
 
 /* Drawer container */
 .mobile-menu {
