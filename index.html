@@ -168,13 +168,79 @@
       </div>
     </section>
 
-    <!-- Visual: centered early-access screenshot + caption -->
-    <section class="visual">
+    <!-- Visual: 5-slot Carousel -->
+    <section class="visual" id="gallery">
       <div class="container">
-        <h2 class="section-title fade-in">A True Pair Programmer, Inside Your Editor</h2>
-        <!-- Replace plugin_ui.png with your actual PNG name when you push it -->
-        <img src="plugin_ui.jpg" alt="Context Nexus early-access UI in Unreal Editor" class="screenshot fade-in" loading="lazy">
-        <p class="visual-desc">Early Access preview — AI Assistant docked in-editor. Pick context from Project Explorer, then chat on the right.</p>
+        <h2 class="section-title fade-in" style="margin-bottom:32px;">See Context Nexus in action</h2>
+    
+        <section class="cnx-carousel" aria-label="Gallery">
+          <ol class="cnx-carousel__viewport">
+    
+            <!-- Slide 1: Future Video -->
+            <li id="cnx_slide1" tabindex="0" class="cnx-carousel__slide cnx-optional">
+              <div class="cnx-carousel__snapper">
+                <video class="cnx-media" playsinline muted autoplay loop preload="metadata" poster="media/hero-poster.jpg">
+                  <source src="media/hero-demo.webm" type="video/webm" />
+                  <source src="media/hero-demo.mp4" type="video/mp4" />
+                </video>
+                <a href="#cnx_slide5" class="cnx-carousel__prev" aria-label="Go to last slide"></a>
+                <a href="#cnx_slide2" class="cnx-carousel__next" aria-label="Go to next slide"></a>
+              </div>
+            </li>
+    
+            <!-- Slide 2: Your Existing Screenshot (Guaranteed) -->
+            <li id="cnx_slide2" tabindex="0" class="cnx-carousel__slide">
+              <div class="cnx-carousel__snapper">
+                <img class="cnx-media" src="Screenshot.png" alt="Context Nexus screenshot">
+                <a href="#cnx_slide1" class="cnx-carousel__prev" aria-label="Go to previous slide"></a>
+                <a href="#cnx_slide3" class="cnx-carousel__next" aria-label="Go to next slide"></a>
+              </div>
+            </li>
+    
+            <!-- Slide 3: Future Image -->
+            <li id="cnx_slide3" tabindex="0" class="cnx-carousel__slide cnx-optional">
+              <div class="cnx-carousel__snapper">
+                <img class="cnx-media" data-src="media/slide-1.png" alt="Unreal Editor integration">
+                <a href="#cnx_slide2" class="cnx-carousel__prev" aria-label="Go to previous slide"></a>
+                <a href="#cnx_slide4" class="cnx-carousel__next" aria-label="Go to next slide"></a>
+              </div>
+            </li>
+    
+            <!-- Slide 4: Future Image -->
+            <li id="cnx_slide4" tabindex="0" class="cnx-carousel__slide cnx-optional">
+              <div class="cnx-carousel__snapper">
+                <img class="cnx-media" data-src="media/slide-2.png" alt="Blueprint + C++ knowledge map">
+                <a href="#cnx_slide3" class="cnx-carousel__prev" aria-label="Go to previous slide"></a>
+                <a href="#cnx_slide5" class="cnx-carousel__next" aria-label="Go to next slide"></a>
+              </div>
+            </li>
+
+            <!-- Slide 5: Future Image -->
+            <li id="cnx_slide5" tabindex="0" class="cnx-carousel__slide cnx-optional">
+              <div class="cnx-carousel__snapper">
+                <img class="cnx-media" data-src="media/slide-3.png" alt="AI chat and diagnostics">
+                <a href="#cnx_slide4" class="cnx-carousel__prev" aria-label="Go to previous slide"></a>
+                <a href="#cnx_slide1" class="cnx-carousel__next" aria-label="Go to first slide"></a>
+              </div>
+            </li>
+    
+          </ol>
+    
+          <!-- Dots -->
+          <aside class="cnx-carousel__navigation" aria-label="Slides">
+            <ol class="cnx-carousel__navigation-list">
+              <li class="cnx-carousel__navigation-item"><a href="#cnx_slide1" class="cnx-carousel__navigation-button" aria-label="Go to slide 1"></a></li>
+              <li class="cnx-carousel__navigation-item"><a href="#cnx_slide2" class="cnx-carousel__navigation-button" aria-label="Go to slide 2"></a></li>
+              <li class="cnx-carousel__navigation-item"><a href="#cnx_slide3" class="cnx-carousel__navigation-button" aria-label="Go to slide 3"></a></li>
+              <li class="cnx-carousel__navigation-item"><a href="#cnx_slide4" class="cnx-carousel__navigation-button" aria-label="Go to slide 4"></a></li>
+              <li class="cnx-carousel__navigation-item"><a href="#cnx_slide5" class="cnx-carousel__navigation-button" aria-label="Go to slide 5"></a></li>
+            </ol>
+          </aside>
+        </section>
+    
+        <p class="visual-desc fade-in" style="margin-top:18px;">
+          The carousel will automatically populate with new media as it becomes available.
+        </p>
       </div>
     </section>
 

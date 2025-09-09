@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     // --- Smooth Scrolling for Sticky Nav ---
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav-links a, .footer-links a');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
       // all nav links (desktop + mobile)
-      const links = document.querySelectorAll('.nav-links a.underline-grow, #mobile-menu a.underline-grow');
+      const links = document.querySelectorAll('.sticky-nav a.underline-grow');
 
       // clear any previous 'active'
       links.forEach(a => a.classList.remove('active'));
@@ -404,16 +404,75 @@ document.addEventListener('DOMContentLoaded', () => {
           a.classList.add('active');
         }
       });
-
-      // logo underline only on home
-      const logo = document.querySelector('.logo-link.underline-grow');
-      if (logo) {
-        if (path === 'index.html' || path === '') {
-          logo.classList.add('active');
-        } else {
-          logo.classList.remove('active');
-        }
-      }
     })();
 
+    // --- Carousel bootstrapping: show placeholders for missing assets ---
+    (() => {
+      const carousel = document.querySelector('.cnx-carousel');
+      if (!carousel) return;
+
+      const slides = Array.from(carousel.querySelectorAll('.cnx-carousel__slide'));
+
+      const checkAsset = (el) => new Promise((resolve) => {
+        if (!el) return resolve(false);
+
+        if (el.tagName === 'IMG') {
+          const src = el.getAttribute('src') || el.getAttribute('data-src');
+          if (!src) return resolve(false);
+          const probe = new Image();
+          probe.onload = () => resolve(true);
+          probe.onerror = () => resolve(false);
+          probe.src = src;
+        } else if (el.tagName === 'VIDEO') {
+          const hasSrc = Array.from(el.querySelectorAll('source')).some(s => s.src && s.src.length > 0 && !s.src.endsWith('#'));
+          if (!hasSrc) return resolve(false);
+
+          let done = false;
+          const clean = (ok) => { if (!done) { done = true; resolve(ok); } };
+          el.addEventListener('loadedmetadata', () => clean(true), { once: true });
+          el.addEventListener('error', () => clean(false), { once: true });
+          
+          try { el.load(); } catch (_) { clean(false); }
+          setTimeout(() => clean(true), 1200);
+        } else {
+          resolve(false);
+        }
+      });
+
+      slides.forEach(slide => {
+        // Skip the guaranteed screenshot slide
+        if (slide.id === 'cnx_slide2') return;
+
+        const media = slide.querySelector('.cnx-media');
+        if (media) {
+            // Lazy-load images
+            if (media.tagName === 'IMG' && media.dataset.src) {
+                media.src = media.dataset.src;
+            }
+
+            checkAsset(media).then(ok => {
+                if (!ok) {
+                    media.classList.add('cnx-hidden'); // Hide the media element, not the slide
+                }
+            });
+        }
+      });
+
+      // Pause video when not on its slide
+      const videoSlide = document.getElementById('cnx_slide1');
+      const video = videoSlide ? videoSlide.querySelector('video') : null;
+      if (video) {
+        const applyVideoPolicy = () => {
+          // Default to slide 2 (your screenshot) if no hash is present
+          const activeId = (location.hash || '#cnx_slide2').substring(1);
+          if (activeId === 'cnx_slide1' && !video.classList.contains('cnx-hidden')) {
+            video.play().catch(()=>{});
+          } else {
+            video.pause();
+          }
+        };
+        window.addEventListener('hashchange', applyVideoPolicy);
+        applyVideoPolicy(); // Run on init
+      }
+    })();
 });
