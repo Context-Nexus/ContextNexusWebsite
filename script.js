@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const next = (current + 1) % whySlides.length;
         goTo(next);
       });
-        
+    
       // hover pause on desktop
       whyCard.addEventListener('mouseenter', () => { paused = true; clearTimeout(timeoutId); });
       whyCard.addEventListener('mouseleave', () => { paused = false; schedule(whySlides[current].duration); });
@@ -536,6 +536,29 @@ document.addEventListener('DOMContentLoaded', () => {
           window.addEventListener('hashchange', applyVideoPolicy);
           applyVideoPolicy(); // Run on init
         });
-      })();
 
+        // --- prevent page drop on carousel nav ---
+const keepPageYAndSetHash = (id) => {
+  const x = window.pageXOffset;
+  const y = window.pageYOffset;
+  location.hash = id; // still fires your hashchange listener
+  requestAnimationFrame(() => window.scrollTo(x, y)); // restore scroll
+};
+
+const linkSel = '.cnx-carousel__prev, .cnx-carousel__next, .cnx-carousel__navigation-item a';
+carousel.querySelectorAll(linkSel).forEach(a => {
+  a.addEventListener('click', (e) => {
+    const href = a.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+
+    e.preventDefault(); // stop browser's vertical scroll
+    const id = href.slice(1);
+    const target = viewport.querySelector('#' + id);
+    if (target) {
+      viewport.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    }
+    keepPageYAndSetHash(id);
+  });
+});
+     })();
 });
