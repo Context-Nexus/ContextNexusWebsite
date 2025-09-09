@@ -1217,4 +1217,31 @@ body.light-theme .cnx-carousel__navigation-button {
 .cnx-carousel::after { pointer-events: none; }
 
 /* JS toggles this to fully stop CSS auto-advance */
+
 .cnx-no-auto .cnx-carousel__snapper { animation-name: none !important; }
+
+
+/* Tighten the WHY section card only */
+#why .glow-card { 
+  height: auto;              /* don't force full height */
+  cursor: default;           /* no “clickable” cursor here */
+}
+
+#why .advantage-card {
+  height: auto;              /* size to content */
+  justify-content: initial;  /* stop vertical spacing */
+  padding: 28px;             /* slightly tighter padding */
+}
+
+#why #why-carousel {
+  padding: 24px;             /* smaller inner padding */
+  min-height: unset;         /* no fixed min height */
+}
+
+/* Optional: slightly smaller arrows so they don't feel oversized */
+#why .why-arrow { 
+  transform: translateY(-50%) scale(.9);
+}
+#why .why-arrow:hover { 
+  transform: translateY(-50%) scale(.96);
+}
