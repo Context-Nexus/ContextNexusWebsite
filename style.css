@@ -710,14 +710,7 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   pointer-events: none;
   z-index: 0;
   filter: drop-shadow(0 2px 10px rgba(0,0,0,.25));
-  /* Default (Dark Mode) color: A subtle white */
-  color: rgba(255, 255, 255, 0.25); 
   transition: color 0.4s var(--easing-curve); /* Add a smooth transition */
-}
-
-/* Light Mode color: A subtle dark color */
-.light-theme .ue-badge {
-  color: rgba(15, 17, 22, 0.15);
 }
 
 @media (max-width: 900px) {
@@ -909,4 +902,35 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 .hero-card .brand-mark {
   height: 130px;
   width: auto;
+}
+
+/* === Theme-Aware Icons === */
+.theme-icon,
+.ue-badge {
+  color: #fff; /* dark mode = white */
+}
+
+.light-theme .theme-icon,
+.light-theme .ue-badge {
+  color: #0f1116; /* near-black for light theme */
+}
+
+/* Subtle watermark feel for UE badge only */
+.ue-badge { opacity: .22; }
+.light-theme .ue-badge { opacity: .22; }
+
+/* Hover polish for footer icons */
+.social-row a:hover .theme-icon { opacity: .85; }
+
+/* Right-align the form submit button */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;  /* pushes button to the right */
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-actions .btn {
+  margin: 0; /* remove default margins */
 }
