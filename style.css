@@ -1003,8 +1003,8 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 /* ===== Nav & Logo size overrides (place at end of style.css) ===== */
 
 /* Bigger, more spaced menu links */
-.nav-links { 
-  gap: clamp(28px, 4vw, 56px);  /* was 36px; adds breathing room on wide screens */
+.nav-links {
+  gap: clamp(36px, 5vw, 72px);  /* was 28–56px */
 }
 .nav-links a {
   font-size: clamp(0.95rem, 1.1vw, 1.15rem); /* bump up font size responsively */
@@ -1054,4 +1054,29 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 @media (max-width: 560px) {
   .ue-badge { left: 20px; top: 20px; }
   .ue-badge svg { width: 44px; }
+}
+
+
+/* --- Underline Grow from Center --- */
+.underline-grow {
+  position: relative;
+  overflow: hidden;
+}
+
+.underline-grow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;                   /* underline thickness */
+  background-color: currentColor; /* matches text color */
+  transition: transform 0.3s ease;
+}
+
+.underline-grow:hover::after,
+.underline-grow.active::after {
+  transform: translateX(-50%) scaleX(1);
 }
