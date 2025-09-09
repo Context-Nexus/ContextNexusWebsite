@@ -436,7 +436,6 @@ document.addEventListener('DOMContentLoaded', () => {
               .map(s => s.getAttribute('src'))
               .filter(Boolean);
             if (sources.length === 0) return false;
-            // Consider video present if any source actually exists
             for (const s of sources) {
               if (await headExists(s)) return true;
             }
@@ -455,9 +454,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       
         // 3) decide which slides stay visible
-        // Slide 2 (your screenshot) is guaranteed; others are optional.
         const visibilityPromises = slides.map(async (slide) => {
-          if (slide.id === 'cnx_slide2') return true; // keep current screenshot
+          if (slide.id === 'cnx_slide2') return true; // always keep slide 2
       
           const media = slide.querySelector('.cnx-media');
           const ok = await checkAsset(media);
@@ -473,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const visibleSlides = slides.filter(s => !s.classList.contains('cnx-hidden'));
           const count = visibleSlides.length;
       
-          // 4) trim dots to match visible slides (assumes same order)
+          // 4) trim dots to match visible slides
           dots.forEach((dot, i) => {
             if (slides[i].classList.contains('cnx-hidden')) {
               dot.classList.add('cnx-hidden');
@@ -482,10 +480,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
       
-          // If only one slide remains, hide dots entirely
           if (count <= 1 && dotsBar) dotsBar.classList.add('cnx-hidden');
       
-          // 5) rewire prev/next anchors to skip hidden slides
+          // 5) rewire prev/next anchors
           if (count >= 1) {
             visibleSlides.forEach((slide, i) => {
               const prevId = visibleSlides[(i - 1 + count) % count].id;
@@ -497,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           }
       
-          // 6) disable CSS auto-advance unless all 5 are visible
+          // 6) disable CSS auto-advance unless all slides are visible
           if (count !== 5) {
             carousel.classList.add('cnx-no-auto');
             viewport.querySelectorAll('.cnx-carousel__snapper').forEach(s => {
@@ -507,27 +504,37 @@ document.addEventListener('DOMContentLoaded', () => {
             carousel.classList.remove('cnx-no-auto');
           }
       
-          // 7) pick a safe starting slide if hash points to a hidden one
+          // 7) Set initial slide WITHOUT changing the URL hash
           const currentHash = (location.hash || '').slice(1);
-          const target = visibleSlides.find(s => s.id === currentHash);
-          if (!target) {
-            // default to your screenshot slide
-            location.hash = '#cnx_slide2';
+          let initialSlide = visibleSlides.find(s => s.id === currentHash);
+          
+          if (!initialSlide) {
+              // If no hash or an invalid hash, default to slide 2
+              initialSlide = visibleSlides.find(s => s.id === 'cnx_slide2');
           }
-      
-          // 8) pause video when not on its slide
+
+          if (initialSlide) {
+              // Scroll the viewport to the initial slide instantly
+              viewport.scrollLeft = initialSlide.offsetLeft;
+          }
+
+          // 8) Video play/pause logic
           const videoSlide = document.getElementById('cnx_slide1');
           const video = videoSlide && !videoSlide.classList.contains('cnx-hidden')
             ? videoSlide.querySelector('video')
             : null;
       
           const applyVideoPolicy = () => {
-            const activeId = (location.hash || '#cnx_slide2').substring(1);
-            if (video && activeId === 'cnx_slide1') video.play().catch(() => {});
-            else if (video) video.pause();
+            const activeId = (location.hash || '').slice(1) || 'cnx_slide2'; // Default to slide 2 if no hash
+            if (video && activeId === 'cnx_slide1') {
+                video.play().catch(() => {});
+            } else if (video) {
+                video.pause();
+            }
           };
+
           window.addEventListener('hashchange', applyVideoPolicy);
-          applyVideoPolicy();
+          applyVideoPolicy(); // Run on init
         });
       })();
 });

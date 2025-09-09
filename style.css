@@ -1116,12 +1116,12 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 .cnx-carousel__snapper { position: absolute; inset: 0; scroll-snap-align: center; }
 
 .cnx-media {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
+  position: absolute; 
+  inset: 0;
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; /* This makes the image cover the area without stretching */
   display: block;
-  background: #000;
-  z-index: 1; /* Sit on top of the placeholder background */
 }
 
 /* arrows */
