@@ -386,5 +386,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape' && menu.classList.contains('open')) close();
       });
     })();
+    
+    // --- Active underline: only on current page (incl. logo on home) ---
+    (() => {
+      const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+      // all nav links (desktop + mobile)
+      const links = document.querySelectorAll('.nav-links a.underline-grow, #mobile-menu a.underline-grow');
+
+      // clear any previous 'active'
+      links.forEach(a => a.classList.remove('active'));
+
+      // set active on matching page link (how.html, about.html, faq.html, etc.)
+      links.forEach(a => {
+        const href = (a.getAttribute('href') || '').split('#')[0].toLowerCase();
+        if (href && href === path) {
+          a.classList.add('active');
+        }
+      });
+
+      // logo underline only on home
+      const logo = document.querySelector('.logo-link.underline-grow');
+      if (logo) {
+        if (path === 'index.html' || path === '') {
+          logo.classList.add('active');
+        } else {
+          logo.classList.remove('active');
+        }
+      }
+    })();
 
 });

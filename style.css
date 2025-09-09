@@ -8,11 +8,21 @@
     --border-color: #333;
 
     /* SWITCH COLORS */
-    --switch-on: var(--primary-color); /* UPDATED: Uses your site's primary color */
+    --switch-on: var(--primary-color);
     --switch-off: #525252;
 
     /* MASTER ANIMATION CURVE (easeInOutQuad) */
     --easing-curve: cubic-bezier(0.45, 0, 0.55, 1);
+    
+    /* Underline Variables */
+    --underline-color: #fff;
+    --underline-height: 3px;
+    --underline-radius: 999px;
+    --underline-duration: 220ms;
+
+    /* Theme variables */
+    --ue-badge-color: rgba(255,255,255,0.12);  /* default (dark) = white-ish */
+    --nav-icon: #fff;                          /* hamburger/X default */
 }
 
 html {
@@ -38,6 +48,11 @@ body.light-theme {
     --heading-color: #1c1c1c;
     --text-color: #333333;
     --border-color: #dddddd;
+    --underline-color: #0f1116; /* Light theme underline color */
+    
+    /* light theme = dark-ish */
+    --ue-badge-color: rgba(0,0,0,0.16);
+    --nav-icon: #121212;
 }
 
 ::-webkit-scrollbar { width: 10px; }
@@ -143,7 +158,6 @@ body.light-theme::-webkit-scrollbar-thumb:hover { background: #bbb; }
   .hero-mini-cards{ grid-template-columns: 1fr; }
 }
 
-
 /* --- THEME TOGGLE (Corrected) --- */
 .toggle-input { 
   position: absolute; 
@@ -190,7 +204,6 @@ body.light-theme::-webkit-scrollbar-thumb:hover { background: #bbb; }
   outline: 2px solid var(--switch-on); 
   outline-offset: 3px; 
 }
-
 
 /* --- General Section Styling --- */
 section { padding: 90px 20px; transition: background-color 0.4s var(--easing-curve); }
@@ -469,22 +482,60 @@ footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
+.light-theme .sticky-nav {
+  background: rgba(255,255,255,.75);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
 .nav-left{ justify-self:start; }
 .nav-center{ justify-self:center; }
 .nav-right{ justify-self:end; display:flex; align-items:center; gap:12px; }
-.nav-links { list-style:none; margin:0; padding:0; display:flex; gap:28px; }
+.nav-links { list-style:none; margin:0; padding:0; display:flex; gap:36px; } /* INCREASED SPACING */
 .nav-links a{
   text-decoration:none; color:var(--text-color);
   font-weight:600; padding:8px 2px; position:relative;
 }
-.nav-logo{ height:36px; width:auto; display:block; }
 .logo-link{display:flex;align-items:center;position:relative}
 
-/* underline current: logo on home, active link on other pages */
-.nav-links a.active::after, .logo-link.active::after{
-  content:""; position:absolute; left:0; right:0; bottom:-6px; height:3px;
-  border-radius:3px; background: linear-gradient(90deg,#3700ff,#00c2ff,#00ff75);
+/* === Animated underline for nav + logo (current-page only) === */
+.underline-grow { position: relative; }
+.underline-grow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: var(--underline-height);
+  background: var(--underline-color);
+  border-radius: var(--underline-radius);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--underline-duration) ease;
+  pointer-events: none;
 }
+
+/* Show underline when active/current page */
+.underline-grow.active::after,
+.underline-grow[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* Hover animation (doesn't “stick”) */
+.underline-grow:hover::after,
+.underline-grow:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Logo sits a bit lower */
+.logo-link.underline-grow::after { bottom: -10px; }
+
+/* Light theme color for the line */
+body.light-theme .underline-grow::after { background: var(--underline-color); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .underline-grow::after { transition: none; }
+}
+
 
 /* --- Aurora --- */
 .aurora-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; overflow:hidden; }
@@ -732,21 +783,6 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   margin-top: auto;
 }
 
-/* === Light-mode nav polish === */
-.sticky-nav {
-  position: sticky; top: 0; z-index: 50;
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  align-items: center; gap: 12px;
-  padding: 10px 20px;
-  background: rgba(18,18,18,.65);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.light-theme .sticky-nav {
-  background: rgba(255,255,255,.75);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-}
-
 .nav-left { display:flex; align-items:center; }
 .nav-center { display:flex; gap: 16px; justify-content:center; }
 .nav-right { display:flex; justify-content:flex-end; align-items:center; gap: 10px; }
@@ -763,16 +799,7 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   border: none;
 }
 
-/* make logo consistent size in the bar */
-.nav-logo { 
-  height: 24px; /* <--- REDUCED FROM 28px */
-  width: auto; 
-  display:block; 
-}
-
 /* ===== Mobile nav ===== */
-
-/* Button defaults (hidden on desktop) */
 .nav-toggle {
   display: none;
   align-items: center;
@@ -787,36 +814,29 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   cursor: pointer;
   transition: background 0.2s ease;
 }
-
 .nav-toggle svg {
   width: 22px;
   height: 22px;
 }
-
 .nav-toggle:hover {
   background: rgba(255, 255, 255, 0.1);
 }
-
 .nav-toggle:focus-visible { 
   outline: 2px solid #93c5fd; 
   outline-offset: 2px; 
 }
-
 .light-theme .nav-toggle { 
   border-color: rgba(0,0,0,.12); 
 }
-
 .light-theme .nav-toggle:hover {
   background: rgba(0, 0, 0, 0.06);
 }
-
-/* Drawer container */
 .mobile-menu {
   position: absolute; 
-  top: 56px; /* sits just below sticky nav */
+  top: 56px;
   right: 16px; 
   width: auto; 
-  min-width: 180px;  /* keeps it compact */
+  min-width: 180px;
   background: rgba(18,18,18,.96); 
   backdrop-filter: blur(8px);
   border-radius: 12px; 
@@ -828,20 +848,17 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   transition: opacity .18s ease, transform .18s ease;
   z-index: 100;
 }
-
 .mobile-menu.open {
   transform: translateY(0); 
   opacity: 1; 
   pointer-events: auto;
 }
-
 .mobile-menu nav {
   display: flex;
   flex-direction: column;
   gap: 6px;
   padding: 0 12px;
 }
-
 .mobile-menu a {
   padding: 10px;
   border-radius: 8px;
@@ -849,35 +866,26 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   color: var(--text-color); 
   font-weight: 600;
 }
-
 .mobile-menu a:hover {
   background: rgba(255,255,255,.06);
 }
 .light-theme .mobile-menu a:hover {
   background: rgba(0,0,0,.06);
 }
-/* Breakpoints: collapse earlier to avoid 110% zoom overlap */
+
 @media (max-width: 1200px) {
-  .nav-center { display: none; }           /* hide desktop links */
+  .nav-center { display: none; }
   .nav-right { gap: 8px; }
-  .nav-toggle { display: inline-flex; }    /* show burger */
+  .nav-toggle { display: inline-flex; }
   .sticky-nav { grid-template-columns: auto 1fr auto; }
 }
 
-/* Prevent hero watermark & aurora from covering nav */
-.sticky-nav { position: sticky; z-index: 80; }
-
 /* === Consistent Logo Sizes Across Pages === */
-
-/* Navbar logo size (all pages) */
-.sticky-nav .brand-mark,
-.sticky-nav .nav-logo {
-  height: 48px;   /* consistent navbar height */
+.sticky-nav .brand-mark {
+  height: 48px;
   width: auto;
   margin: 0;
 }
-
-/* Larger logo in hero cards/sections */
 .hero-card .brand-mark {
   height: 130px;
   width: auto;
@@ -889,52 +897,42 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
 /* Right-align the form submit button */
 .form-actions {
   display: flex;
-  justify-content: flex-end;  /* pushes button to the right */
+  justify-content: flex-end;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 }
-
 .form-actions .btn {
-  margin: 0; /* remove default margins */
+  margin: 0;
 }
 
 /* === Team grid === */
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr;   /* mobile: stacked */
+  grid-template-columns: 1fr;
   gap: 24px;
 }
-
-/* tablet/desktop: two columns */
 @media (min-width: 820px) {
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;      /* equal heights */
+    align-items: stretch;
   }
 }
-
-/* make each card fill the grid cell nicely */
 .team-card {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
-/* optional: neat layout inside each card */
 .team-card .card-body {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 8px;
 }
-
 .team-card .card-footer {
-  margin-top: auto;            /* pushes footer/links to bottom */
+  margin-top: auto;
   display: flex; gap: 10px; flex-wrap: wrap;
 }
-
-/* responsive avatar */
 .avatar {
   width: 84px; height: 84px; border-radius: 50%;
   object-fit: cover;
@@ -954,22 +952,106 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   color: #0f1116; /* near-black for light theme */
 }
 
-/* Position the UE watermark inside the hero glass card */
+/* UE Watermark */
 .hero-card {
-  position: relative; /* ensure the badge is anchored to this card */
+  position: relative;
 }
-
-/* Move to left, make it gray, keep it subtle */
-.ue-badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  opacity: .22;
-  pointer-events: none;
-  color: #888888; /* A fixed gray color for both themes */
+/* UE watermark placement + theming */
+.ue-badge{
+  position:absolute;
+  left:28px;
+  top:28px;
+  color: var(--ue-badge-color);
+  opacity:.9;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.25));
+  pointer-events:none;
 }
-
-/* If you need a different size on mobile */
 @media (max-width: 560px) {
   .ue-badge svg { width: 48px; height: 48px; }
+}
+
+/* --- Global Nav Trim --- */
+.nav-links a[href*="#why"],
+.nav-links a[href="how.html"],
+.nav-links a[href*="#supported"] {
+  display: none;
+}
+.mobile-menu a[href*="#why"],
+.mobile-menu a[href="how.html"],
+.mobile-menu a[href*="#supported"] {
+  display: none;
+}
+.nav-links.nav-center {
+    justify-content: center;
+}
+/* Navbar icons adopt theme variable */
+.nav-toggle svg,
+.social-link svg { color: var(--nav-icon); fill: currentColor; }
+
+/* Force UE badge to inherit theme color */
+.ue-badge { color: #fff; }                /* dark mode default */
+.light-theme .ue-badge { color: #0f1116; }/* light mode default */
+
+/* Override any inline fill/stroke inside the SVG */
+.ue-badge svg,
+.ue-badge svg * {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+
+/* ===== Nav & Logo size overrides (place at end of style.css) ===== */
+
+/* Bigger, more spaced menu links */
+.nav-links { 
+  gap: clamp(28px, 4vw, 56px);  /* was 36px; adds breathing room on wide screens */
+}
+.nav-links a {
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem); /* bump up font size responsively */
+  letter-spacing: 0.2px;                     /* tiny polish so larger text feels balanced */
+  padding: 10px 2px;                          /* slightly taller hit area */
+}
+
+/* Logo sizes */
+.sticky-nav .brand-mark {                     /* top-left logo in the navbar */
+  height: 48px;                               /* was 48px; shrink a bit */
+  width: auto;
+}
+
+.hero-card .brand-mark {                      /* big logo inside the hero card */
+  height: clamp(96px, 12vw, 120px);           /* was ~130–140px; a touch smaller and responsive */
+  width: auto;
+}
+
+/* UE watermark badge size (top-left of hero card on home page) */
+.ue-badge svg {
+  width: auto;            /* was hard-coded (index used 64px); scale down + responsive */
+  height: clamp(10px, 4vw, 50px);
+}
+
+/* Optional: give the bar a tad more vertical space on desktop so the bigger text doesn't feel cramped */
+@media (min-width: 1200px) {
+  .sticky-nav { padding-block: 14px; }        /* was 10px; subtle breathing room */
+}
+
+
+/* --- UE watermark: size, layout, and no clipping --- */
+.hero-card { overflow: visible; } /* make sure shadows/icons aren't clipped by the card radius */
+
+.ue-badge {          /* keep it off the rounded edge a bit more */
+  left: 36px;
+  top: 36px;
+}
+
+.ue-badge svg {
+  display: block;           /* remove inline SVG baseline that can cut the bottom */
+  width: clamp(30px, 5vw, 40px);
+  height: auto;
+  overflow: visible;        /* ensure strokes/shadows don't get clipped */
+}
+
+/* optional: slightly smaller on phones */
+@media (max-width: 560px) {
+  .ue-badge { left: 20px; top: 20px; }
+  .ue-badge svg { width: 44px; }
 }
