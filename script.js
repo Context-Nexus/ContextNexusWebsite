@@ -406,73 +406,128 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     })();
 
-    // --- Carousel bootstrapping: show placeholders for missing assets ---
+    // --- Carousel bootstrapping (FIXED) ---
     (() => {
-      const carousel = document.querySelector('.cnx-carousel');
-      if (!carousel) return;
-
-      const slides = Array.from(carousel.querySelectorAll('.cnx-carousel__slide'));
-
-      const checkAsset = (el) => new Promise((resolve) => {
-        if (!el) return resolve(false);
-
-        if (el.tagName === 'IMG') {
-          const src = el.getAttribute('src') || el.getAttribute('data-src');
-          if (!src) return resolve(false);
-          const probe = new Image();
-          probe.onload = () => resolve(true);
-          probe.onerror = () => resolve(false);
-          probe.src = src;
-        } else if (el.tagName === 'VIDEO') {
-          const hasSrc = Array.from(el.querySelectorAll('source')).some(s => s.src && s.src.length > 0 && !s.src.endsWith('#'));
-          if (!hasSrc) return resolve(false);
-
-          let done = false;
-          const clean = (ok) => { if (!done) { done = true; resolve(ok); } };
-          el.addEventListener('loadedmetadata', () => clean(true), { once: true });
-          el.addEventListener('error', () => clean(false), { once: true });
-          
-          try { el.load(); } catch (_) { clean(false); }
-          setTimeout(() => clean(true), 1200);
-        } else {
-          resolve(false);
-        }
-      });
-
-      slides.forEach(slide => {
-        // Skip the guaranteed screenshot slide
-        if (slide.id === 'cnx_slide2') return;
-
-        const media = slide.querySelector('.cnx-media');
-        if (media) {
-            // Lazy-load images
-            if (media.tagName === 'IMG' && media.dataset.src) {
-                media.src = media.dataset.src;
-            }
-
-            checkAsset(media).then(ok => {
-                if (!ok) {
-                    media.classList.add('cnx-hidden'); // Hide the media element, not the slide
-                }
-            });
-        }
-      });
-
-      // Pause video when not on its slide
-      const videoSlide = document.getElementById('cnx_slide1');
-      const video = videoSlide ? videoSlide.querySelector('video') : null;
-      if (video) {
-        const applyVideoPolicy = () => {
-          // Default to slide 2 (your screenshot) if no hash is present
-          const activeId = (location.hash || '#cnx_slide2').substring(1);
-          if (activeId === 'cnx_slide1' && !video.classList.contains('cnx-hidden')) {
-            video.play().catch(()=>{});
-          } else {
-            video.pause();
+        const carousel = document.querySelector('.cnx-carousel');
+        if (!carousel) return;
+      
+        const viewport = carousel.querySelector('.cnx-carousel__viewport');
+        const slides = Array.from(viewport.querySelectorAll('.cnx-carousel__slide'));
+        const dotsBar = carousel.querySelector('.cnx-carousel__navigation');
+        const dots = Array.from(carousel.querySelectorAll('.cnx-carousel__navigation-item'));
+      
+        // 1) helper: does this asset actually exist?
+        const headExists = (url) =>
+          fetch(url, { method: 'HEAD', cache: 'no-store' })
+            .then(r => r.ok)
+            .catch(() => false);
+      
+        const checkAsset = async (el) => {
+          if (!el) return false;
+      
+          if (el.tagName === 'IMG') {
+            const src = el.getAttribute('src') || el.getAttribute('data-src');
+            if (!src) return false;
+            return headExists(src);
           }
+      
+          if (el.tagName === 'VIDEO') {
+            const sources = Array.from(el.querySelectorAll('source'))
+              .map(s => s.getAttribute('src'))
+              .filter(Boolean);
+            if (sources.length === 0) return false;
+            // Consider video present if any source actually exists
+            for (const s of sources) {
+              if (await headExists(s)) return true;
+            }
+            return false;
+          }
+      
+          return false;
         };
-        window.addEventListener('hashchange', applyVideoPolicy);
-        applyVideoPolicy(); // Run on init
-      }
-    })();
+      
+        // 2) hydrate any data-src images before checks
+        slides.forEach(slide => {
+          const img = slide.querySelector('img.cnx-media[data-src]');
+          if (img && !img.getAttribute('src')) {
+            img.setAttribute('src', img.getAttribute('data-src'));
+          }
+        });
+      
+        // 3) decide which slides stay visible
+        // Slide 2 (your screenshot) is guaranteed; others are optional.
+        const visibilityPromises = slides.map(async (slide) => {
+          if (slide.id === 'cnx_slide2') return true; // keep current screenshot
+      
+          const media = slide.querySelector('.cnx-media');
+          const ok = await checkAsset(media);
+          if (!ok) {
+            slide.classList.add('cnx-hidden');
+            slide.setAttribute('hidden', '');
+            slide.style.display = 'none';
+          }
+          return ok;
+        });
+      
+        Promise.all(visibilityPromises).then(() => {
+          const visibleSlides = slides.filter(s => !s.classList.contains('cnx-hidden'));
+          const count = visibleSlides.length;
+      
+          // 4) trim dots to match visible slides (assumes same order)
+          dots.forEach((dot, i) => {
+            if (slides[i].classList.contains('cnx-hidden')) {
+              dot.classList.add('cnx-hidden');
+              dot.setAttribute('hidden', '');
+              dot.style.display = 'none';
+            }
+          });
+      
+          // If only one slide remains, hide dots entirely
+          if (count <= 1 && dotsBar) dotsBar.classList.add('cnx-hidden');
+      
+          // 5) rewire prev/next anchors to skip hidden slides
+          if (count >= 1) {
+            visibleSlides.forEach((slide, i) => {
+              const prevId = visibleSlides[(i - 1 + count) % count].id;
+              const nextId = visibleSlides[(i + 1) % count].id;
+              const prevA = slide.querySelector('.cnx-carousel__prev');
+              const nextA = slide.querySelector('.cnx-carousel__next');
+              if (prevA) prevA.setAttribute('href', `#${prevId}`);
+              if (nextA) nextA.setAttribute('href', `#${nextId}`);
+            });
+          }
+      
+          // 6) disable CSS auto-advance unless all 5 are visible
+          if (count !== 5) {
+            carousel.classList.add('cnx-no-auto');
+            viewport.querySelectorAll('.cnx-carousel__snapper').forEach(s => {
+              s.style.animationName = 'none';
+            });
+          } else {
+            carousel.classList.remove('cnx-no-auto');
+          }
+      
+          // 7) pick a safe starting slide if hash points to a hidden one
+          const currentHash = (location.hash || '').slice(1);
+          const target = visibleSlides.find(s => s.id === currentHash);
+          if (!target) {
+            // default to your screenshot slide
+            location.hash = '#cnx_slide2';
+          }
+      
+          // 8) pause video when not on its slide
+          const videoSlide = document.getElementById('cnx_slide1');
+          const video = videoSlide && !videoSlide.classList.contains('cnx-hidden')
+            ? videoSlide.querySelector('video')
+            : null;
+      
+          const applyVideoPolicy = () => {
+            const activeId = (location.hash || '#cnx_slide2').substring(1);
+            if (video && activeId === 'cnx_slide1') video.play().catch(() => {});
+            else if (video) video.pause();
+          };
+          window.addEventListener('hashchange', applyVideoPolicy);
+          applyVideoPolicy();
+        });
+      })();
 });
