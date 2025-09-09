@@ -186,24 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     
       // arrows
-      prevBtn.addEventListener('click', (e) => {
-  e.preventDefault(); // stop page jump
-  const next = (current - 1 + whySlides.length) % whySlides.length;
-  goTo(next);
-});
-nextBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  const next = (current + 1) % whySlides.length;
-  goTo(next);
-});
-
-// dots
-dot.addEventListener('click', (e) => {
-  e.preventDefault();
-  goTo(i);
-});
-
-    
+      prevBtn.addEventListener('click', () => {
+        const next = (current - 1 + whySlides.length) % whySlides.length;
+        goTo(next);
+      });
+      nextBtn.addEventListener('click', () => {
+        const next = (current + 1) % whySlides.length;
+        goTo(next);
+      });
+        
       // hover pause on desktop
       whyCard.addEventListener('mouseenter', () => { paused = true; clearTimeout(timeoutId); });
       whyCard.addEventListener('mouseleave', () => { paused = false; schedule(whySlides[current].duration); });
@@ -546,4 +537,5 @@ dot.addEventListener('click', (e) => {
           applyVideoPolicy(); // Run on init
         });
       })();
+
 });
