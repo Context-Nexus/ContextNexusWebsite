@@ -850,6 +850,20 @@ body.light-theme .aurora-bg .aurora__item:nth-of-type(4){background-color:#d6d6d
   transition: opacity .18s ease, transform .18s ease;
   z-index: 100;
 }
+
+/* Light theme: mobile menu container + link colors */
+.light-theme .mobile-menu {
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+.light-theme .mobile-menu a {
+  color: #111;
+}
+
+.light-theme .mobile-menu a:hover {
+  background: rgba(0,0,0,.06); /* you already had this — keep it */
+}
 .mobile-menu.open {
   transform: translateY(0); 
   opacity: 1; 
@@ -1217,9 +1231,7 @@ body.light-theme .cnx-carousel__navigation-button {
 .cnx-carousel::after { pointer-events: none; }
 
 /* JS toggles this to fully stop CSS auto-advance */
-
 .cnx-no-auto .cnx-carousel__snapper { animation-name: none !important; }
-
 
 /* Tighten the WHY section card only */
 #why .glow-card { 
@@ -1244,4 +1256,10 @@ body.light-theme .cnx-carousel__navigation-button {
 }
 #why .why-arrow:hover { 
   transform: translateY(-50%) scale(.96);
+}
+
+/* Remove shadow only in navbar */
+.sticky-nav .brand-mark {
+  filter: none !important;
+  background: transparent !important;
 }
