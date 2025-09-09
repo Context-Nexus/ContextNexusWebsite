@@ -186,14 +186,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     
       // arrows
-      prevBtn.addEventListener('click', () => {
-        const next = (current - 1 + whySlides.length) % whySlides.length;
-        goTo(next);
-      });
-      nextBtn.addEventListener('click', () => {
-        const next = (current + 1) % whySlides.length;
-        goTo(next);
-      });
+      prevBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // stop page jump
+  const next = (current - 1 + whySlides.length) % whySlides.length;
+  goTo(next);
+});
+nextBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const next = (current + 1) % whySlides.length;
+  goTo(next);
+});
+
+// dots
+dot.addEventListener('click', (e) => {
+  e.preventDefault();
+  goTo(i);
+});
+
     
       // hover pause on desktop
       whyCard.addEventListener('mouseenter', () => { paused = true; clearTimeout(timeoutId); });
@@ -226,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (targetElement) {
                     const navHeight = document.querySelector('.sticky-nav').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (navHeight + 20);
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
                     
                     window.scrollTo({
                         top: targetPosition,
