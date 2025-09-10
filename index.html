@@ -289,6 +289,8 @@
             <h2 class="section-title">Interested in Early Studio Access?<br/>Reach Out.</h2>
             <div class="contact-glass">
               <form id="contact-form" class="contact-grid" novalidate>
+                <!-- Honeypot (bots will fill this; humans can’t see it) -->
+                <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;height:0;width:0;" aria-hidden="true">
                 <div>
                   <label for="name">Name</label>
                   <input id="name" type="text" name="name" placeholder="Your name" required>
@@ -300,6 +302,14 @@
                 <div class="full">
                   <label for="message">Message</label>
                   <textarea id="message" name="message" rows="6" placeholder="Tell us a bit about your team and needs..." required></textarea>
+                </div>
+                <div class="full" style="display: flex; justify-content: center; margin: 1rem 0;">
+                    <!-- Turnstile widget -->
+                    <div class="cf-turnstile"
+                         data-sitekey="YOUR_TURNSTILE_SITE_KEY"
+                         data-callback="onTurnstileComplete"
+                         data-theme="auto">
+                    </div>
                 </div>
                 <div class="full form-actions">
                   <span id="contact-status" class="muted" aria-live="polite"></span>
@@ -431,5 +441,6 @@
   </footer>
 
   <script src="script.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

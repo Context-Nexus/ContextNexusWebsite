@@ -321,21 +321,98 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Contact form --- 
+    // --- Contact form (validated + real send) ---
     (() => {
       const form = document.getElementById('contact-form');
       const status = document.getElementById('contact-status');
       if (!form) return;
     
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      let captchaToken = "";
+      window.onTurnstileComplete = (token) => { captchaToken = token; };
+    
+      // extra client-side checks beyond HTML5
+      const isLikelyNonsense = (s) => {
+        if (!s) return true;
+        const trimmed = s.trim();
+        if (trimmed.length < 8) return true;                             // too short
+        if ((trimmed.match(/\S/g) || []).length < 6) return true;         // not enough non-spaces
+        if (/^([a-z])\1{4,}$/i.test(trimmed)) return true;                // aaaaa, zzzzz
+        if (/^[a-z]{1,3}$/i.test(trimmed)) return true;                   // 1–3 letters only
+        if (/^[^a-zA-Z0-9]+$/.test(trimmed)) return true;                 // symbols only
+        return false;
+      };
+    
+      const validate = () => {
         const data = Object.fromEntries(new FormData(form));
-        if (!data.name || !data.email || !data.message) {
-          status.textContent = 'Please fill in all fields.';
+    
+        // Honeypot
+        if (data.company) return { ok: false, msg: 'Spam detected.' };
+    
+        // Built-in constraints
+        const emailEl = form.querySelector('#email');
+        if (!emailEl.checkValidity()) {
+          return { ok: false, msg: 'Please enter a valid email address.' };
+        }
+    
+        // Name/message heuristics
+        if (isLikelyNonsense(data.name)) {
+          return { ok: false, msg: 'Please enter your real name.' };
+        }
+        if (isLikelyNonsense(data.message) || data.message.trim().length < 20) {
+          return { ok: false, msg: 'Please include a short, useful message (20+ chars).' };
+        }
+        
+        // Check captcha
+        if (!captchaToken) {
+            return { ok: false, msg: 'Please complete the CAPTCHA.' };
+        }
+    
+        return { ok: true, data };
+      };
+    
+      const setBusy = (busy) => {
+        if (!btn) return;
+        btn.disabled = busy;
+        btn.setAttribute('aria-busy', String(busy));
+      };
+    
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = '';
+    
+        const v = validate();
+        if (!v.ok) {
+          status.textContent = v.msg;
           return;
         }
-        status.textContent = 'Thanks for reaching out — we’ll get back to you soon.';
-        form.reset();
+    
+        try {
+          setBusy(true);
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...v.data, captchaToken, captchaProvider: 'turnstile' }),
+          });
+    
+          const json = await res.json().catch(() => ({}));
+    
+          if (!res.ok) {
+            status.textContent = json.error || 'Something went wrong sending your message.';
+            return;
+          }
+    
+          status.textContent = 'Thanks! Your message was sent.';
+          form.reset();
+          captchaToken = ""; // clear the token
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+        } catch (err) {
+          status.textContent = 'Network error — please try again.';
+        } finally {
+          setBusy(false);
+        }
       });
     })();
 
