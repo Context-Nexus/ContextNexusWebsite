@@ -1,0 +1,8 @@
+{
+  "name": "context-nexus-site",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "resend": "^3.0.0"
+  }
+}
