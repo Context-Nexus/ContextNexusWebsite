@@ -1,6 +1,3 @@
-// /api/contact.js — Vercel serverless function
-// Validates input, optional Turnstile/hCaptcha verification, MX check, rate-limit, then sends via Resend.
-
 import dns from 'dns/promises';
 import { Resend } from 'resend';
 
