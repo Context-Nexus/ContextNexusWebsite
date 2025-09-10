@@ -1,196 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Context Nexus</title>
-    <meta name="description" content="Meet the team behind Context Nexus — the in-editor AI co-pilot for Unreal Engine 5 (C++ + Blueprints).">
-    <meta property="og:title" content="About – Context Nexus">
-    <meta property="og:description" content="Meet the team behind Context Nexus — AI co-pilot for Unreal Engine 5.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/nikosleft/ContextNexus/main/Screenshot.png">
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Context Nexus" />
-    <link rel="manifest" href="/site.webmanifest" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Context Nexus</title>
+<meta name="description" content="Meet the team behind Context Nexus — the in-editor AI co-pilot for Unreal Engine 5 (C++ + Blueprints).">
+<meta property="og:title" content="About – Context Nexus">
+<meta property="og:description" content="Meet the team behind Context Nexus — AI co-pilot for Unreal Engine 5.">
+<meta property="og:image" content="https://raw.githubusercontent.com/nikosleft/ContextNexus/main/Screenshot.png">  
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Context Nexus" />
+<link rel="manifest" href="/site.webmanifest" />
 </head>
-<body>
+<body class="simple-page">    
+<div class="scroll-progress-bar" aria-hidden="true"></div>
+<div id="preloader"><div class="loader"></div></div>
 
-    <div class="scroll-progress-bar" aria-hidden="true"></div>
-    <div id="preloader"><div class="loader"></div></div>
+<nav class="sticky-nav">
+  <div class="nav-left">
+    <a href="index.html" class="logo-link underline-grow underline-on" aria-label="Home">
+      <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
+    </a>
+  </div>
 
-    <nav class="sticky-nav">
-      <div class="nav-left">
-        <a href="index.html" class="logo-link underline-grow underline-on" aria-label="Home">
-          <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
-        </a>
-      </div>
-    
-      <ul class="nav-links nav-center">
-  <li><a href="about.html" class="underline-grow">About Us</a></li>
-  <li><a href="faq.html" class="underline-grow">FAQ</a></li>
-  <li><a href="changelog.html" class="underline-grow">Changelog</a></li>
-  <li><a href="subscribe.html" class="underline-grow">Subscribe</a></li>
-</ul>
+  <ul class="nav-links nav-center">
+    <li><a href="about.html" class="underline-grow">About Us</a></li>
+    <li><a href="faq.html" class="underline-grow">FAQ</a></li>
+    <li><a href="changelog.html" class="underline-grow">Changelog</a></li>
+    <li><a href="subscribe.html" class="underline-grow">Subscribe</a></li>
+  </ul>
 
-    
-      <div class="nav-right">
-        <input type="checkbox" id="theme-toggle" class="toggle-input">
-        <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
-    
-        <!-- Hamburger -->
-        <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-          <svg class="nav-toggle-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor">
-            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-    
-      <!-- Mobile dropdown -->
-      <div id="mobile-menu" class="mobile-menu" hidden>
-        <nav aria-label="Mobile">
-        <a href="about.html">About Us</a>
-        <a href="faq.html">FAQ</a>
-        <a href="changelog.html">Changelog</a>
-        <a href="subscribe.html">Subscribe</a>
-        </nav>
-      </div>
+  <div class="nav-right">
+    <input type="checkbox" id="theme-toggle" class="toggle-input">
+    <label for="theme-toggle" class="toggleSwitch" aria-label="Toggle theme"></label>
+
+    <!-- Hamburger -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg class="nav-toggle-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQ</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="subscribe.html">Subscribe</a>
     </nav>
+  </div>
+</nav>
 
-
-    <header class="hero">
-        <div class="aurora-bg">
-          <div class="aurora__item"></div><div class="aurora__item"></div>
-          <div class="aurora__item"></div><div class="aurora__item"></div>
-        </div>
-        <div class="hero-content container">
-            <section class="glass hero-card">
-                <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
-                <h1 class="brand-title">Context Nexus</h1>
-                <p class="hero-sub">The people behind the code.</p>
-            </section>
-        </div>
-    </header>
-    
-    <main>
-        <section class="our-story" id="story">
-            <div class="container">
-                <h2 class="section-title fade-in">Our Story Behind The Idea</h2>
-                <div class="story-content fade-in">
-                    <p>Context Nexus was born from a simple, frustrating truth: modern AI copilots, for all their power, lacked true understanding of large, complex Unreal Engine projects. They could write boilerplate, but they couldn't answer the hard architectural questions.</p>
-                    
-                    <h4>The Problem</h4>
-                    <p>We spent countless hours manually tracing dependencies between C++ and Blueprints, trying to answer questions like, <strong>"If I change this core function, what breaks?"</strong> or <strong>"Where is this property actually being modified?"</strong> Standard text-based search was slow, and existing AI tools just guessed.</p>
-                    
-                    <h4>The Mission</h4>
-                    <p>Our mission became clear: to build an AI co-pilot that possessed a <strong>compiler-grade understanding</strong> of an entire Unreal project. Not just a text-matcher, but a true analysis engine that could build a complete knowledge graph of every class, function, property, and their intricate relationships.</p>
-                    
-                     <ul class="styled-list">
-                        <li><strong>Deep Analysis First:</strong> We focused on creating a robust parser that understands both C++ and Blueprints natively.</li>
-                        <li><strong>Precision Over Noise:</strong> We designed the "Targeted Context" system to ensure the AI gets only the relevant data, saving time and token costs.</li>
-                        <li><strong>Empowerment, Not Replacement:</strong> Our goal is to augment the developer's skills, automating tedious analysis to free them up for creative problem-solving.</li>
-                    </ul>
-
-                    <p>Context Nexus is the tool we always wished we had. It's a co-pilot that respects the complexity of Unreal Engine development and provides the deep, contextual awareness needed to build better, more stable projects, faster.</p>
-                </div>
-            </div>
+<header class="hero">
+    <div class="aurora-bg">
+      <div class="aurora__item"></div><div class="aurora__item"></div>
+      <div class="aurora__item"></div><div class="aurora__item"></div>
+    </div>
+    <div class="hero-content container">
+        <section class="glass hero-card">
+            <img src="Context_Nexus_Logo_Face.png" alt="Context Nexus Logo" class="brand-mark" />
+            <h1 class="brand-title">Context Nexus</h1>
+            <p class="hero-sub">The people behind the code.</p>
         </section>
-        <section class="about-us" id="team">
-          <div class="container">
-            <h2 class="section-title fade-in">Meet the Co-Founders</h2>
-        
-            <div class="team-grid fade-in">
-        
-              <!-- Klearxos Xlioumphs -->
-              <div class="glow-card team-card">
-                <div class="profile-card">
-                  <img src="rae-profile.jpg" alt="Klearxos Xlioumphs" class="avatar">
-                  <div class="card-body">
-                    <h4>Klearxos Xlioumphs</h4>
-                    <p class="profile-role">Android Developer • Co-Founder</p>
-                    <p class="profile-bio">
-                      Mobile engineer and systems tinkerer. Klearxos focuses on product polish, build tooling,
-                      and performance—making Context Nexus feel fast and effortless in day-to-day use.
-                    </p>
-                  </div>
-                  <div class="profile-socials card-footer">
-                    <a href="https://raexp917.github.io/" target="_blank" aria-label="GitHub">
-                      <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/klearxos-xlioumphs" target="_blank" aria-label="LinkedIn">
-                      <i class="fab fa-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
+    </div>
+</header>
+
+<main>
+    <section class="our-story" id="story">
+        <div class="container">
+            <div style="max-width:800px; margin: 0 auto 60px auto; text-align:center;">
+                <h1 class="section-title" style="margin-bottom: 12px;">About Context Nexus</h1>
+                <p style="margin-top:0;opacity:.85; font-size: 1.1rem;">The people behind the code.</p>
+            </div>
+
+            <div class="story-content fade-in">
+                <p>Context Nexus was born from a simple, frustrating truth: modern AI copilots, for all their power, lacked true understanding of large, complex Unreal Engine projects. They could write boilerplate, but they couldn't answer the hard architectural questions.</p>
+                
+                <h4>The Problem</h4>
+                <p>We spent countless hours manually tracing dependencies between C++ and Blueprints, trying to answer questions like, <strong>"If I change this core function, what breaks?"</strong> or <strong>"Where is this property actually being modified?"</strong> Standard text-based search was slow, and existing AI tools just guessed.</p>
+                
+                <h4>The Mission</h4>
+                <p>Our mission became clear: to build an AI co-pilot that possessed a <strong>compiler-grade understanding</strong> of an entire Unreal project. Not just a text-matcher, but a true analysis engine that could build a complete knowledge graph of every class, function, property, and their intricate relationships.</p>
+                
+                 <ul class="styled-list">
+                    <li><strong>Deep Analysis First:</strong> We focused on creating a robust parser that understands both C++ and Blueprints natively.</li>
+                    <li><strong>Precision Over Noise:</strong> We designed the "Targeted Context" system to ensure the AI gets only the relevant data, saving time and token costs.</li>
+                    <li><strong>Empowerment, Not Replacement:</strong> Our goal is to augment the developer's skills, automating tedious analysis to free them up for creative problem-solving.</li>
+                </ul>
+
+                <p>Context Nexus is the tool we always wished we had. It's a co-pilot that respects the complexity of Unreal Engine development and provides the deep, contextual awareness needed to build better, more stable projects, faster.</p>
+            </div>
+        </div>
+    </section>
+    <section class="about-us" id="team">
+      <div class="container">
+        <h2 class="section-title fade-in">Meet the Co-Founders</h2>
+    
+        <div class="team-grid fade-in">
+    
+          <!-- Klearxos Xlioumphs -->
+          <div class="glow-card team-card">
+            <div class="profile-card">
+              <img src="rae-profile.jpg" alt="Klearxos Xlioumphs" class="avatar">
+              <div class="card-body">
+                <h4>Klearxos Xlioumphs</h4>
+                <p class="profile-role">Android Developer • Co-Founder</p>
+                <p class="profile-bio">
+                  Mobile engineer and systems tinkerer. Klearxos focuses on product polish, build tooling,
+                  and performance—making Context Nexus feel fast and effortless in day-to-day use.
+                </p>
               </div>
-            
-              <!-- Nikos Lazaridis -->
-              <div class="glow-card team-card">
-                <div class="profile-card">
-                  <img src="nikos-profile.jpg" alt="Nikos Lazaridis" class="avatar">
-                  <div class="card-body">
-                    <h4>Nikos Lazaridis</h4>
-                    <p class="profile-role">Game Developer • Co-Founder</p>
-                    <p class="profile-bio">
-                      Unreal Engine enthusiast and gameplay engineer. Nikos drives the Blueprint/C++ analysis
-                      work so the AI can answer real architectural questions with confidence.
-                    </p>
-                  </div>
-                  <div class="profile-socials card-footer">
-                    <a href="https://github.com/nikosleft" target="_blank" aria-label="GitHub">
-                      <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@LeftByteGames" target="_blank" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/nikos-lazaridis-425840221/" target="_blank" aria-label="LinkedIn">
-                      <i class="fab fa-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
+              <div class="profile-socials card-footer">
+                <a href="https://raexp917.github.io/" target="_blank" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/klearxos-xlioumphs" target="_blank" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin"></i>
+                </a>
               </div>
-            
             </div>
           </div>
-        </section>
-    </main>
-    
-    <footer>
-      <p class="footer-disclaimer">
-        Context Nexus provides developer tooling. You connect your own AI account. We never store your API keys.
-      </p>
-    
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="index.html#contact">Contact</a>
+        
+          <!-- Nikos Lazaridis -->
+          <div class="glow-card team-card">
+            <div class="profile-card">
+              <img src="nikos-profile.jpg" alt="Nikos Lazaridis" class="avatar">
+              <div class="card-body">
+                <h4>Nikos Lazaridis</h4>
+                <p class="profile-role">Game Developer • Co-Founder</p>
+                <p class="profile-bio">
+                  Unreal Engine enthusiast and gameplay engineer. Nikos drives the Blueprint/C++ analysis
+                  work so the AI can answer real architectural questions with confidence.
+                </p>
+              </div>
+              <div class="profile-socials card-footer">
+                <a href="https://github.com/nikosleft" target="_blank" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/@LeftByteGames" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nikos-lazaridis-425840221/" target="_blank" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        
+        </div>
       </div>
-  
-      <div class="social-row">
-        <a href="https://x.com/context_nexus" target="_blank" rel="noopener" aria-label="X (Twitter)">
-          <svg fill="currentColor" viewBox="0 0 24 24" class="theme-icon"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-        </a>
-        <a href="https://discord.gg/XEdDNzd7UG" target="_blank" rel="noopener" aria-label="Discord">
-            <svg fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-        </a>
-      </div>
-    
-      <div class="footer-contact">
-        © 2025 Context Nexus. All rights reserved.
-      </div>
-    </footer>
+    </section>
+</main>
 
-    <script src="script.js" defer></script>
+<footer>
+  <p class="footer-disclaimer">
+    Context Nexus provides developer tooling. You connect your own AI account. We never store your API keys.
+  </p>
+
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <div class="social-row">
+    <a href="https://x.com/context_nexus" target="_blank" rel="noopener" aria-label="X (Twitter)">
+      <svg fill="currentColor" viewBox="0 0 24 24" class="theme-icon"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+    </a>
+    <a href="https://discord.gg/XEdDNzd7UG" target="_blank" rel="noopener" aria-label="Discord">
+        <svg fill="currentColor" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+    </a>
+  </div>
+
+  <div class="footer-contact">
+    © 2025 Context Nexus. All rights reserved.
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 
 </body>
-
 </html>

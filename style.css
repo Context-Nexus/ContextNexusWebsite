@@ -1263,3 +1263,8 @@ body.light-theme .cnx-carousel__navigation-button {
   filter: none !important;
   background: transparent !important;
 }
+
+/* --- Simple page mode: no hero, tighter top spacing --- */
+body.simple-page .hero { display: none !important; }
+body.simple-page main .section,
+body.simple-page main section { padding-top: 60px; }
