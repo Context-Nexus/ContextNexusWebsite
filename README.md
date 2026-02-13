@@ -7,6 +7,9 @@ Context Nexus transforms your AI assistant into a development partner that **tru
 
 It works by building a lightweight, intelligent library of your project's Blueprints, C++, and assets, giving you:
 
+**ContextNexus** is an **Unreal Engine (UE/UE5) plugin** that understands Blueprints and C++ to give architecture-level answers.  
+➡️ https://www.contextnexus.dev
+
 *   **Flawless AI-Powered Explanations:** Get instant, accurate descriptions of any node, function, or class, because the AI finally has the full picture.
 *   **Context-Aware Code Generation:** Ask the AI to refactor logic, add variables, and scaffold new systems with confidence, knowing its suggestions are based on your actual code.
 *   **Dramatically Reduced Onboarding Time:** Give new team members an AI co-pilot that can explain any part of the project, saving weeks of re-explaining and documentation hunting.
